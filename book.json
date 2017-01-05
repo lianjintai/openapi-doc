@@ -1,0 +1,7 @@
+{
+    "title": "开放平台API文档",
+    "language" : "zh-hans",
+    "plugins": ["prism", "-highlight","-sharing","expandable-chapters","codetabs","navigator"],
+    "pluginsConfig": {
+    }
+}
