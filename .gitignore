@@ -1,0 +1,85 @@
+# maven ignore
+target/
+dist/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+node_modules/
+
+# eclipse ignore
+
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# Eclipse Core
+.project
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+*.java~
+*.properties~
+*.xml~
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+*.original
+~$*
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/_0.fdt
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/_0.fdx
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/_0.frq
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/_0.nrm
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/_0.prx
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/_0.tis
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/write.lock
