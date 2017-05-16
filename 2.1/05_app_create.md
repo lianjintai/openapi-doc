@@ -14,11 +14,13 @@ loan\_app:app:create
     2. 联系人信息（可录入多个，但至少有一个）
     3. 资金需求信息
     4. 担保信息（可录入多个，但至少有一个，无实物担保的情况需要填写信用或保证担保）
+    5. 关联人信息
 借款人为企业时，需要提供：
     1. 企业借款人信息
     2. 联系人信息（可录入多个，但至少有一个）
     3. 资金需求信息
     4. 担保信息（可录入多个，但至少有一个，无实物担保的情况需要填写信用或保证担保）
+    5. 关联人信息
 具体定义如下：
 
 | 名称 | 类型 | 是否必须 | 描述 | 
@@ -29,7 +31,6 @@ loan\_app:app:create
 | fac | JSON | 是 | 资金需求信息 （企业、个人共用）， 见[资金需求信息](#资金需求信息) |
 | col | JSON(List) | 是 | 担保信息 （企业、个人共用）， 见[担保信息](#担保信息) |
 | rel | JSON | 是 | 关联人信息（企业、个人共用）， 见[关联人信息](#关联人信息) |
-| cp_rel_info| JSON | 是 | 企贷关联人特有信息， 见[企贷关联人特有信息](#企贷关联人特有信息) |
 
 
 
@@ -75,16 +76,6 @@ loan\_app:app:create
 | mtFinInsttnCd | String | 是 | 20 | 基本开户行 |  | 
 | portrait | JSON | 否 | 1000 | 客户画像 | {"行业地位":"市场占有率第一"}|
 
-### 企贷关联人特有信息
- 
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- |
-| isActualCtrl | String |是  | 1| 是否实际控制人|  ||
-| dtInBizLineSince | Date | 是 | | 进入本行业的时间|  ||
-| mgmtExperience | String | 是 |200 | 工作经历|  ||
-| isInvolvedMgmt | String |否 | 1| 是否参与公司日常管理|  ||
-| mtPosHeldCd | String |否  | 1| 管理职位|  ||
-| dtInCompSince | Date | 否 | | 加入公司的时间|  ||
 
 ### 个人借款人信息
 个人借款人信息由三部分组成：
@@ -122,6 +113,7 @@ loan\_app:app:create
 | isBizEntity | String | 是 | 1 | 是否个体工商户／私营业主 |  | 
 | portrait | JSON | 否 | 1000 | 客户画像 | {"芝麻评分":"698"}|
 
+
 #### 职业信息
 “是否为个体工商户/私营业主”为 "否" 时必须输入：
 
@@ -132,6 +124,7 @@ loan\_app:app:create
 | prevServiceYr | Number | 否 |  60 | 工作年限(年)|  |
 | prevServiceMth | Number | 否 |  12 | 工作年限(月)|  |
 | dtWorkInCurrIndustry | Date | 否 |   | 从事现行业时间 |  ||
+
 
 ####  经营信息
 “是否为个体工商户/私营业主”为“是”时必须输入：
@@ -194,13 +187,79 @@ loan\_app:app:create
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- |
-| nm | String | 是 | 80 | 关联人姓名 |  |
-| mtCifRelCd | String | 是 | 20 | 关联关系 |本次迭代企贷为固定的关联关系CI003企业法人代表  |
-| IdNo | String | 是 | 18 | 身份证证件号码 |  |
-| mtGenderCd | String |否  | 20 | 性别 |  ||
-| mtMaritalStsCd | String |否  | 20 | 婚姻状况 |  ||
-| mobileNo | String |否  | 11| 手机号码|  ||
+| relBase | JSON | 是 | [关联人基本信息](#关联人基本信息) | 关联人无论是企贷关联人还是个贷关联人都需要填写 | 
+| csRelEmploy | JSON | 否 | [个贷关联人职业信息](#个贷关联人职业信息) | 当关联人为个贷关联人时，个贷关联人基本信息中“是否为个体工商户/私营业主”为否时必须填写 | 
+| csRelBusiness | JSON | 否 | [个贷关联人经营信息](#个贷关联人经营信息) | 当关联人为个贷关联人时，个贷关联人基本信息中“是否为个体工商户/私营业主”为是时必须填写 | 
+| cpRelInfo | JSON | 否 | [企贷关联人特有信息](#企贷关联人特有信息) | 当关联人为企贷关联人时，必须填写 | 
+| mtCifRelCd | String | 是 | 20 | 申请方与关联方的关联关系| 个贷关联关系：II001-配偶  企贷关联关系：IC003-法定代表人 |
 
+#### 关联人基本信息
+“个贷关联人和企贷关联人都通用”
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |备注|
+| --- | --- | --- | --- | --- |--- |
+| nm | String | 是 | 300 | 关联人姓名（与身份证上相同） | 张三 |
+| idNo | String | 是 | 18 | 身份证号码 |  |
+| dtIssued | Date | 否 |  | 身份证签发日期 |  | 企贷关联人可以不填 |
+| dtExpiry | Date | 否 |  | 身份证到期日（长期身份证可以为空） | | 企贷关联人可以不填 |
+| mtGenderCd | String | 是 | 20 | 性别 |  |
+| dtRegistered | Date | 是 |  | 出生日期 |  | 企贷关联人非必填，个贷关联人必填 |
+| mtMaritalStsCd | String | 是 | 20 | 婚姻情况 |  |
+| mtEduLvlCd | String | 是 | 20 | 最高学历 |  | 企贷关联人可以不填 |
+| mtResidenceStsCd | String | 是 | 20 | 本地居住情况 |  |  企贷关联人可以不填 |
+| isFamily | String | 是 | 1 | 是否自有房产 |  | 企贷关联人可以不填 |
+| mtJobSectorCd | String | 是 | 20 | 职业 |   | 企贷关联人可以不填 |
+| monthlyIncAmt | String | 否 | 30 (26,4)| 近1年税后平均月收入(单位/元) |   | 企贷关联人可以不填 |
+| email | String | 否 | 30 |电子邮箱 |   | 企贷关联人可以不填 |
+| mtCityCd | String | 是 | 20 | 所在城市 |   | 企贷关联人可以不填 |
+| mobileNo | String | 是 | 20 | 手机号 |  |
+| mtIndvMobileUsageStsCd | String | 否 | 20 |  手机使用年限 |   | 企贷关联人可以不填 |
+| qq | Number | 否 |  15 | QQ号 |   | 企贷关联人可以不填 |
+| weChat | String | 否 |  50 | 微信号 |   | 企贷关联人可以不填 |
+| bankCard | Number | 是 |  14 (12,2)| 近一年银行卡流水总额 |   | 企贷关联人可以不填 |
+| creditCardLines | Number | 否 |  14 (12,2)| 信用卡额度 |   | 企贷关联人可以不填 |
+| loanFixedYear | Number | 否 |  20 | 贷款记录年限 |   | 企贷关联人可以不填 |
+| isBizEntity | String | 是 | 1 | 是否个体工商户／私营业主 |   |  企贷关联人可以不填 |
+
+#### 个贷关联人职业信息
+“当关联人为个贷关联人时，个贷关联人的基本信息中 是否为个体工商户/私营业主”为 "否" 时必须输入：
+
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- |
+| employerNm | String | 是 |  100 | 工作单位 |  |
+| mtPosHeldCd | String | 是 |  20 | 职位|  |
+| prevServiceYr | Number | 否 |  60 | 工作年限(年)|  |
+| prevServiceMth | Number | 否 |  12 | 工作年限(月)|  |
+| dtWorkInCurrIndustry | Date | 否 |   | 从事现行业时间 |  ||
+
+#### 个贷关联人经营信息
+“当关联人为个贷关联人时，个贷关联人的基本信息中 是否为个体工商户/私营业主”为“是”时必须输入：
+
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- |
+| isLegalRep | String | 是 |  1 | 是否法定代表人  |  |
+| mtIndDetailCd | String | 是 |  50 | 行业类型 |  |
+| bizRegNo | String | 是 |  50 | 营业执照号 |  |
+| bizAddr | String | 是 |  50 | 经营地址 |  |
+| bizArea | String | 是 |  255 | 经营范围 |  |
+| currentTotal | Number | 是 |  20 (18,2) | 近一年流水总额（单位：元） |  |
+| waterDosage | Number | 是 |  14 (12,2)| 近一年月平均用水量（单位：吨） |  |
+| electricityDosage | Number | 是 |  14 (12,2)| 近一年月平均用电量（单位：度） |  |
+| ratal | Number | 是 |  14 (12,2)| 近一年月平均纳税额（单位：元） |  |
+| socialSecurity | Number | 否 |  14 (12,2)| 近一年月社保缴存额 （单位：元） |  |
+| equityLine | Number | 否 |  14 (12,2)| 近一年月公积金缴存额 （单位：元） |  |
+| employees | Number | 否 |  14 (12,2)| 员工人数 |  |
+| salaryTotal | Number | 否 |  14 (12,2)| 近一年月平均发放工资 （单位：元） |  ||
+
+### 企贷关联人特有信息
+ “关联人为企贷关联人时，必须输入”
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- |
+| isActualCtrl | String |是  | 1| 是否实际控制人|  ||
+| dtInBizLineSince | Date | 是 | | 进入本行业的时间|  ||
+| mgmtExperience | String | 是 |200 | 工作经历|  ||
+| isInvolvedMgmt | String |否 | 1| 是否参与公司日常管理|  ||
+| mtPosHeldCd | String |否  | 1| 管理职位|  ||
+| dtInCompSince | Date | 否 | | 加入公司的时间|  ||
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
@@ -288,22 +347,24 @@ loan\_app:app:create
         "mtTimeCd": "D", 
         "tenureAppr": "12"
     }, 
-    "cp_rel_info": {
-        "dtInBizLineSince": "2017-05-16 11:42:33", 
-        "dtInCompSince": "2017-05-16 11:42:33", 
-        "isActualCtrl": "Y", 
-        "isInvolvedMgmt": "Y", 
-        "mgmtExperience": "工作经历", 
-        "mtPosHeldCd": "001"
-    }, 
     "rel": {
-        "dtRegistered": "2017-05-16 11:42:33", 
-        "idNo": "117079198211267456", 
-        "mobileNo": "13212222222", 
-        "mtCifRelCd": "CI003", 
-        "mtGenderCd": "M", 
-        "mtMaritalStsCd": "02", 
-        "nm": "企业关联人姓名"
+        "cpRelInfo": {
+            "dtInBizLineSince": "2017-05-16 17:27:03", 
+            "dtInCompSince": "2017-05-16 17:27:03", 
+            "isActualCtrl": "Y", 
+            "isInvolvedMgmt": "Y", 
+            "mgmtExperience": "工作经历", 
+            "mtPosHeldCd": "001"
+        }, 
+        "relBase": {
+            "dtRegistered": "2017-05-16 17:27:03", 
+            "idNo": "117079198211267456", 
+            "mobileNo": "13212222222", 
+            "mtGenderCd": "M", 
+            "mtMaritalStsCd": "02", 
+            "nm": "企业关联人姓名"
+        }
+    } 
 }
 ```
 
@@ -376,6 +437,39 @@ loan\_app:app:create
         "mtRepymtTypCd": "001", 
         "mtTimeCd": "D", 
         "tenureAppr": "12"
+    }, 
+    "rel": {
+        "csRelEmploy": {
+            "dtWorkInCurrIndustry": "2017-05-16 17:44:19", 
+            "employerNm": "单位姓名", 
+            "mtPosHeldCd": "001", 
+            "prevServiceMth": 1, 
+            "prevServiceYr": 2
+        }, 
+        "relBase": {
+            "bankCard": 1234556565, 
+            "creditCardLines": 12345, 
+            "dtExpiry": "2017-05-16 17:44:19", 
+            "dtIssue": "2017-05-16 17:44:19", 
+            "dtRegistered": "2017-05-16 17:44:19", 
+            "email": "123@qq.com", 
+            "idNo": "117079198211267456", 
+            "isBizEntity": "N", 
+            "isFamily": "Y", 
+            "loanFixedYear": 11, 
+            "mobileNo": "18888888888", 
+            "monthlyIncAmt": 100000, 
+            "mtCityCd": "110100", 
+            "mtEduLvlCd": "01", 
+            "mtGenderCd": "M", 
+            "mtIndvMobileUsageStsCd": "01", 
+            "mtJobSectorCd": "10000", 
+            "mtMaritalStsCd": "02", 
+            "mtResidenceStsCd": "01", 
+            "nm": "个贷非私营业务关联人姓名", 
+            "qq": 12345, 
+            "weChat": "1234"
+        }
     }
 }
 ```
@@ -456,6 +550,48 @@ loan\_app:app:create
         "mtRepymtTypCd": "001", 
         "mtTimeCd": "D", 
         "tenureAppr": "12"
+    }, 
+    "rel": {
+        "csRelBusiness": {
+            "bizAddr": "北京", 
+            "bizArea": "电子商务", 
+            "bizRegNo": "175f671a375b482", 
+            "currentTotal": 123, 
+            "electricityDosage": 123, 
+            "employees": "22", 
+            "equityLine": 123, 
+            "isLegalRep": "Y", 
+            "mtIndDetailCd": "a0111", 
+            "mtJobSectorCd": "10000", 
+            "ratal": 123, 
+            "salaryTotal": 123, 
+            "socialSecurity": 123, 
+            "waterDosage": 123
+        }, 
+        "relBase": {
+            "bankCard": 1234556565, 
+            "creditCardLines": 12345, 
+            "dtExpiry": "2017-05-16 17:57:51", 
+            "dtIssue": "2017-05-16 17:57:51", 
+            "dtRegistered": "2017-05-16 17:57:51", 
+            "email": "123@qq.com", 
+            "idNo": "117079198211267456", 
+            "isBizEntity": "Y", 
+            "isFamily": "Y", 
+            "loanFixedYear": 11, 
+            "mobileNo": "18888888888", 
+            "monthlyIncAmt": 100000, 
+            "mtCityCd": "110100", 
+            "mtEduLvlCd": "01", 
+            "mtGenderCd": "M", 
+            "mtIndvMobileUsageStsCd": "01", 
+            "mtJobSectorCd": "10000", 
+            "mtMaritalStsCd": "02", 
+            "mtResidenceStsCd": "01", 
+            "nm": "个贷私营业主关联人姓名", 
+            "qq": 12345, 
+            "weChat": "1234"
+        }
     }
 }
 ```
