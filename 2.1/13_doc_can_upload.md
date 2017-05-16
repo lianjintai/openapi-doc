@@ -18,6 +18,8 @@ loan\_app:doc:can_upload
 | docs | JSON（List） | 申请材料列表（多个），见[申请材料信息](#申请材料信息) |  |
 
 ### 申请材料信息
+| 名称 | 类型 | 描述 |示例值 |
+| --- | --- | --- | --- |
 | mtDocTypeCd | String | 申请材料大类 | CIF-客户，COLL-担保，FAC-业务 |
 | mtDocCd | String | 申请材料小类 |  |
 | refId | String | 关联资源ID（根据mtDocTypeCd决定具体关联的资源是什么） |  |
@@ -76,5 +78,5 @@ loan\_app:doc:can_upload
      └── {refId3} \
             └── {文件4}
 ```
-##FAQ
+## FAQ
 关于此文档暂时还没有FAQ
