@@ -28,6 +28,10 @@ loan\_app:app:create
 | contacts | JSON(List) | 是 | 联系人信息（企业、个人共用），见[联系人信息](#联系人信息) |
 | fac | JSON | 是 | 资金需求信息 （企业、个人共用）， 见[资金需求信息](#资金需求信息) |
 | col | JSON(List) | 是 | 担保信息 （企业、个人共用）， 见[担保信息](#担保信息) |
+| rel | JSON | 是 | 关联人信息（企业、个人共用）， 见[关联人信息](#关联人信息) |
+| cp_rel_info| JSON | 是 | 企贷关联人特有信息， 见[企贷关联人特有信息](#企贷关联人特有信息) |
+
+
 
 ### 企业借款人信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
@@ -71,6 +75,16 @@ loan\_app:app:create
 | mtFinInsttnCd | String | 是 | 20 | 基本开户行 |  | 
 | portrait | JSON | 否 | 1000 | 客户画像 | {"行业地位":"市场占有率第一"}|
 
+### 企贷关联人特有信息
+ 
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- |
+| isActualCtrl | String |是  | 1| 是否实际控制人|  ||
+| dtInBizLineSince | Date | 是 | | 进入本行业的时间|  ||
+| mgmtExperience | String | 是 |200 | 工作经历|  ||
+| isInvolvedMgmt | String |否 | 1| 是否参与公司日常管理|  ||
+| mtPosHeldCd | String |否  | 1| 管理职位|  ||
+| dtInCompSince | Date | 否 | | 加入公司的时间|  ||
 
 ### 个人借款人信息
 个人借款人信息由三部分组成：
@@ -176,6 +190,16 @@ loan\_app:app:create
 | collOwner | String | 否 | 50 | 担保品所有者名称 |  |
 | isDeposit | String | 否 | 1 | 是否保证金 |  ||
 
+### 关联人信息
+
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- |
+| nm | String | 是 | 80 | 关联人姓名 |  |
+| mtCifRelCd | String | 是 | 20 | 关联关系 |本次迭代企贷为固定的关联关系CI003企业法人代表  |
+| IdNo | String | 是 | 18 | 身份证证件号码 |  |
+| mtGenderCd | String |否  | 20 | 性别 |  ||
+| mtMaritalStsCd | String |否  | 20 | 婚姻状况 |  ||
+| mobileNo | String |否  | 11| 手机号码|  ||
 
 
 ## 响应参数
@@ -263,7 +287,23 @@ loan\_app:app:create
         "mtRepymtTypCd": "001", 
         "mtTimeCd": "D", 
         "tenureAppr": "12"
-    }
+    }, 
+    "cp_rel_info": {
+        "dtInBizLineSince": "2017-05-16 11:42:33", 
+        "dtInCompSince": "2017-05-16 11:42:33", 
+        "isActualCtrl": "Y", 
+        "isInvolvedMgmt": "Y", 
+        "mgmtExperience": "工作经历", 
+        "mtPosHeldCd": "001"
+    }, 
+    "rel": {
+        "dtRegistered": "2017-05-16 11:42:33", 
+        "idNo": "117079198211267456", 
+        "mobileNo": "13212222222", 
+        "mtCifRelCd": "CI003", 
+        "mtGenderCd": "M", 
+        "mtMaritalStsCd": "02", 
+        "nm": "企业关联人姓名"
 }
 ```
 
