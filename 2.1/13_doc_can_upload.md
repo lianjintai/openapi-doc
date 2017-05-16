@@ -11,7 +11,7 @@ loan\_app:doc:list
 ## 请求参数
 | 名称 | 类型 | 是否必须 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- |
-| appId | String | 是 | 申请ID（[融资申请创建API](2.1.1_融资申请创建.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
+| appId | String | 是 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
 | mt_app_type_cd | String | 是 | 申请类型: CP_PUSH_APP-企业融资申请；CS_PUSH_APP-个人融资申请 | CP_PUSH_APP |
 
 ## 响应参数
