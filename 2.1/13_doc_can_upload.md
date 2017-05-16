@@ -1,48 +1,80 @@
-#申请材料列表
+#可上传申请材料
 ## 描述
-
-## 限制
-单次上传文件内容最大为100M，超过限制请分多次上传。
+根据appId查询可上传申请材料列表，需要按照本接口的返回结果，组织申请材料压缩包（见[申请材料压缩包结构](#申请材料压缩包结构)），然后上传申请材料。
 
 ## API代码
-loan\_app:doc:list
-
+loan\_app:doc:can_upload
 
 ## 请求参数
 | 名称 | 类型 | 是否必须 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- |
-| appId | String | 是 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
-| mt_app_type_cd | String | 是 | 申请类型: CP_PUSH_APP-企业融资申请；CS_PUSH_APP-个人融资申请 | CP_PUSH_APP |
+| appId | String | 是 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d8 |
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
 | --- | --- | --- | --- |
-| app_id | String | 申请ID | 0092728480d24f5d87bf63639b5cfe1c |
-| mtAppStsCd | String | 申请状态代码，详细规则见[附件](3_%E9%99%84%E4%BB%B6.html#申请状态) | APPROVED |
-| can_push | String | 能否推送金融机构:Y-是；N-否 | Y |
-| remark | String | 备注：当申请被退回或被取消时，返回退回或取消原因 | 风控审核未通过 |
+| appId | String | 申请ID | 0092728480d24f5d8 |
+| url | String | 文件上传url请求地址（带有授权信息，半小时后失效） |  |
+| docs | JSON（List） | 申请材料列表（多个），见[申请材料信息](#申请材料信息) |  |
+
+### 申请材料信息
+| mtDocTypeCd | String | 申请材料大类 | CIF-客户，COLL-担保，FAC-业务 |
+| mtDocCd | String | 申请材料小类 |  |
+| refId | String | 关联资源ID（根据mtDocTypeCd决定具体关联的资源是什么） |  |
+| refName | String | 关联资源名称（根据mtDocTypeCd决定具体关联的资源是什么） |  |
+| isNecessary | String | 是否必须上传 | Y，N |
 
 ## 错误码
 | 描述 | HTTP状态码 | 语义 |
 | --- | --- | --- | 
-| app_id未找到 | 400 | 请输入正确的app_id,或检查申请类型与申请ID是否匹配 |
+| appId未找到 | 400 | 请输入正确的appId,或检查申请类型与申请ID是否匹配 |
 
 ## 示例
 ### 请求示例
 ```javascript
 {
-    "app_id":"0092728480d24f5d87bf63639b5cfe1c",
-    "mt_app_type_cd":"CP_PUSH_APP"
+    "appId":"0092728480d24f5d87bf63639b5cfe1c"
 }
 ```
 ### 返回示例
 ```javascript
 {
-    "app_id":"0092728480d24f5d87bf63639b5cfe1c",
-    "mt_app_sts_cd":"APPROVED",
-    "can_push":"N",
-    "remark":""
+    "appId":"0092728480d24f5d8",
+    "url":"http://file.lianjintai.com/1233322",
+    "docs":[
+        {
+            "mtDocTypeCd":"CIF",
+            "mtDocCd":"PCIF305",
+            "refId":"bf63639b5cfe1c",
+            "refName":"北京海恩炼鑫台信息技术有限责任公司",
+            "isNecessary":"N"
+        },
+        {
+            "mtDocTypeCd":"CIF",
+            "mtDocCd":"PCIF311",
+            "refId":"bf63639b5cfe1c",
+            "refName":"北京海恩炼鑫台信息技术有限责任公司",
+            "isNecessary":"N"
+        }
+    ]
+   
 }
+```
+
+### 申请材料压缩包结构
+文件名：{appId}.zip
+压缩包内容：
+```
+{appId}.zip
+├── {mtDocCd1} \
+│    ├── {refId1} \
+│    │      └── {文件1}
+│    └── {refId2} \
+│           ├── {文件2}
+│           └── {文件3}
+└── {mtDocCd2} \
+     └── {refId3} \
+            └── {文件4}
 ```
 ##FAQ
 关于此文档暂时还没有FAQ
