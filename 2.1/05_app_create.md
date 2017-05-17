@@ -70,7 +70,16 @@ loan\_app:app:create
 | principalNo | String | 是 | 20 | 经营电话/负责人电话 |  | 
 | mtFinInsttnCd | String | 是 | 20 | 基本开户行 |  | 
 | portrait | JSON | 否 | 1000 | 客户画像 | {"行业地位":"市场占有率第一"}|
+| bizCertificateList | JSON | 是 |  | 经营许可证信息，见[经营许可证信息](###经营许可证信息) |  |
 
+
+### 经营许可证信息
+经营许可证信息由三部分组成：经营许可证编号、经营许可证类型、经营许可证到期日
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| no | String | 是 | 50 | 经营许可证编号 |  |
+| mtBizCertificateTypCd | String | 是 | 2 | 经营许可证类型 |  |
+| dtExpiry | Date | 是 |  | 经营许可证到期日|  |
 
 ### 个人借款人信息
 个人借款人信息由三部分组成：
@@ -248,7 +257,13 @@ loan\_app:app:create
         "socialSecurity": 879, 
         "waterDosage": 879, 
         "website": "baidu.com",
-        "portrait": "{\"企业实力\":\"世界500强\"}"
+        "portrait": "{\"企业实力\":\"世界500强\"}",
+		"bizCertificateList":[
+			{"dtExpiry":"2017-05-16 7:18:12",
+			 "no":"b4812a23a4c14d0ea659",
+			 "mtBizCertificateTypCd":"00"
+			}
+		]
     }, 
     "fac": {
         "dtMaturity": "2017-05-03 15:12:24", 
