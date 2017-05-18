@@ -70,7 +70,7 @@ loan\_app:app:create
 | principalNo | String | 是 | 20 | 经营电话/负责人电话 |  | 
 | mtFinInsttnCd | String | 是 | 20 | 基本开户行 |  | 
 | portrait | JSON | 否 | 1000 | 客户画像 | {"行业地位":"市场占有率第一"}|
-| bizCertificateList | JSON | 是 |  | 经营许可证信息，见[经营许可证信息](###经营许可证信息) |  |
+| bizCertificates | JSON(List) | 是 |  | 经营许可证信息，该信息不是必须的。见[经营许可证信息](###经营许可证信息) |  |
 
 
 ### 经营许可证信息
@@ -259,9 +259,10 @@ loan\_app:app:create
         "website": "baidu.com",
         "portrait": "{\"企业实力\":\"世界500强\"}",
 		"bizCertificateList":[
-			{"dtExpiry":"2017-05-16 7:18:12",
-			 "no":"b4812a23a4c14d0ea659",
-			 "mtBizCertificateTypCd":"00"
+			{
+				"dtExpiry":"2017-05-16 7:18:12",
+				"no":"b4812a23a4c14d0ea659",
+				"mtBizCertificateTypCd":"00"
 			}
 		]
     }, 
