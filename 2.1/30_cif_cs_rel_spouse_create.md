@@ -1,21 +1,84 @@
-# 创建个人关联
+# 创建与借款人关联关系为配偶的关联人信息
 ## 描述
-与借款人相关的个人（可以调用多次，创建多个关联人），如：
-当借款人为个人时，借款人的配偶、父母、子女、兄弟姐妹、朋友等
-当借款人为企业时，借款企业的法人代表、股东、高管等
-
+当借款人的婚姻状态为已婚有子女和已婚无子女时，必须添加一个关联关系为配偶的关联人，且只能添加一个，当借款人的婚姻状态不是已婚有子女和已婚无子女时，配偶关联人不能添加
 ## API代码
 loan\_app:cs\_cif\_rel:create
 
 ## 请求参数
-| 名称 | 类型 | 是否必须 | 描述 | 示例值 |
+当借款方为个人，关联关系为配偶，需要提供：
+    1. 关联人的基本信息
+    2. 关联人的职业信息（非个体工商户/私营业主）
+    3. 关联人的经营信息（个体工商户/私营业主）
+    
+### 借款方为个人，关联关系为配偶
+关联人信息由三部分组成：
+
+| 名称 | 类型 | 是否必须 | 描述 | 备注 |
 | --- | --- | --- | --- | --- |
-|  | JSON | 是 | 个人关联关系（见[个人关联关系](#个人关联关系)） |  |
-|  | JSON | 是 | 关联人信息（见[关联人信息](#关联人信息)） | ||
+| relCsBase | JSON | 是 | [关联人基本信息](#关联人基本信息) | |
+| relCsEmploy | JSON | 否 | [关联人职业信息](#关联人职业信息) | 关联人基本信息中“是否为个体工商户/私营业主”为否时必须填写 | 
+| relCsBusiness | JSON | 否 | [关联人经营信息](#关联人经营信息) | 关联人基本信息中“是否为个体工商户/私营业主”为是时必须填写 | 
 
-### 个人关联关系
 
-### 关联人信息
+#### 关联人基本信息
+| 名称 | 类型 | 是否必须 |  最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- |
+| appId | String | 是 | 50 |申请ID（融资申请创建API返回的结果） | 0092728480d24f |
+| mtCifRelCd | String | 是 | 20 |与借款方的关联关系 | II001 |
+| nm | String | 是 | 80 | 关联人姓名（与身份证上相同） | 张三 |
+| idNo | String | 是 | 50 | 身份证号码 |  |
+| dtIssued | Date | 是 |  | 身份证签发日期 |  |
+| dtExpiry | Date | 是 |  | 身份证到期日（长期身份证可以为空） |  |
+| mtGenderCd | String | 是 | 20 | 性别 |  |
+| mtMaritalStsCd | String | 是 | 20 | 婚姻情况 |  |
+| dtRegistered | Date | 是 |  | 出生日期 |  |
+| mtEduLvlCd | String | 否 | 20 | 最高学历 |  |
+| mtCityCd | String | 否 | 20 | 所在城市 |  |
+| mtResidenceStsCd | String | 否 | 20 | 本地居住情况 |  |
+| isFamily | String | 否 | 1 | 是否自有房产 |  |
+| nationalityMtCtryCd | String | 否 | 1 | 国籍 |  |
+| mobileNo | String | 是 | 11 | 手机号 |  |
+| mtIndvMobileUsageStsCd | String | 否 | 20 |  手机使用年限 |  |
+| email | String | 否 | 50 |电子邮箱 |  |
+| qq | Number | 否 |  15 | QQ号 |  |
+| weChat | String | 否 |  50 | 微信号 |  |
+| isBizEntity | String | 是 | 1 | 是否个体工商户／私营业主 |  |
+| bankCard | Number | 是 |  14 (12,2)| 	银行卡流水总额（单位/元） |  |
+| creditCardLines | Number | 否 |  14 (12,2)| 信用卡额度 |  |
+| loanFixedYear | Number | 否 |  20 | 贷款记录年限 |  |
+| monthlyIncAmt | String | 否 | 14 (12,2)| 月平均收入(单位/元) |  |
+
+
+#### 关联人职业信息
+“是否为个体工商户/私营业主”为 "否" 时必须输入：
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| employerNm | String | 否 |  100 | 工作单位 |  |
+| mtPosHeldCd | String | 否 |  20 | 职位|  |
+| prevServiceYr | Number | 否 |  60 | 工作年限(年)|  |
+| prevServiceMth | Number | 否 |  12 | 工作年限(月)|  |
+| dtWorkInCurrIndustry | Date | 否 |   | 从事现行业时间 |  ||
+
+#### 关联人经营信息
+“是否为个体工商户/私营业主”为“是”时需要输入：
+
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| isLegalRep | String | 否 |  1 | 是否法定代表人  |  |
+| mtIndDetailCd | String | 否 |  50 | 行业类型 |  |
+| bizRegNo | String | 否 |  50 | 营业执照号 |  |
+| bizAddr | String | 否 |  50 | 经营地址 |  |
+| bizArea | String | 否 |  255 | 经营范围 |  |
+| currentTotal | Number | 否 |  20 (18,2) | 近一年流水总额（单位：元） |  |
+| waterDosage | Number | 否 |  14 (12,2)| 近一年月平均用水量（单位：吨） |  |
+| electricityDosage | Number | 否 |  14 (12,2)| 近一年月平均用电量（单位：度） |  |
+| ratal | Number | 否 |  14 (12,2)| 近一年月平均纳税额（单位：元） |  |
+| socialSecurity | Number | 否 |  14 (12,2)| 近一年月社保缴存额 （单位：元） |  |
+| equityLine | Number | 否 |  14 (12,2)| 近一年月公积金缴存额 （单位：元） |  |
+| employees | Number | 否 |  12 | 员工人数 |  |
+| salaryTotal | Number | 否 |  14 (12,2)| 近一年月平均发放工资 （单位：元） |  ||
+
+
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
@@ -28,15 +91,90 @@ loan\_app:cs\_cif\_rel:create
 | appId未找到 | 400 | 请输入正确的appId |
 
 ## 示例
-### 请求示例
+### 请求示例（借款方为个人，关联关系为配偶）
+#### 关联人非私营业主
 ```javascript
 {
-    "appId":"0092728480d24f5d87bf63639b5cfe1c",
-	"base64OfFile":"dfdasfdsaf2f2f2f2511dasfsdfsdfsdffdsdfafsdf10190dafffb4863168ec04==",
-	"mtFinRptCatCd":"1",
-	"mtFinRptTypCd":"1",
-	"mtFinStsCd":"001",
-	"dtFin": "2017-05-03 15:12:24"
+    "relCsBase": {
+        "appId": "f1480dd2444f4850b8", 
+        "bankCard": 1234556565, 
+        "creditCardLines": 12345, 
+        "dtExpiry": "2017-05-23 18:18:06", 
+        "dtIssue": "2017-05-23 18:18:06", 
+        "dtRegistered": "2017-05-23 18:18:06", 
+        "email": "123@qq.com", 
+        "idNo": "51c5d08d7c924d3a9f", 
+        "isBizEntity": "N", 
+        "isFamily": "Y", 
+        "loanFixedYear": 11, 
+        "mobileNo": "18888888888", 
+        "monthlyIncAmt": 100000, 
+        "mtCifRelCd": "II001", 
+        "mtCityCd": "110100", 
+        "mtEduLvlCd": "01", 
+        "mtGenderCd": "M", 
+        "mtIndvMobileUsageStsCd": "01", 
+        "mtMaritalStsCd": "02", 
+        "mtResidenceStsCd": "01", 
+        "nm": "非私营关联人", 
+        "qq": 12345, 
+        "weChat": "1234"
+    }, 
+    "relCsEmploy": {
+        "dtWorkInCurrIndustry": "2017-05-23 18:18:06", 
+        "employerNm": "单位姓名", 
+        "mtPosHeldCd": "001", 
+        "prevServiceMth": 1, 
+        "prevServiceYr": 2
+    }
+}
+```
+
+### 请求示例（借款方为个人，关联关系为配偶）
+#### 关联人是私营业主
+```javascript
+{
+    "relCsBase": {
+        "appId": "a1537aee01c7421bb8", 
+        "bankCard": 1234556565, 
+        "creditCardLines": 12345, 
+        "dtExpiry": "2017-05-23 18:26:45", 
+        "dtIssue": "2017-05-23 18:26:45", 
+        "dtRegistered": "2017-05-23 18:26:45", 
+        "email": "123@qq.com", 
+        "idNo": "814be0d9fa464c42b3", 
+        "isBizEntity": "Y", 
+        "isFamily": "Y", 
+        "loanFixedYear": 11, 
+        "mobileNo": "18888888888", 
+        "monthlyIncAmt": 100000, 
+        "mtCifRelCd": "II001", 
+        "mtCityCd": "110100", 
+        "mtEduLvlCd": "01", 
+        "mtGenderCd": "M", 
+        "mtIndvMobileUsageStsCd": "01", 
+        "mtMaritalStsCd": "02", 
+        "mtResidenceStsCd": "01", 
+        "nm": "私营业主关联人", 
+        "qq": 12345, 
+        "weChat": "1234"
+    }, 
+    "relCsBusiness": {
+        "bizAddr": "北京", 
+        "bizArea": "电子商务", 
+        "bizRegNo": "ef512680ed01492", 
+        "currentTotal": 123, 
+        "electricityDosage": 123, 
+        "employees": "22", 
+        "equityLine": 123, 
+        "isLegalRep": "Y", 
+        "mtIndDetailCd": "a0111", 
+        "mtJobSectorCd": "10000", 
+        "ratal": 123, 
+        "salaryTotal": 123, 
+        "socialSecurity": 123, 
+        "waterDosage": 123
+    }
 }
 ```
 ### 返回示例
