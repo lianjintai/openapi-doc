@@ -36,7 +36,7 @@ loan\_app:cif\_cs\_rel_spouse:create
 | mtCityCd | String | 否 | 20 | 所在城市 |  |
 | mtResidenceStsCd | String | 否 | 20 | 本地居住情况 |  |
 | isFamily | String | 否 | 1 | 是否自有房产 |  |
-| nationalityMtCtryCd | String | 否 | 1 | 国籍 |  |
+| nationalityMtCtryCd | String | 否 | 20 | 国籍 |  |
 | mobileNo | String | 是 | 11 | 手机号 |  |
 | mtIndvMobileUsageStsCd | String | 否 | 20 |  手机使用年限 |  |
 | email | String | 否 | 50 |电子邮箱 |  |
@@ -45,7 +45,7 @@ loan\_app:cif\_cs\_rel_spouse:create
 | isBizEntity | String | 是 | 1 | 是否个体工商户／私营业主 | Y-是私营业主；N-非私营业主 |
 | bankCard | Number | 是 |  14 (12,2)| 	银行卡流水总额（单位/元） |  |
 | creditCardLines | Number | 否 |  14 (12,2)| 信用卡额度 |  |
-| loanFixedYear | Number | 否 |  20 | 贷款记录年限 |  |
+| loanFixedYear | Number | 否 |  2 | 贷款记录年限 |  |
 | monthlyIncAmt | String | 否 | 14 (12,2)| 月平均收入(单位/元) |  |
 
 
@@ -54,10 +54,10 @@ loan\_app:cif\_cs\_rel_spouse:create
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| employerNm | String | 否 |  100 | 工作单位 |  |
+| employerNm | String | 否 |  80 | 工作单位 |  |
 | mtPosHeldCd | String | 否 |  20 | 职位|  |
-| prevServiceYr | Number | 否 |  60 | 工作年限(年)|  |
-| prevServiceMth | Number | 否 |  12 | 工作年限(月)|  |
+| prevServiceYr | Number | 否 |  2 | 工作年限(年)|  |
+| prevServiceMth | Number | 否 | 2 | 工作年限(月)|  |
 | dtWorkInCurrIndustry | Date | 否 |   | 从事现行业时间 |  ||
 
 #### 关联人经营信息
@@ -69,7 +69,7 @@ loan\_app:cif\_cs\_rel_spouse:create
 | mtIndDetailCd | String | 否 |  50 | 行业类型 |  |
 | bizRegNo | String | 否 |  50 | 营业执照号 |  |
 | bizAddr | String | 否 |  50 | 经营地址 |  |
-| bizArea | String | 否 |  255 | 经营范围 |  |
+| bizArea | String | 否 |  200 | 经营范围 |  |
 | currentTotal | Number | 否 |  20 (18,2) | 近一年流水总额（单位：元） |  |
 | waterDosage | Number | 否 |  14 (12,2)| 近一年月平均用水量（单位：吨） |  |
 | electricityDosage | Number | 否 |  14 (12,2)| 近一年月平均用电量（单位：度） |  |
