@@ -24,7 +24,7 @@ loan\_app:cif\_cp\_rel_shareholder:create
 | 名称 | 类型 | 是否必须 | 描述 | 备注 |
 | --- | --- | --- | --- | --- |
 | relCpBase | JSON | 是 | [企业关联人基本信息](#企业关联人基本信息) | |
-| relCsEmploy | JSON | 是 | [企业关联人特有信息](#企业关联人特有信息) |
+| cpRelInfo | JSON | 是 | [企业关联人特有信息](#企业关联人特有信息) |
 
 
 #### 企业关联人基本信息
@@ -33,7 +33,7 @@ loan\_app:cif\_cp\_rel_shareholder:create
 | appId | String | 是 | 50 |申请ID（融资申请创建API返回的结果） | 0092728480d24f |
 | mtCifRelCd | String | 是 | 20 |与借款方的关联关系 | CI003-法定代表人；CI004-总经理；CI005-财务负责人；CI006-实际控制人；CI007-直接关联人；CI008-间接关联人；CC001-控股股东；CC002-股东 |
 | nm | String | 是 | 80 | 关联人姓名（与身份证上相同） | 张三 |
-| idNo | String | 否 | 50 | 身份证号码 | 关联关系为法定代表人，此字段为必填 |
+| idNo | String | 否 | 18 | 身份证号码 | 关联关系为法定代表人，此字段为必填 |
 | mtGenderCd | String | 否 | 20 | 性别 |  |
 | mtMaritalStsCd | String | 否 | 20 | 婚姻情况 |  |
 | dtRegistered | Date | 否 |  | 出生日期 |  |
@@ -69,28 +69,26 @@ loan\_app:cif\_cp\_rel_shareholder:create
 ## 示例
 ### 请求示例（借款方为企业，关联关系为法定代表人、总经理、财务负责人、实际控制人，直接关联人、间接关联人、控股股东、股东）
 ```javascript
-[
-    {
-        "cpReInfo": {
-            "dtInBizLineSince": "2017-05-23 19:18:37", 
-            "dtInCompSince": "2017-05-23 19:18:37", 
-            "isActualCtrl": "Y", 
-            "isInvolvedMgmt": "Y", 
-            "mgmtExperience": "工作经历", 
-            "mtMtPosHeldCd": "02"
-        }, 
-        "relCpsBase": {
-            "appId": "b09113f5c7474715a5", 
-            "dtRegistered": "2017-05-23 19:18:37", 
-            "idNo": "7b9c2acfb8a046baa9", 
-            "mobileNo": "18888888888", 
-            "mtCifRelCd": "CI003", 
-            "mtGenderCd": "M", 
-            "mtMaritalStsCd": "02", 
-            "nm": "关联人法定代表人"
-        }
+{
+    "cpRelInfo": {
+        "dtInBizLineSince": "2017-05-23 19:18:37", 
+        "dtInCompSince": "2017-05-23 19:18:37", 
+        "isActualCtrl": "Y", 
+        "isInvolvedMgmt": "Y", 
+        "mgmtExperience": "工作经历", 
+        "mtMtPosHeldCd": "02"
+    }, 
+    "relCpsBase": {
+        "appId": "b09113f5c7474715a5", 
+        "dtRegistered": "2017-05-23 19:18:37", 
+        "idNo": "7b9c2acfb8a046baa9", 
+        "mobileNo": "18888888888", 
+        "mtCifRelCd": "CI003", 
+        "mtGenderCd": "M", 
+        "mtMaritalStsCd": "02", 
+        "nm": "关联人法定代表人"
     }
-]
+}
 ```
 ### 返回示例
 ```javascript
