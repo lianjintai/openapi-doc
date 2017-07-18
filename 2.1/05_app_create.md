@@ -175,15 +175,17 @@ loan\_app:app:create
 | intRateInSuspense | Number | 否 | 9 (5,4)| 罚息利率 |  ||
 
 ### 担保信息
-    如果是信用贷，需要建立信用担保，具体取值为：担保方式PCOL1，担保类型OA 担保价值与申请金额相同，所有者与借款人相同。
+
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| mtCollStyleCd | String | 是 | 20 | 担保方式 | PCOL1-保证;PCOL2-抵押;PCOL3-质押 |
+| mtCollStyleCd | String | 是 | 20 | 担保方式 | BZ-保证;DY-抵押;ZY-质押;XY-信用 |
 | mtCollTypCd | String | 是 | 20 | 担保类型 |  |
+| mtCollCatCd | String | 是 | 20 | 担保品种 |  |
+| mtCollCd | String | 是 | 20 | 担保小类 |  |
 | collValue | Number | 是 | 20(18,2) | 担保品价值 |  |
-| collOwner | String | 否 | 50 | 担保品所有者名称 |  |
-| isDeposit | String | 否 | 1 | 是否保证金 |  ||
+| collOwner | String | 否 | 50 | 担保品所有人 |    ||
+
 
 
 
@@ -204,10 +206,11 @@ loan\_app:app:create
     "col": [
         {
             "collOwner": "所有人", 
-            "collValue": "111111", 
-            "isDeposit": "N", 
-            "mtCollStyleCd": "PCOL2", 
-            "mtCollTypCd": "DP"
+            "collValue": "111111",
+            "mtCollStyleCd": "ZY", 
+            "mtCollTypCd": "DP",
+			"mtCollCatCd": "DP01",
+			"mtCollCd": "ZY0101001"
         }
     ], 
     "contacts": [
@@ -290,10 +293,11 @@ loan\_app:app:create
     "col": [
         {
             "collOwner": "所有人", 
-            "collValue": "111111", 
-            "isDeposit": "N", 
-            "mtCollStyleCd": "PCOL2", 
-            "mtCollTypCd": "DP"
+            "collValue": "111111",
+            "mtCollStyleCd": "ZY", 
+            "mtCollTypCd": "DP",
+			"mtCollCatCd": "DP01",
+			"mtCollCd": "ZY0101001"
         }
     ], 
     "contacts": [
@@ -361,10 +365,11 @@ loan\_app:app:create
     "col": [
         {
             "collOwner": "所有人", 
-            "collValue": "111111", 
-            "isDeposit": "N", 
-            "mtCollStyleCd": "PCOL2", 
-            "mtCollTypCd": "DP"
+            "collValue": "111111",
+            "mtCollStyleCd": "ZY", 
+            "mtCollTypCd": "DP",
+			"mtCollCatCd": "DP01",
+			"mtCollCd": "ZY0101001"
         }
     ], 
     "contacts": [
