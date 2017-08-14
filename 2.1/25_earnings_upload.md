@@ -14,7 +14,7 @@ loan\_app:earnings:upload
 ## 请求参数
 | 名称 | 类型 | 是否必须 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- |
-| appId | String | 是 | 申请ID（[融资申请创建API](2.1.1_融资申请创建.md)返回的结果） | 0092728480d24f |
+| appId | String | 是 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f |
 | base64OfFile | String | 是 | 将文件使用BASE64编码 | |
 | mtFinRptCatCd | String | 是 | 财务报表范围代码（1-本部报表、2-合并报表） | 1 |
 | mtFinRptTypCd | String | 是 | 财务报表类型代码（1-年报、2-季报、3-月报、4-半年报） | 1 |
@@ -49,5 +49,5 @@ loan\_app:earnings:upload
     "appId": "0092728480d24f5d87bf63639b5cfe1c"
 }
 ```
-##FAQ
+## FAQ
 关于此文档暂时还没有FAQ
