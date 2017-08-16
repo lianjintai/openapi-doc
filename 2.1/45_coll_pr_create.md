@@ -9,11 +9,11 @@ loan\_app:coll_pr:create
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- | 
 | appId | String | 是 | 50 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
-| mtCollStyleCd | String | 是 | 20 | 担保方式 | BZ-保证;DY-抵押;ZY-质押;XY-信用 |
+| mtCollStyleCd | String | 是 | 20 | 担保方式(BZ-保证;DY-抵押;ZY-质押;XY-信用) | DY |
 | mtCollCatCd | String | 是 | 20 | 担保品种 | PR01 |
 | mtCollCd | String | 是 | 20 | 担保小类 | DY0101001 |
 | collValue | Number | 是 | 20(18,2) | 内部评估价格 | 123456.78 |
-| dtPurchased | String | 是 | - | 购买时间 | 2017-01-01 |
+| dtPurchased | Date | 是 | - | 购买时间 | 2017-01-01 |
 | mortgageInfo | String | 否 | 200 | 抵押摘要 |  |
 | purchasedPrc | Number | 否 | 200 | 购买价值 |  |
 | appCollPr | JSON | 是 | - | 房产担保品信息， 见[房产担保品信息](#房产担保品信息) |
@@ -37,11 +37,11 @@ loan\_app:coll_pr:create
 | buildingNm | String | 是 | 50 | 建筑物名称 |   |
 | mtCollShareCd | String | 是 | - | 共有情况(单独所有:001，共同所有:002，按份所有:003) | 001 |
 | addrLine | String | 是 | 100 | 房屋坐落 |   |
-| contractNo | String | 否 | 30 | 房地产买卖合同编号 |   |
-| propertyNo | String | 否 | 30 | 房产证号 |   |
-| dtRecord | String | 是 | - | 登记日期 | 2017-01-01 |
+| contractNo | String | 否 | 30 | 房地产买卖合同编号(房产证号与房地产买卖合同编号二者至少填写一个) |   |
+| propertyNo | String | 否 | 30 | 房产证号(房产证号与房地产买卖合同编号二者至少填写一个) |   |
+| dtRecord | Date | 是 | - | 登记日期 | 2017-01-01 |
 | age | number | 是 | 4  | 房龄 |   |
-| dtFinished | String | 是 | - | 竣工日期 | 2017-01-01  |
+| dtFinished | Date | 是 | - | 竣工日期 | 2017-01-01  |
 | hasElevator | String | 是 | 20 | 是否有电梯 |   |
 | monthPropertyFee | String | 否 | 12  | 月物业费 |  |
 | mtPrtyFacingCd | String | 是 | - | 房屋朝向(南北:001,正南:002,东南:003,东向:004,西南:005,西向:006,东北:007,西北:008,北向:009) | 001  |
@@ -63,8 +63,8 @@ loan\_app:coll_pr:create
 ### 土地状况
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| dtLandEnd | String | 否 | - | 土地使用结束时间 | 2017-01-02  |
-| dtLandStarted| String | 否 | - | 土地使用起始时间 | 2087-01-01  |
+| dtLandEnd | Date | 否 | - | 土地使用结束时间 | 2017-01-02  |
+| dtLandStarted| Date | 否 | - | 土地使用起始时间 | 2087-01-01  |
 | landNo| String | 否 |  30 | 地号 | KL92819928177281  |
 | landUseLife | number | 否 | 3 | 土地使用年限 | 70 |
 | mtLandAcquireMtdCd | String | 否 | - | 土地使用权取得方式(划拨:001,出让:002,转让:003,其他:999) | 001 |
@@ -73,8 +73,8 @@ loan\_app:coll_pr:create
 ### 租赁信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| dtEffective | String | 否 | -  | 租赁开始日期(是否租赁为Y时填写) | 2017-01-01 |
-| isLease | String | 是 |  -  | 是否租赁 | Y=是 N=否 |
+| dtEffective | Date | 否 | -  | 租赁开始日期(是否租赁为Y时填写) | 2017-01-01 |
+| isLease | String | 是 |  -  | 是否租赁(Y=是 N=否) | Y |
 | lesseeNm | String | 否 |  80  | 租人名称(是否租赁为Y时填写) | 张三 |
 
 ### 房屋登记情况
@@ -87,9 +87,9 @@ loan\_app:coll_pr:create
 | housingCoveredArea | number | 否 |7 | 套内建筑面积（含阳台,单位平米㎡） |  123.5 |
 | housingShareArea | number | 否 | 7 | 共有分摊建筑面积(单位平米㎡) |  123.5 |
 | housingUsefulArea | number | 否 | 7 | 使用面积(单位平米㎡) | 123.5  |
-| roomNo | number | 是 |  20 | 房号 | 123.5 |
-| roomNum | number | 是 | 5  | 套数或间数 | 123.5 |
-| structure | String | 是 |  20 | 结构 | 123.5 |
+| roomNo | number | 是 |  20 | 房号 | 12 |
+| roomNum | number | 是 | 5  | 套数或间数 | 10 |
+| structure | String | 是 |  20 | 结构 | 砖混结构 |
 | totalFloorNum | number | 是 | 3 | 房屋总层数 | 15 |
 
 ### 担保评估信息
@@ -131,7 +131,7 @@ loan\_app:coll_pr:create
 ### 请求示例
 ```javascript
 {
-	"app_id": "0092728480d24f5d87bf63639b5cfe1c",
+    "app_id": "0092728480d24f5d87bf63639b5cfe1c",
     "mtCollStyleCd": "BZ", 
     "mtCollCatCd": "PR01",
     "mtCollCd": "DY0101001",
@@ -187,9 +187,9 @@ loan\_app:coll_pr:create
                 "housingCoveredArea":"123.5",
                 "housingShareArea":"123.5",
                 "housingUsefulArea":"123.5",
-                "roomNo":"123.5",
-                "roomNum":"123.5",
-                "structure":"123.5",
+                "roomNo":"287",
+                "roomNum":"12",
+                "structure":"砖混结构",
                 "totalFloorNum":"15"
             }
         }
@@ -201,15 +201,15 @@ loan\_app:coll_pr:create
             "appraiser": "李四"
         }
     ],
-	"csCollOwner": [
+    "csCollOwner": [
         {
             "nm": "张三", 
-			"mtCifIdTypCd": "I", 
-			"idNo": "110113198410126933", 
+            "mtCifIdTypCd": "I",
+            "idNo": "110113198410126933", 
             "mobileNo": "13512341234"
         }
     ],
-	"cpCollOwner": [
+    "cpCollOwner": [
         {
             "nm": "北京某某公司", 
             "idNo": "893097600399759163",
@@ -222,7 +222,8 @@ loan\_app:coll_pr:create
 ### 返回示例（正常）
 ```javascript
 {
-    "appId":"0092728480d24f5d87bf63639b5cfe1c"
+    "appId":"0092728480d24f5d87bf63639b5cfe1c",
+    "collId":"ad8b4a0f71cc11e7a58000ff9ef96c80"
 }
 ```
 
