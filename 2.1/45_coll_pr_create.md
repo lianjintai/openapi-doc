@@ -197,7 +197,7 @@ loan\_app:coll_pr:create
     "collEvaluate": [
         {
             "evaluateValue": 123456.78, 
-            "dtEvaluated": "2017-05-03 15:12:24",
+            "dtEvaluated": "2017-05-03",
             "appraiser": "李四"
         }
     ],
