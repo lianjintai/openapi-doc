@@ -7,16 +7,8 @@ loan\_app:coll_pr:create
 
 ## 请求参数
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- | --- | 
 | appId | String | 是 | 50 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
-| collEvaluate | JSON(List) | 否 | - | 担保评估信息， 见[担保评估信息](#担保评估信息) |
-| csCollOwner | JSON(List) | 否（所有者至少存在一个） | - | 担保所有者信息（个人）， 见[担保所有者信息（个人）](#担保所有者信息（个人）) |
-| cpCollOwner | JSON(List) | 否（所有者至少存在一个） | - | 担保所有者信息（企业）， 见[担保所有者信息（企业）](#担保所有者信息（企业）) |
-| appCollPrVO | JSON | 是 | - | 房产担保品信息， 见[房产担保品信息](#房产担保品信息) |
-
-### 房产担保品信息
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
 | mtCollStyleCd | String | 是 | 20 | 担保方式 | BZ-保证;DY-抵押;ZY-质押;XY-信用 |
 | mtCollCatCd | String | 是 | 20 | 担保品种 | PR01 |
 | mtCollCd | String | 是 | 20 | 担保小类 | DY0101001 |
@@ -24,34 +16,20 @@ loan\_app:coll_pr:create
 | dtPurchased | String | 是 | - | 购买时间 | 2017-01-01 |
 | mortgageInfo | String | 否 | 200 | 抵押摘要 |  |
 | purchasedPrc | Number | 否 | 200 | 购买价值 |  |
-| prBasicInfoVO | JSON | 是 | - | 房产基本信息， 见[房产基本信息](#房产基本信息) |
-| prConsttInfoVO | JSON | 是 | - | 房屋构造情况， 见[房屋构造情况](#房屋构造情况) |
-| prLandInfoVO | JSON | 是 | - | 土地状况， 见[土地状况](#土地状况) |
-| prLeaseInfoVO | JSON | 是 | - | 租赁信息， 见[租赁信息](#租赁信息) |
-| prRecordInfoVO | JSON | 是 | - | 房屋登记情况， 见[房屋登记情况](#房屋登记情况) |
-| appCollIdNos | JSON(List) | 是 | 2 | 房产证件号， 见[房产证件号](#房产证件号) |
+| appCollPr | JSON | 是 | - | 房产担保品信息， 见[房产担保品信息](#房产担保品信息) |
+| collEvaluate | JSON(List) | 否 | - | 担保评估信息， 见[担保评估信息](#担保评估信息) |
+| csCollOwner | JSON(List) | 否（所有者至少存在一个） | - | 担保所有者信息（个人）， 见[担保所有者信息（个人）](#担保所有者信息个人) |
+| cpCollOwner | JSON(List) | 否（所有者至少存在一个） | - | 担保所有者信息（企业）， 见[担保所有者信息（企业）](#担保所有者信息企业) |
 
-### 担保评估信息
+
+### 房产担保品信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| evaluateValue | Number | 否 | 20(18,2) | 评估师核定价格 | 123456.78 |
-| dtEvaluated | Date | 否 | - | 评估时间 | 2017-05-03 |
-| appraiser | String | 否 | 50 | 评估师 | 李四 |
-
-### 担保所有者信息（个人）
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
-| nm | String | 是 | 300 | 所有者姓名 | 张三 |
-| mtCifIdTypCd | String | 是 | 20 | 证件类型(身份证:I,护照:I2,军人证:I3,港澳台身份证:I4,武警证:I5,警官证:I6,其他:999) | I |
-| idNo | String | 是 | 50 | 证件号码 | 110113198410126933 |
-| mobileNo | String | 是 | 20 | 联系方式 | 13512341234 |
-
-### 担保所有者信息（企业）
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
-| nm | String | 是 | 300 | 企业名称(与营业执照上一致) | 北京某某公司 |
-| idNo | String | 是 | 50 | 统一社会信用代码／营业执照号 | 893097600399759163 |
-| isComb | String | 是 | 1 | 是否三证合一（Y是 N否） | Y |
+| prBasicInfo | JSON | 是 | - | 房产基本信息， 见[房产基本信息](#房产基本信息) |
+| prConsttInfo | JSON | 是 | - | 房屋构造情况， 见[房屋构造情况](#房屋构造情况) |
+| prLandInfo | JSON | 是 | - | 土地状况， 见[土地状况](#土地状况) |
+| prLeaseInfo | JSON | 是 | - | 租赁信息， 见[租赁信息](#租赁信息) |
+| prRecordInfo | JSON | 是 | - | 房屋登记情况， 见[房屋登记情况](#房屋登记情况) |
 
 ### 房产基本信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
@@ -59,6 +37,8 @@ loan\_app:coll_pr:create
 | buildingNm | String | 是 | 50 | 建筑物名称 |   |
 | mtCollShareCd | String | 是 | - | 共有情况(单独所有:001，共同所有:002，按份所有:003) | 001 |
 | addrLine | String | 是 | 100 | 房屋坐落 |   |
+| contractNo | String | 否 | 30 | 房地产买卖合同编号 |   |
+| propertyNo | String | 否 | 30 | 房产证号 |   |
 | dtRecord | String | 是 | - | 登记日期 | 2017-01-01 |
 | age | number | 是 | 4  | 房龄 |   |
 | dtFinished | String | 是 | - | 竣工日期 | 2017-01-01  |
@@ -112,11 +92,27 @@ loan\_app:coll_pr:create
 | structure | String | 是 |  20 | 结构 | 123.5 |
 | totalFloorNum | number | 是 | 3 | 房屋总层数 | 15 |
 
-### 房产证件号
+### 担保评估信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| collIdNo | String | 是 | 30 | 证件号码 |  |
-| mtCollIdTypeCd | String | 是 | 20 | 证件类型(房产证件号:pr01，房地产买卖合同编号:pr02) |pr01|
+| evaluateValue | Number | 否 | 20(18,2) | 评估师核定价格 | 123456.78 |
+| dtEvaluated | Date | 否 | - | 评估时间 | 2017-05-03 |
+| appraiser | String | 否 | 50 | 评估师 | 李四 |
+
+### 担保所有者信息（个人）
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| nm | String | 是 | 300 | 所有者姓名 | 张三 |
+| mtCifIdTypCd | String | 是 | 20 | 证件类型(身份证:I,护照:I2,军人证:I3,港澳台身份证:I4,武警证:I5,警官证:I6,其他:999) | I |
+| idNo | String | 是 | 50 | 证件号码 | 110113198410126933 |
+| mobileNo | String | 是 | 20 | 联系方式 | 13512341234 |
+
+### 担保所有者信息（企业）
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| nm | String | 是 | 300 | 企业名称(与营业执照上一致) | 北京某某公司 |
+| idNo | String | 是 | 50 | 统一社会信用代码／营业执照号 | 893097600399759163 |
+| isComb | String | 是 | 1 | 是否三证合一（Y是 N否） | Y |
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
@@ -136,16 +132,16 @@ loan\_app:coll_pr:create
 ```javascript
 {
 	"app_id": "0092728480d24f5d87bf63639b5cfe1c",
-	"appCollPrVO": [
+    "mtCollStyleCd": "BZ", 
+    "mtCollCatCd": "PR01",
+    "mtCollCd": "DY0101001",
+    "collValue": 123456.78,
+    "dtPurchased": "2017-01-01",
+    "mortgageInfo": "抵押",
+    "purchasedPrc": 20000,
+	"appCollPr": [
         {
-            "mtCollStyleCd": "BZ", 
-            "mtCollCatCd": "PR01",
-            "mtCollCd": "DY0101001",
-            "collValue": 123456.78,
-            "dtPurchased": "2017-01-01",
-            "mortgageInfo": "抵押",
-            "purchasedPrc": 20000,
-            "prBasicInfoVO":{
+            "prBasicInfo":{
                 "buildingNm":"朝外SOHO",
                 "mtCollShareCd":"001",
                 "addrLine":"北京",
@@ -157,9 +153,11 @@ loan\_app:coll_pr:create
                 "mtPrtyFacingCd":"001",
                 "mtPrtyUseCd":"001",
                 "otherPrtyUseDscp":"工业用地",
-                "propertyCompany":"物业公司"
+                "propertyCompany":"物业公司",
+                "contractNo":"1672887162761726YJK",
+                "propertyNo":"9388287717622271HYG"
             },
-            "prConsttInfoVO":{
+            "prConsttInfo":{
                 "mtConsttFlrCd":"003",
                 "mtConsttRoofCd":"003",
                 "mtConsttWallCd":"003",
@@ -168,7 +166,7 @@ loan\_app:coll_pr:create
                 "otherConsttWallDscp":"工业用地",
                 "remark":"说明信息"
             },
-            "prLandInfoVO":{
+            "prLandInfo":{
                 "dtLandEnd":"2017-01-02",
                 "dtLandStarted":"2087-01-01",
                 "landNo":"KL92819928177281",
@@ -176,12 +174,12 @@ loan\_app:coll_pr:create
                 "mtLandAcquireMtdCd":"001",
                 "otherLandAcquireMtdDscp":"继承"
             },
-            "prLeaseInfoVO":{
+            "prLeaseInfo":{
                 "dtEffective":"2017-01-01",
                 "isLease":"Y",
                 "lesseeNm":"张三"
             },
-            "prRecordInfoVO":{
+            "prRecordInfo":{
                 "buildingNo":"5",
                 "builtUpArea":"123.5",
                 "floorNo":"12",
@@ -193,10 +191,6 @@ loan\_app:coll_pr:create
                 "roomNum":"123.5",
                 "structure":"123.5",
                 "totalFloorNum":"15"
-            },
-            "appCollIdNos":{
-                "collIdNo":"1672887162761726YJK",
-                "mtCollIdTypeCd":"pr01"
             }
         }
     ],
