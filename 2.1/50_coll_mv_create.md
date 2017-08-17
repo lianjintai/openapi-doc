@@ -9,21 +9,25 @@ loan\_app:coll_mv:create
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- | 
 | appId | String | 是 | 50 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
-| mtCollStyleCd | String | 是 | 20 | 担保方式-抵押 | DY |
-| mtCollCatCd | String | 是 | 20 | 担保品种-机动车 | MV01 |
+| mtCollStyleCd | String | 是 | 20 | 担保方式(BZ-保证;DY-抵押;ZY-质押;XY-信用) | DY |
+| mtCollCatCd | String | 是 | 20 | 担保品种 | MV01 |
 | mtCollCd | String | 是 | 20 | 担保小类 | DY0601001 |
 | collValue | Number | 是 | 20(18,2) | 担保品价值 | 123456.78 |
 | dtPurchased | Date | 是 | - | 购买日期(不可以选择当前日期之后的日期) | 2017-01-01 |
-| mortgageInfo | string | 否 | 200 | 抵押摘要 |  |
-| purchasedPrc | number | 是 | 12(10,2) | 购买价格 | 500000.01 ||
+| mortgageInfo | String | 否 | 200 | 抵押摘要 |  |
+| purchasedPrc | Number | 是 | 12(10,2) | 购买价格 | 500000.01 ||
 | appCollMV | JSON(List) | 是 | - | 机动车担保品详情信息， 见[机动车担保品信息](#机动车担保品信息)||
-| csCollOwner | JSON(List) | 个人/企业所有者至少存在一个 | - | 担保所有者信息（个人）， 见[担保所有者信息（个人）](#担保所有者信息（个人）) ||
-| cpCollOwner | JSON(List) | 个人/企业所有者至少存在一个 | - | 担保所有者信息（企业）， 见[担保所有者信息（企业）](#担保所有者信息（企业）) ||
-| collEvaluate | JSON(List) | 否 | - | 机动车担保评估信息， 见[担保评估信息](#担保评估信息) ||
+| csCollOwner | JSON(List) | 个人/企业所有者至少存在一个 | - | 担保所有者信息（个人）， 见[担保所有者信息（个人）][2] ||
+| cpCollOwner | JSON(List) | 个人/企业所有者至少存在一个 | - | 担保所有者信息（企业）， 见[担保所有者信息（企业）][3] ||
+| collEvaluate | JSON(List) | 否 | - | 机动车担保评估信息， 见[担保评估信息][1] ||
+
+[1]: https://github.com/lianjintai/openapi-doc/blob/dev/2.1/45_coll_pr_create.md#担保评估信息        "担保评估信息" 
+[2]: https://github.com/lianjintai/openapi-doc/blob/dev/2.1/45_coll_pr_create.md#担保所有者信息个人        "担保所有者信息（个人）" 
+[3]: https://github.com/lianjintai/openapi-doc/blob/dev/2.1/45_coll_pr_create.md#担保所有者信息企业        "担保所有者信息（企业）" 
 
 ### 机动车担保品信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | mvBasicInfo | JSON(List) | 是 | - | 机动车基本信息， 见[机动车基本信息](#机动车基本信息) |
 | mvConfInfo | JSON(List) | 是 | - | 车辆配置， 见[车辆配置](#车辆配置) |
 | mvInsuranceInfo | JSON(List) | 是 | - | 交强险信息， 见[交强险信息](#交强险信息) |
@@ -36,18 +40,18 @@ loan\_app:coll_mv:create
 | dtFirstRecord | Date | 是  |-| 首次登记日期(不可以选择当前日期之后的日期) | 2017-01-01 |
 | vehicleType     | String |  是 | 20  | 机动车种类 | 汽车 |
 | brand | String | 是  | 30 | 车辆品牌 | 奥迪 |
-| approvedMass | number | 是  | 10(8,2) | 核定载质量(单位：kg，正数，最多保留两位小数) |  1000 |
-| approvedPassenger | number |是| 3 | 核定载客 | 7 |
+| approvedMass | Number | 是  | 10(8,2) | 核定载质量(单位：kg，正数，最多保留两位小数) |  1000 |
+| approvedPassenger | Number |是| 3 | 核定载客 | 7 |
 | color | String | 是  | 10 | 外观颜色 | 红 |
-| drivenDistance | number | 是  | 10 | 行驶里程(单位：km，正数，最多保留两位小数) | 10000 |
-| engineCapacity  | number |  是 | 10(7,3) | 排量(单位：L  ，正数，最多保留三位小数)  | 2.0 |	 
+| drivenDistance | Number | 是  | 10 | 行驶里程(单位：km，正数，最多保留两位小数) | 10000 |
+| engineCapacity  | Number |  是 | 10(7,3) | 排量(单位：L  ，正数，最多保留三位小数)  | 2.0 |	 
 | isMadeInChina   | String |  是 |  - | 产地（Y:国产、N:进口） | N  |
 | manufactured    | Date | 是  |-| 出厂日期 | 2017-01-01 |
 | model           | String |  是 | 30  | 车型 | 轿车 |
 | mtFuelCd        | JSON(List) |  是 | - | 燃料种类（001:汽油、002:柴油、003:混合油、004:天然气、005:电） | 003 |
-| power           | number | 是  | 10 | 功率(单位：KW ，正数 最多保留两位小数) | 100 |
-| priceMax        | number |  是 | 12(10,2)  | 网查价格区间-最大值 | 50000.01 |
-| priceMin        | number | 是  | 12(10,2) | 网查价格区间-最小值 | 50000.01 |
+| power           | Number | 是  | 10 | 功率(单位：KW ，正数 最多保留两位小数) | 100 |
+| priceMax        | Number |  是 | 12(10,2)  | 网查价格区间-最大值 | 50000.01 |
+| priceMin        | Number | 是  | 12(10,2) | 网查价格区间-最小值 | 50000.01 |
 | series          | String | 是  | 30  | 车系 | 美系车 |
 
 ### 车辆配置
@@ -63,15 +67,15 @@ loan\_app:coll_mv:create
 ### 交强险信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| deathPayLimit | number |是| 12(10,2)  | 死亡伤残赔偿限额 | 50000.01 |
-| noResponDeathPayLimit | number | 是  | 12(10.2)  | 无责任死亡伤残赔偿限额 | 50000.01 |
-| noResponMedicalPayLimit | number | 是  |  12(10.2) | 	无责任医疗费用赔偿限额 | 50000.01 |
-| noResponPropertyLossPayLimit | number | 是  | 12(10.2)  | 无责任财产损失赔偿限额 | 50000.01 |
-| propertyLossPayLimit | number | 是  | 12(10.2)  | 财产损失赔偿限额 | 50000.01 |
-| medicalPayLimit | number | 是  | 12(10.2)  | 	医疗费用赔偿限额 | 50000.01 |
-| insuranceSum | number | 是  | 12(10.2) | 	保险费合计(**上述六种赔偿限额之和**) | 300000.06 |
-| rescueFundRate | number | 否  |  3 | 救助基金占比(单位：% ，正数，最多保留两位小数，不得大于100) | 50 |
-| rescueFund | number | 否  | 12(10.2)  | 救助基金 | 50000.01 |
+| deathPayLimit | Number |是| 12(10,2)  | 死亡伤残赔偿限额 | 50000.01 |
+| noResponDeathPayLimit | Number | 是  | 12(10.2)  | 无责任死亡伤残赔偿限额 | 50000.01 |
+| noResponMedicalPayLimit | Number | 是  |  12(10.2) | 	无责任医疗费用赔偿限额 | 50000.01 |
+| noResponPropertyLossPayLimit | Number | 是  | 12(10.2)  | 无责任财产损失赔偿限额 | 50000.01 |
+| propertyLossPayLimit | Number | 是  | 12(10.2)  | 财产损失赔偿限额 | 50000.01 |
+| medicalPayLimit | Number | 是  | 12(10.2)  | 	医疗费用赔偿限额 | 50000.01 |
+| insuranceSum | Number | 是  | 12(10.2) | 	保险费合计(**上述六种赔偿限额之和**) | 300000.06 |
+| rescueFundRate | Number | 否  |  3 | 救助基金占比(单位：% ，正数，最多保留两位小数，不得大于100) | 50 |
+| rescueFund | Number | 否  | 12(10.2)  | 救助基金 | 50000.01 |
 | dtInsuranceStart | Date | 是  | - | 保险期间-开始日期(不可以选择当前日期之后的日期) | 2017-01-01 |
 | dtInsuranceEnd | Date | 是  | - | 保险期间-结束日期 | 2017-01-01 |
 | mtInsuranceResolutionCd | JSON(List) | 是  | -  | 保险合同争议解决方式（001:协商、002:仲裁、003:诉讼） | 003 |
@@ -79,45 +83,23 @@ loan\_app:coll_mv:create
 | engineNo | String | 是  | 30 | 发动机号 | 123456789987654321 |
 | frameNo | String | 是  | 30 | 车架号 | WFIE231231 |
 | plateNo | String | 是  | 20 | 车牌号码 | JWF1231233 |
-| insurancePaySum | number | 否  | 12(10,2) | 	客户车辆理赔总金额 | 50000.01 |
-| accidentIllegalRate | number | 否 | 3  | 与道路交通安全违法行为和道路交通事故相联系的浮动比率(单位：% ，正数，最多保留两位小数，不得大于100) | 50 |
+| insurancePaySum | Number | 否  | 12(10,2) | 	客户车辆理赔总金额 | 50000.01 |
+| accidentIllegalRate | Number | 否 | 3  | 与道路交通安全违法行为和道路交通事故相联系的浮动比率(单位：% ，正数，最多保留两位小数，不得大于100) | 50 |
 
 ### 代收车船费
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| curYearUnpaid | number |是| 12(10,2) | 当年应缴 | 200 |
-| forfeit | number |是| 12(10,2) | 滞纳金 | 200 |
-| lastYearPaid | number |是| 12(10,2) | 往年补缴 | 200 |
-| feeSum | number |是| 12(10,2) | 合计(计算公式=当年应缴+往年应缴+滞纳金) | 600 |
+| curYearUnpaid | Number |是| 12(10,2) | 当年应缴 | 200 |
+| forfeit | Number |是| 12(10,2) | 滞纳金 | 200 |
+| lastYearPaid | Number |是| 12(10,2) | 往年补缴 | 200 |
+| feeSum | Number |是| 12(10,2) | 合计(计算公式=当年应缴+往年应缴+滞纳金) | 600 |
 | paymentYear | Date |是| - | 缴费年份(不可以选择当前年之后的年份) | 2017 |
 
 ### 违章情况
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| unclearedPenaltyPoints | number |否| 3 | 	未清除违章扣分 | 2 |
-| unpaidPenalty | number |否|  12(10,2) | 未缴纳罚款金额 | 50000.01 |
-
-### 担保评估信息
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
-| evaluateValue | Number | 是 | 20(18,2) | 评估师核定价格 | 123456.78 |
-| dtEvaluated | Date | 是 | - | 评估时间 | 2017-05-03 |
-| appraiser | String | 是 | 50 | 评估师 | 李四 |
-
-### 担保所有者信息（个人）
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
-| nm | String | 是 | 300 | 借款人姓名（与身份证上相同） | 张三 |
-| mtCifIdTypCd | String | 是 | 20 | 证件类型（I-身份证;I2-护照;I3-军人证;I4-港澳台身份证;I5-武警证;I6-警官证;999-其他证件） | I |
-| idNo | String | 是 | 50 | 身份证号码 | 110113198410126933 |
-| mobileNo | String | 是 | 20 | 联系方式（必须为正整数） | 13512341234 |
-
-### 担保所有者信息（企业）
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
-| nm | String | 是 | 300 | 企业名称(与营业执照上一致) | 北京某某公司 |
-| idNo | String | 是 | 50 | 统一社会信用代码／营业执照号 | 893097600399759163 |
-| isComb | String | 是 | 1 | 是否三证合一（Y是 N否） | Y |
+| unclearedPenaltyPoints | Number |否| 3 | 	未清除违章扣分 | 2 |
+| unpaidPenalty | Number |否|  12(10,2) | 未缴纳罚款金额 | 50000.01 |
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
