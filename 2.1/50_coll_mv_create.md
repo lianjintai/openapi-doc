@@ -10,10 +10,11 @@ loan\_app:coll_mv:create
 | --- | --- | --- | --- | --- | --- | 
 | appId | String | 是 | 50 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
 | mtCollStyleCd | String | 是 | 20 | 担保方式(BZ-保证;DY-抵押;ZY-质押;XY-信用) | DY |
+| mtCollTypCd | String | 是 | 20 | 担保类型 | MV |
 | mtCollCatCd | String | 是 | 20 | 担保品种 | MV01 |
 | mtCollCd | String | 是 | 20 | 担保小类 | DY0601001 |
 | collValue | Number | 是 | 20(18,2) | 担保品价值 | 123456.78 |
-| dtPurchased | Date | 是 | - | 购买日期(不可以选择当前日期之后的日期) | 2017-01-01 |
+| dtPurchased | Date | 是 | - | 购买日期(不可以选择当前日期之后的日期) | 2017-01-01 00:00:00 |
 | mortgageInfo | String | 否 | 200 | 抵押摘要 |  |
 | purchasedPrc | Number | 是 | 12(10,2) | 购买价格 | 500000.01 ||
 | appCollMV | JSON(List) | 是 | - | 机动车担保品详情信息， 见[机动车担保品信息](#机动车担保品信息)||
@@ -37,7 +38,7 @@ loan\_app:coll_mv:create
 ### 机动车基本信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| dtFirstRecord | Date | 是  |-| 首次登记日期(不可以选择当前日期之后的日期) | 2017-01-01 |
+| dtFirstRecord | Date | 是  |-| 首次登记日期(不可以选择当前日期之后的日期) | 2017-01-01 00:00:00 |
 | vehicleType     | String |  是 | 20  | 机动车种类 | 汽车 |
 | brand | String | 是  | 30 | 车辆品牌 | 奥迪 |
 | approvedMass | Number | 是  | 10(8,2) | 核定载质量(单位：kg，正数，最多保留两位小数) |  1000 |
@@ -46,7 +47,7 @@ loan\_app:coll_mv:create
 | drivenDistance | Number | 是  | 10 | 行驶里程(单位：km，正数，最多保留两位小数) | 10000 |
 | engineCapacity  | Number |  是 | 10(7,3) | 排量(单位：L  ，正数，最多保留三位小数)  | 2.0 |	 
 | isMadeInChina   | String |  是 |  - | 产地（Y:国产、N:进口） | N  |
-| manufactured    | Date | 是  |-| 出厂日期 | 2017-01-01 |
+| manufactured    | Date | 是  |-| 出厂日期 | 2017-01-01 00:00:00 |
 | model           | String |  是 | 30  | 车型 | 轿车 |
 | mtFuelCd        | JSON(List) |  是 | - | 燃料种类（001:汽油、002:柴油、003:混合油、004:天然气、005:电） | 003 |
 | power           | Number | 是  | 10 | 功率(单位：KW ，正数 最多保留两位小数) | 100 |
@@ -76,7 +77,7 @@ loan\_app:coll_mv:create
 | insuranceSum | Number | 是  | 12(10.2) | 	保险费合计(**上述六种赔偿限额之和**) | 300000.06 |
 | rescueFundRate | Number | 否  |  3 | 救助基金占比(单位：% ，正数，最多保留两位小数，不得大于100) | 50 |
 | rescueFund | Number | 否  | 12(10.2)  | 救助基金 | 50000.01 |
-| dtInsuranceStart | Date | 是  | - | 保险期间-开始日期(不可以选择当前日期之后的日期) | 2017-01-01 |
+| dtInsuranceStart | Date | 是  | - | 保险期间-开始日期(不可以选择当前日期之后的日期) | 2017-01-01 00:00:00 |
 | dtInsuranceEnd | Date | 是  | - | 保险期间-结束日期 | 2017-01-01 |
 | mtInsuranceResolutionCd | JSON(List) | 是  | -  | 保险合同争议解决方式（001:协商、002:仲裁、003:诉讼） | 003 |
 | hasInsurancePayHis | String | 是  | - | 是否有车险理赔记录（Y=是，N=否） | Y |
@@ -118,109 +119,98 @@ loan\_app:coll_mv:create
 ### 请求示例
 ```javascript
 {
+    "appId": "2b79c4cfbde647749a639ccd355dffac", 
 	"mtCollStyleCd": "DY", 
 	"mtCollCatCd": "MV01", 
 	"mtCollCd": "DY0601001", 
 	"collValue": 123456.78, 
-	"dtPurchased": "2017-05-03",
+	"dtPurchased": "2017-05-03 00:00:00",
 	"mortgageInfo": "这里是抵押摘要",
 	"mtCollTypCd": "MV",
 	"purchasedPrc": "1500000",
-	"mvBasicInfo": [
-        {
-            "approvedMass": "600", 
-			"approvedPassenger": "4", 
-			"brand": "奥迪", 
-			"color": "褐色", 
-			"drivenDistance": "223", 
-			"dtFirstRecord": "2017-05-03",
-			"engineCapacity": "2",  
-			"isMadeInChina": "N", 
-			"manufactured": "2017-05-03",
-			"model": "进取型", 
-			"mtFuelCd":[
-				"002",
-				"001"
-			],
-			"engineNo": "12233224234234", 
-			"frameNo": "JJWEF1231231", 
-			"plateNo": "DFSDF1231231", 
-			"power": "700", 
-			"priceMax": "500000", 
-			"priceMin": "50000", 
-            "series": "欧系", 
-            "vehicleType": "小型汽车"
-        }
-    ],
-	"mvConfInfo": [
-		{
-			"mtAirconditionTypCd":[
-				"002"
-			],
-			"mtCommonConfTypCd": [
-				"002", 
-				"001", 
-				"003", 
-				"004", 
-				"005"
-			],
-			"mtDriverEleTypCd": [
-				"001"
-			],
-			"mtGearboxTypCd": [
-				"002"
-			],
-			"mtParkingRadarTypCd":[
-				"001"
-			],
-            "mtSeatHeatTypCd": [
-				"002"
-			]
-        }
-    ],
- 	"mvInsuranceInfo": [
-		{
-            "accidentIllegalRate": "2", 
-			"deathPayLimit": "200000", 
-			"dtInsuranceEnd":  "2027-05-03",
-			"dtInsuranceStart":  "2014-05-03",
-			"hasInsurancePayHis": "N", 
-			"insurancePaySum": "200000", 
-			"insuranceSum": "4000000", 
-			"medicalPayLimit": "2000000", 
-			"mtInsuranceResolutionCd":[
-				"001"
-			],
-			"noResponDeathPayLimit": "1000000", 
-			"noResponMedicalPayLimit": "300000", 
-			"noResponPropertyLossPayLimit": "100000", 
-			"propertyLossPayLimit": "400000", 
-			"rescueFund": "20000", 
-            "rescueFundRate": "3"
-        }
-    ],
-	"mvPaymentInfo": [
-		{
-            "curYearUnpaid": "2000", 
-			"feeSum": "200000", 
-			"forfeit":  "2000",
-			"lastYearPaid":  "5000",
-			"paymentYear": "5"
-        }
-    ],
-	"mvPenaltyInfo": [
-		{
-            "unclearedPenaltyPoints": "6", 
-			"unpaidPenalty": "1200"
-        }
-    ],
-    "collEvaluate": [
-        {
-            "evaluateValue": 123456.78, 
-            "dtEvaluated": "2017-05-03",
-            "appraiser": "李四"
-        }
-    ],
+	"mvBasicInfo": {
+		"approvedMass": "600", 
+		"approvedPassenger": "4", 
+		"brand": "奥迪", 
+		"color": "褐色", 
+		"drivenDistance": "223", 
+		"dtFirstRecord": "2017-05-03 00:00:00",
+		"engineCapacity": "2",  
+		"isMadeInChina": "N", 
+		"manufactured": "2017-05-03 00:00:00",
+		"model": "进取型", 
+		"mtFuelCd":[
+			"002",
+			"001"
+		],
+		"engineNo": "12233224234234", 
+		"frameNo": "JJWEF1231231", 
+		"plateNo": "DFSDF1231231", 
+		"power": "700", 
+		"priceMax": "500000", 
+		"priceMin": "50000", 
+		"series": "欧系", 
+		"vehicleType": "小型汽车"
+    },
+	"mvConfInfo": {
+		"mtAirconditionTypCd":[
+			"002"
+		],
+		"mtCommonConfTypCd": [
+			"002", 
+			"001", 
+			"003", 
+			"004", 
+			"005"
+		],
+		"mtDriverEleTypCd": [
+			"001"
+		],
+		"mtGearboxTypCd": [
+			"002"
+		],
+		"mtParkingRadarTypCd":[
+			"001"
+		],
+		"mtSeatHeatTypCd": [
+			"002"
+		]
+	},
+ 	"mvInsuranceInfo":{
+		"accidentIllegalRate": "2", 
+		"deathPayLimit": "200000", 
+		"dtInsuranceEnd":  "2027-05-03 00:00:00",
+		"dtInsuranceStart":  "2014-05-03 00:00:00",
+		"hasInsurancePayHis": "N", 
+		"insurancePaySum": "200000", 
+		"insuranceSum": "4000000", 
+		"medicalPayLimit": "2000000", 
+		"mtInsuranceResolutionCd":[
+			"001"
+		],
+		"noResponDeathPayLimit": "1000000", 
+		"noResponMedicalPayLimit": "300000", 
+		"noResponPropertyLossPayLimit": "100000", 
+		"propertyLossPayLimit": "400000", 
+		"rescueFund": "20000", 
+		"rescueFundRate": "3"
+	},
+	"mvPaymentInfo":{
+		"curYearUnpaid": "2000", 
+		"feeSum": "200000", 
+		"forfeit":  "2000",
+		"lastYearPaid":  "5000",
+		"paymentYear": "2017-05-03 00:00:00"
+	},
+	"mvPenaltyInfo": {
+		"unclearedPenaltyPoints": "6", 
+		"unpaidPenalty": "1200"
+	},
+    "collEvaluate": {
+		"evaluateValue": 123456.78, 
+		"dtEvaluated": "2017-05-03 00:00:00",
+		"appraiser": "李四"
+	},
     "csCollOwner": [
         {
             "nm": "张三", 
