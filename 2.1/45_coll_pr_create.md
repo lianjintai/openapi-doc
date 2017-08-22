@@ -10,6 +10,7 @@ loan\_app:coll_pr:create
 | --- | --- | --- | --- | --- | --- | 
 | appId | String | 是 | 50 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 0092728480d24f5d87bf63639b5cfe1c |
 | mtCollStyleCd | String | 是 | 20 | 担保方式(BZ-保证;DY-抵押;ZY-质押;XY-信用) | DY |
+| mtCollTypCd | String | 是 | 20 | 担保类型 | PR |
 | mtCollCatCd | String | 是 | 20 | 担保品种 | PR01 |
 | mtCollCd | String | 是 | 20 | 担保小类 | DY0101001 |
 | collValue | Number | 是 | 20(18,2) | 内部评估价格 | 123456.78 |
@@ -131,15 +132,16 @@ loan\_app:coll_pr:create
 ### 请求示例
 ```javascript
 {
-    "app_id": "0092728480d24f5d87bf63639b5cfe1c",
+    "appId": "1cb929f989fd4175bf6e4bf79a3ed422",
     "mtCollStyleCd": "BZ", 
+    "mtCollTypCd":"PR",
     "mtCollCatCd": "PR01",
     "mtCollCd": "DY0101001",
     "collValue": 123456.78,
     "dtPurchased": "2017-01-01",
     "mortgageInfo": "抵押",
     "purchasedPrc": 20000,
-	"appCollPr": [
+	"appCollPr": 
         {
             "prBasicInfo":{
                 "buildingNm":"朝外SOHO",
@@ -192,8 +194,7 @@ loan\_app:coll_pr:create
                 "structure":"砖混结构",
                 "totalFloorNum":"15"
             }
-        }
-    ],
+        },
     "collEvaluate": [
         {
             "evaluateValue": 123456.78, 
