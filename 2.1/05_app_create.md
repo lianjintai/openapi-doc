@@ -11,9 +11,8 @@ loan\_app:app:create
         - 基本信息
         - 职业信息（非个体工商户/私营业主）
         - 经营信息（个体工商户/私营业主）
-    2. 联系人信息（可录入多个，但至少有一个）
-    3. 资金需求信息
-    4. 担保信息（可录入多个，但至少有一个，无实物担保的情况需要填写信用或保证担保）
+    2. 资金需求信息
+    3. 担保信息（可录入多个，但至少有一个，无实物担保的情况需要填写信用或保证担保）
 借款人为企业时，需要提供：
     1. 企业借款人信息
     2. 联系人信息（可录入多个，但至少有一个）
@@ -25,7 +24,7 @@ loan\_app:app:create
 | --- | --- | --- | --- | 
 | cp_cust | JSON |  | 企业借款人信息，与个人借款人信息同时只能存在一个，见[企业借款人信息](#企业借款人信息) |
 | cs_cust | JSON |  | 个人借款人信息，与企业借款人信息同时只能存在一个，见[个人借款人信息](#个人借款人信息) |
-| contacts | JSON(List) | 是 | 联系人信息（企业、个人共用），见[联系人信息](#联系人信息) |
+| contacts | JSON(List) | 是 | 联系人信息（企业专用），见[联系人信息](#联系人信息) |
 | fac | JSON | 是 | 资金需求信息 （企业、个人共用）， 见[资金需求信息](#资金需求信息) |
 | col | JSON(List) | 是 | 担保信息 （企业、个人共用）， 见[担保信息](#担保信息) |
 
@@ -149,7 +148,6 @@ loan\_app:app:create
 | salaryTotal | Number | 否 |  14 (12,2)| 近一年月平均发放工资 （单位：元） |  ||
 
 
-
 ###  联系人信息
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
@@ -159,6 +157,7 @@ loan\_app:app:create
 | mtCifContactCd | String | 是 | 20 | 与客户关系，借款人为个人时必需 | |
 | mtPosHeldCd | String | 是 | 20 | 职位，借款人为企业时必需 | |
 | email | String | 否 | 50 | 联系人邮箱 | ||
+
 
 ### 资金需求信息
 
@@ -300,16 +299,7 @@ loan\_app:app:create
 			"mtCollCatCd": "DP01",
 			"mtCollCd": "ZY0101001"
         }
-    ], 
-    "contacts": [
-        {
-            "email": "1233@qq.com", 
-            "mobileNo": "13333333333", 
-            "mtCifContactCd": "F001", 
-            "mtPosHeldCd": "001", 
-            "nm": "联系人"
-        }
-    ], 
+    ],
     "cs_cust": {
         "base": {
             "bankCard": 1234556565, 
@@ -372,16 +362,7 @@ loan\_app:app:create
 			"mtCollCatCd": "DP01",
 			"mtCollCd": "ZY0101001"
         }
-    ], 
-    "contacts": [
-        {
-            "email": "1233@qq.com", 
-            "mobileNo": "13333333333", 
-            "mtCifContactCd": "F001", 
-            "mtPosHeldCd": "001", 
-            "nm": "联系人"
-        }
-    ], 
+    ],
     "cs_cust": {
         "base": {
             "bankCard": 1234556565, 
