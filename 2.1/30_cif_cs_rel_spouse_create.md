@@ -44,7 +44,7 @@ loan\_app:cif\_cs\_rel_spouse:create
 | bankCard | Number | 是 |  14 (12,2)| 	银行卡流水总额（单位/元） |  |
 | creditCardLines | Number | 否 |  14 (12,2)| 信用卡额度 |  |
 | loanFixedYear | Number | 否 |  2 | 贷款记录年限 |  |
-| monthlyIncAmt | String | 否 | 14 (12,2)| 月平均收入(单位/元) |  |
+| yearIncAmt | String | 否 | 14 (12,2)| 近1年税后收入(单位/元)(单位/元) |  |
 
 
 #### 关联人职业信息
@@ -69,13 +69,13 @@ loan\_app:cif\_cs\_rel_spouse:create
 | bizAddr | String | 否 |  50 | 经营地址 |  |
 | bizArea | String | 否 |  200 | 经营范围 |  |
 | currentTotal | Number | 否 |  20 (12,2) | 近一年流水总额（单位：元） | 大于0，小于999999999999.99的数字,小数点后保留2位小数 |
-| waterDosage | Number | 否 |  14 (12,2)| 近一年月平均用水量（单位：吨） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
-| electricityDosage | Number | 否 |  14 (12,2)| 近一年月平均用电量（单位：度） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
-| ratal | Number | 否 |  14 (12,2)| 近一年月平均纳税额（单位：元） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
-| socialSecurity | Number | 否 |  14 (12,2)| 近一年月社保缴存额 （单位：元） | 大于0，小于999999999999.99的数字,小数点后保留2位小数 |
-| equityLine | Number | 否 |  14 (12,2)| 近一年月公积金缴存额 （单位：元） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
+| waterDosage | Number | 否 |  14 (12,2)| 近一年用水量（单位：吨） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
+| electricityDosage | Number | 否 |  14 (12,2)| 近一年用电量（单位：度） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
+| ratal | Number | 否 |  14 (12,2)| 近一年纳税额（单位：元） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
+| socialSecurity | Number | 否 |  14 (12,2)| 近一年社保缴存额 （单位：元） | 大于0，小于999999999999.99的数字,小数点后保留2位小数 |
+| equityLine | Number | 否 |  14 (12,2)| 近一年公积金缴存额 （单位：元） |大于0，小于999999999999.99的数字,小数点后保留2位小数  |
 | employees | Number | 否 |  12 | 员工人数 |  |
-| salaryTotal | Number | 否 |  14 (12,2)| 近一年月平均发放工资 （单位：元） |  大于0，小于999999999999.99的数字,小数点后保留2位小数|
+| salaryTotal | Number | 否 |  14 (12,2)| 近一年发放工资 （单位：元） |  大于0，小于999999999999.99的数字,小数点后保留2位小数|
 
 
 
@@ -107,7 +107,7 @@ loan\_app:cif\_cs\_rel_spouse:create
         "isFamily": "Y", 
         "loanFixedYear": 11, 
         "mobileNo": "18888888888", 
-        "monthlyIncAmt": 100000, 
+        "yearIncAmt": 100000, 
         "mtCifRelCd": "II001", 
         "mtCityCd": "110100", 
         "mtEduLvlCd": "01", 
@@ -146,7 +146,7 @@ loan\_app:cif\_cs\_rel_spouse:create
         "isFamily": "Y", 
         "loanFixedYear": 11, 
         "mobileNo": "18888888888", 
-        "monthlyIncAmt": 100000, 
+        "yearIncAmt": 100000, 
         "mtCifRelCd": "II001", 
         "mtCityCd": "110100", 
         "mtEduLvlCd": "01", 
