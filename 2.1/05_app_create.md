@@ -59,12 +59,12 @@ loan\_app:app:create
 | mtBizLandOwnerCd | String | 是 | 20 | 经营场地所有权 |  | 
 | saleAmt | Number | 是 | 30 (26,4)| 近一年销售额(单位/元) |  | 
 | assetAmt | Number | 是 | 30 (26,4)| 资产价值(单位/元) |  | 
-| ratal | Number | 是 | 14 (12,2)| 近一年月平均纳税额(单位/元) |  | 
-| socialSecurity | Number (12,2)| 否 | 14 | 近一年月平均社保缴存额(单位/元) |  | 
-| equityLine | Number | 否 | 14 (12,2)| 近一年月平均公积金缴存额(单位/元) |  | 
-| waterDosage | Number | 是 | 14 (12,2)| 近一年月平均用水量(单位/吨) |  | 
-| electricityDosage | Number | 是 | 14 (12,2)| 近一年月平均用电量(单位/度) |  | 
-| salaryTotal | Number | 否 | 14 (12,2)| 近一年月平均发放工资(单位/元) |  | 
+| ratal | Number | 是 | 14 (12,2)| 近一年纳税额(单位/元) |  | 
+| socialSecurity | Number (12,2)| 否 | 14 | 近一年社保缴存额(单位/元) |  | 
+| equityLine | Number | 否 | 14 (12,2)| 近一年公积金缴存额(单位/元) |  | 
+| waterDosage | Number | 是 | 14 (12,2)| 近一年用水量(单位/吨) |  | 
+| electricityDosage | Number | 是 | 14 (12,2)| 近一年用电量(单位/度) |  | 
+| salaryTotal | Number | 否 | 14 (12,2)| 近一年发放工资(单位/元) |  | 
 | mtSalaryTypCd | String | 否 | 1 | 工资发放方式|  | 
 | principalNo | String | 是 | 20 | 经营电话/负责人电话 |  | 
 | mtFinInsttnCd | String | 是 | 20 | 基本开户行 |  | 
@@ -104,7 +104,7 @@ loan\_app:app:create
 | mtResidenceStsCd | String | 是 | 20 | 本地居住情况 |  |
 | isFamily | String | 是 | 1 | 是否自有房产 |  |
 | mtJobSectorCd | String | 是 | 20 | 职业 |  |
-| monthlyIncAmt | String | 否 | 30 (26,4)| 近1年税后平均月收入(单位/元) |  |
+| yearIncAmt | String | 否 | 30 (26,4)| 近1年税后收入(单位/元) |  |
 | email | String | 否 | 30 |电子邮箱 |  |
 | mtCityCd | String | 是 | 20 | 所在城市 |  |
 | mobileNo | String | 是 | 20 | 手机号 |  |
@@ -139,13 +139,13 @@ loan\_app:app:create
 | bizAddr | String | 是 |  50 | 经营地址 |  |
 | bizArea | String | 是 |  255 | 经营范围 |  |
 | currentTotal | Number | 是 |  20 (18,2) | 近一年流水总额（单位：元） |  |
-| waterDosage | Number | 是 |  14 (12,2)| 近一年月平均用水量（单位：吨） |  |
-| electricityDosage | Number | 是 |  14 (12,2)| 近一年月平均用电量（单位：度） |  |
-| ratal | Number | 是 |  14 (12,2)| 近一年月平均纳税额（单位：元） |  |
-| socialSecurity | Number | 否 |  14 (12,2)| 近一年月社保缴存额 （单位：元） |  |
-| equityLine | Number | 否 |  14 (12,2)| 近一年月公积金缴存额 （单位：元） |  |
+| waterDosage | Number | 是 |  14 (12,2)| 近一年用水量（单位：吨） |  |
+| electricityDosage | Number | 是 |  14 (12,2)| 近一年用电量（单位：度） |  |
+| ratal | Number | 是 |  14 (12,2)| 近一年纳税额（单位：元） |  |
+| socialSecurity | Number | 否 |  14 (12,2)| 近一年社保缴存额 （单位：元） |  |
+| equityLine | Number | 否 |  14 (12,2)| 近一年公积金缴存额 （单位：元） |  |
 | employees | Number | 否 |  14 (12,2)| 员工人数 |  |
-| salaryTotal | Number | 否 |  14 (12,2)| 近一年月平均发放工资 （单位：元） |  ||
+| salaryTotal | Number | 否 |  14 (12,2)| 近一年发放工资 （单位：元） |  ||
 
 
 ###  联系人信息
@@ -313,7 +313,7 @@ loan\_app:app:create
             "isFamily": "Y", 
             "loanFixedYear": 11, 
             "mobileNo": "18888888888", 
-            "monthlyIncAmt": 100000, 
+            "yearIncAmt": 100000, 
             "mtCityCd": "110100", 
             "mtEduLvlCd": "01", 
             "mtGenderCd": "M", 
@@ -376,7 +376,7 @@ loan\_app:app:create
             "isFamily": "Y", 
             "loanFixedYear": 11, 
             "mobileNo": "18888888888", 
-            "monthlyIncAmt": 100000, 
+            "yearIncAmt": 100000, 
             "mtCityCd": "110100", 
             "mtEduLvlCd": "01", 
             "mtGenderCd": "M", 
