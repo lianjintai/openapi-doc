@@ -184,8 +184,24 @@ loan\_app:app:create
 | mtCollCatCd | String | 是 | 20 | 担保品种 |  |
 | mtCollCd | String | 是 | 20 | 担保小类 |  |
 | collValue | Number | 是 | 20(18,2) | 担保品价值 |  |
+| isDeposit | String | 是 | 1 | 是否保证金 | Y |
 | collOwner | String | 否 | 50 | 担保品所有人 |    ||
-
+##信用担保品示例
+```javascript
+{
+    "col": [
+        {
+            "collOwner": "所有者",
+            "collValue": "30000000",
+            "isDeposit": "N",
+            "mtCollCatCd": "OA01",
+            "mtCollCd": "XY0101001",
+            "mtCollStyleCd": "XY",
+            "mtCollTypCd": "OA"
+        }
+    ]
+}
+```
 
 
 
