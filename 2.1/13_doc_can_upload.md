@@ -1,6 +1,6 @@
 #可上传申请材料
 ## 描述
-根据appId查询可上传申请材料列表，需要按照本接口的返回结果，组织申请材料压缩包（见[申请材料压缩包结构](#申请材料压缩包结构)），然后上传申请材料。
+根据appId查询可上传申请材料列表，需要按照本接口的返回结果，组织申请材料压缩包（见[申请材料压缩包结构](#申请材料压缩包结构)），然后上传申请材料，具体上传方法详见申请材料上传demo。
 
 ## API代码
 loan\_app:doc:can_upload
@@ -14,7 +14,7 @@ loan\_app:doc:can_upload
 | 名称 | 类型 | 描述 |示例值 |
 | --- | --- | --- | --- |
 | appId | String | 申请ID | 0092728480d24f5d8 |
-| url | String | 文件上传url请求地址（带有授权信息，半小时后失效） |  |
+| url | String | 文件上传参数（带有授权信息，半小时后失效），见[申请材上传参数](#申请材上传参数)
 | docs | JSON（List） | 申请材料列表（多个），见[申请材料信息](#申请材料信息) |  |
 
 ### 申请材料信息
@@ -25,6 +25,17 @@ loan\_app:doc:can_upload
 | refId | String | 关联资源ID（根据mtDocTypeCd决定具体关联的资源是什么） |  |
 | refName | String | 关联资源名称（根据mtDocTypeCd决定具体关联的资源是什么） |  |
 | isNecessary | String | 是否必须上传 | Y，N |
+
+### 申请材上传参数
+| 名称 | 类型 | 描述 |示例值 |
+| --- | --- | --- | --- |
+| accessid | String | 访问凭证 |
+| policy | String | 访问秘钥 |  |
+| signature | String | 签名信息  |
+| dir | String | 上传路径  |
+| host | String | 上传host
+| callback | String | 回调信息|
+
 
 ## 错误码
 | 描述 | HTTP状态码 | 语义 |
@@ -42,7 +53,14 @@ loan\_app:doc:can_upload
 ```javascript
 {
     "appId":"0092728480d24f5d8",
-    "url":"http://file.lianjintai.com/1233322",
+    "url": {
+        "accessid": "56eY6ZKl5L+h5oGv",
+        "policy": "6K6/6Zeu5Yet6K+B",
+        "signature": "ASeuZvneqyIVG2ioJJinZFZCFns=",
+        "dir": "doc/",
+        "host": "https://ljt-sit-oss.oss-cn-beijing.aliyuncs.com",
+        "callback": "5Zue6LCD5Zyw5Z2A"
+    },
     "docs":[
         {
             "mtDocTypeCd":"CIF",

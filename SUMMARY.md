@@ -15,7 +15,6 @@
         * [融资申请创建](2.1/05_app_create.md)
         * [申请状态查询](2.1/10_app_sts.md)
         * [可上传申请材料](2.1/13_doc_can_upload.md)
-        * [申请材料上传](2.1/15_doc_upload.md)
         * [融资申请推送](2.1/20_app_push.md)
         * [企业财报上传](2.1/25_earnings_upload.md)
         * [借款人配偶信息](2.1/30_cif_cs_rel_spouse_create.md)
