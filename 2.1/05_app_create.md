@@ -29,7 +29,7 @@ loan\_app:app:create
 | contacts | JSON(List) | 是 | 联系人信息（企业专用），见[联系人信息](#联系人信息) |
 | fac | JSON | 是 | 资金需求信息 （企业、个人共用）， 见[资金需求信息](#资金需求信息) |
 | col | JSON(List) | 是 | 担保信息 （企业、个人共用）， 见[担保信息](#担保信息) |
-| callbackURL | String | 否 | 授信状态变更后通知回调URL，见[授信状态变更通知回调](#授信状态变更通知回调)|
+| callbackURL | String | 否 | 授信状态变更后通知回调URL(如http://api.xxxx.com/ljt/callback)，见[授信状态变更通知回调](#授信状态变更通知回调)|
 
 ### 企业借款人信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
