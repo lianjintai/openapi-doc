@@ -13,6 +13,7 @@
     * [助贷风控（平台方）-贷前](2.1/00_pre_disb.md)
         * [借款预申请创建](2.1/03_cs_pre_app_create.md)
         * [融资申请创建](2.1/05_app_create.md)
+        * [授信状态变更通知回调](2.1/07_app_sts_call_back.md)
         * [申请状态查询](2.1/10_app_sts.md)
         * [可上传申请材料](2.1/13_doc_can_upload.md)
         * [融资申请推送](2.1/20_app_push.md)

@@ -21,9 +21,9 @@ loan\_app:cif\_cp\_rel_shareholder:create
 ### 借款方为企业，关联关系为法定代表人、总经理、财务负责人、实际控制人、直接关联人、间接关联人、控股股东、股东
 关联人信息由两部分组成：
 
-| 名称 | 类型 | 是否必须 | 描述 | 备注 |
-| --- | --- | --- | --- | --- |
-| relCpBase | JSON | 是 | [企业关联人基本信息](#企业关联人基本信息) | |
+| 名称 | 类型 | 是否必须 | 描述 | 
+| --- | --- | --- | --- | 
+| relCpBase | JSON | 是 | [企业关联人基本信息](#企业关联人基本信息) |
 | cpRelInfo | JSON | 是 | [企业关联人特有信息](#企业关联人特有信息) |
 
 
@@ -37,7 +37,7 @@ loan\_app:cif\_cp\_rel_shareholder:create
 | mtGenderCd | String | 否 | 20 | 性别 |  |
 | mtMaritalStsCd | String | 否 | 20 | 婚姻情况 |  |
 | dtRegistered | Date | 否 |  | 出生日期 |  |
-| mobileNo | String | 否 | 11 | 手机号 |  |
+| mobileNo | String | 否 | 11 | 手机号 ||
 
 
 #### 企业关联人特有信息
@@ -54,7 +54,7 @@ loan\_app:cif\_cp\_rel_shareholder:create
 | equityValue | Number | 否 | 14（12,2） | 股份价值（元）|关联关系为控股股东、股东，此字段为必填  |
 | noShares | Number | 否 | 20 | 持股数量|  |
 | isUltimateShhdl | String | 否 | 1 | 最终表决权|关联关系为控股股东、股东，此字段为必填  |
-| remark | String | 否 | 200 | 股东简介|  |
+| remark | String | 否 | 200 | 股东简介||
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |

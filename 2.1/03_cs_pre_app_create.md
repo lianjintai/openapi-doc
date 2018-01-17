@@ -25,7 +25,7 @@ loan\_app:cs_pre_app:create
 | lmtAppr | Number | 是 | 30 (26,4)| 申请额度 |  |
 | tenureAppr | Number | 是 | 6 | 业务期限 |  |
 | mtTimeCd | String | 是 | 1| 业务期限类型（D-天、M-月、Y-年） |  |
-| intRate | Number | 是 | 9 (5,4)| 年化利率 |  |
+| intRate | Number | 是 | 9 (5,4)| 年化利率 ||
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
