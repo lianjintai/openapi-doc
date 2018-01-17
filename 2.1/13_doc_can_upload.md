@@ -14,8 +14,8 @@ loan\_app:doc:can_upload
 | 名称 | 类型 | 描述 |示例值 |
 | --- | --- | --- | --- |
 | appId | String | 申请ID | 0092728480d24f5d8 |
-| url | String | 文件上传参数（带有授权信息，半小时后失效），见[申请材上传参数](#申请材上传参数)
-| docs | JSON（List） | 申请材料列表（多个），见[申请材料信息](#申请材料信息) |  |
+| url | String | 文件上传参数（带有授权信息，半小时后失效），见[申请材上传参数](#申请材上传参数)||
+| docs | JSON（List） | 申请材料列表（多个），见[申请材料信息](#申请材料信息) ||
 
 ### 申请材料信息
 | 名称 | 类型 | 描述 |示例值 |
@@ -27,14 +27,14 @@ loan\_app:doc:can_upload
 | isNecessary | String | 是否必须上传 | Y，N |
 
 ### 申请材上传参数
-| 名称 | 类型 | 描述 |示例值 |
-| --- | --- | --- | --- |
+| 名称 | 类型 | 描述 |
+| --- | --- | --- | 
 | accessid | String | 访问凭证 |
-| policy | String | 访问秘钥 |  |
+| policy | String | 访问秘钥 | 
 | signature | String | 签名信息  |
 | dir | String | 上传路径  |
-| host | String | 上传host
-| callback | String | 回调信息|
+| host | String | 上传host |
+| callback | String | 回调信息 |
 
 
 ## 错误码
