@@ -295,7 +295,7 @@ loan\_app:app:create
         "intRate": 123, 
         "isRevolvingAllowed": "Y", 
         "lmtAppr": 123, 
-        "mtFacCd": "P101", 
+        "mtFacCd": "P1011", 
         "mtFacPurCds": [
             "1001", 
             "1002"
@@ -360,7 +360,7 @@ loan\_app:app:create
         "intRate": 123, 
         "isRevolvingAllowed": "Y", 
         "lmtAppr": 123, 
-        "mtFacCd": "P101", 
+        "mtFacCd": "P1011", 
         "mtFacPurCds": [
             "1001", 
             "1002"
@@ -432,7 +432,7 @@ loan\_app:app:create
         "intRate": 123, 
         "isRevolvingAllowed": "Y", 
         "lmtAppr": 123, 
-        "mtFacCd": "P101", 
+        "mtFacCd": "P1011", 
         "mtFacPurCds": [
             "1001", 
             "1002"
