@@ -25,7 +25,7 @@ loan\_app:cif\_cs\_rel_family:create
 | mtGenderCd | String | 否 | 20 | 性别 |  |
 | mtMaritalStsCd | String | 否 | 20 | 婚姻情况 |  |
 | dtRegistered | Date | 否 |  | 出生日期 |  |
-| mobileNo | String | 否 | 11 | 手机号 ||
+| mobileNo | String | 否 | 11 | 手机号 |  |
 
 
 ## 响应参数
