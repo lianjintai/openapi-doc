@@ -9,7 +9,7 @@
     与借款人关联关系为朋友时：可以添加一个或多个
 
 ## API代码
-loan\_app:cif\_cp\_rel_family:create
+loan\_app:cif\_cs\_rel_family:create
 
 ## 请求参数
 
