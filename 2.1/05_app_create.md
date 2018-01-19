@@ -1,6 +1,7 @@
 # 融资申请创建
 ## 描述
 支持个人、企业融资申请创建。融资申请创建成功后，需要保存响应参数中的“申请ID”，作为后续交易的请求参数。
+
 当借款人已存在一笔新建或审批中的申请时，再次创建新申请会不允许创建（以证件号和证件类型作为条件）。
 ## API代码
 loan\_app:app:create
@@ -26,7 +27,7 @@ loan\_app:app:create
 | --- | --- | --- | --- | 
 | cp_cust | JSON |  | 企业借款人信息，与个人借款人信息同时只能存在一个，见[企业借款人信息](#企业借款人信息) |
 | cs_cust | JSON |  | 个人借款人信息，与企业借款人信息同时只能存在一个，见[个人借款人信息](#个人借款人信息) |
-| contacts | JSON(List) | 是 | 联系人信息（企业专用），见[联系人信息](#联系人信息) |
+| contacts | JSON(List) | 是 | 联系人信息（企业专用），见[联系人信息](#联系人信息（企业专用）) |
 | fac | JSON | 是 | 资金需求信息 （企业、个人共用）， 见[资金需求信息](#资金需求信息) |
 | col | JSON(List) | 是 | 担保信息 （企业、个人共用）， 见[担保信息](#担保信息) |
 | callbackURL | String | 否 | 授信状态变更后通知回调URL( 如:http://api.xxxx.com/ljt/callback )，见[授信状态变更通知回调](#授信状态变更通知回调) |
@@ -72,7 +73,7 @@ loan\_app:app:create
 | principalNo | String | 是 | 20 | 经营电话/负责人电话 |  | 
 | mtFinInsttnCd | String | 是 | 20 | 基本开户行 |  | 
 | portrait | JSON | 否 | 1000 | 客户画像 | {"行业地位":"市场占有率第一"}|
-| bizCertificates | JSON(List) | 是 |  | 经营许可证信息，该信息不是必须的。见[经营许可证信息](###经营许可证信息) ||
+| bizCertificates | JSON(List) | 否 |  | 见[经营许可证信息](###经营许可证信息) ||
 
 
 ### 经营许可证信息
@@ -82,7 +83,7 @@ loan\_app:app:create
 | --- | --- | --- | --- | --- | --- |
 | no | String | 是 | 50 | 经营许可证编号 |  |
 | mtBizCertificateTypCd | String | 是 | 2 | 经营许可证类型 |  |
-| dtExpiry | Date | 是 |  | 经营许可证到期日||
+| dtExpiry | Date | 是 |  | 经营许可证到期日 |  |
 
 ### 个人借款人信息
 个人借款人信息由三部分组成：
@@ -119,7 +120,7 @@ loan\_app:app:create
 | loanFixedYear | Number | 否 |  20 | 贷款记录年限 |  |
 | isBizEntity | String | 是 | 1 | 是否个体工商户／私营业主 |  | 
 | portrait | JSON | 否 | 1000 | 客户画像 | {"芝麻评分":"698"}|
-| repaymentCard | String | 否 | 30 | 还款银行卡号 |622649671749152511||
+| repaymentCard | String | 否 | 30 | 还款银行卡号 | 622649671749152511 ||
 
 #### 职业信息
 “是否为个体工商户/私营业主”为 "否" 时必须输入：
@@ -152,7 +153,7 @@ loan\_app:app:create
 | salaryTotal | Number | 否 |  14 (12,2)| 近一年发放工资 （单位：元） |  ||
 
 
-###  联系人信息
+###  联系人信息（企业专用）
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
@@ -171,9 +172,9 @@ loan\_app:app:create
 | lmtAppr | Number | 是 | 30 (26,4)| 申请额度 |  |
 | dtMaturity | Date | 否 |  | 到期日 |  |
 | tenureAppr | Number | 是 | 6 | 业务期限 |  |
-| mtTimeCd | String | 是 | 1| 业务期限类型（D-天、M-月、Y-年） |  |
+| mtTimeCd | String | 是 | 1| 业务期限类型 | D-天、M-月、Y-年 |
 | mtRepymtTypCd | String | 是 | 20 | 偿还方式 |  |
-| isRevolvingAllowed | String | 是 | 1 | 是否可循环，默认为否 | N |
+| isRevolvingAllowed | String | 是 | 1 | 授信额度是否可循环，默认为否 | Y/N |
 | mtFacPurCds | JSON | 是 | 100 | 资金用途，可输入多个 |  |
 | intRate | Number | 是 | 9 (5,4)| 年化利率 |  |
 | intRateInSuspense | Number | 否 | 9 (5,4)| 罚息利率 |  ||
@@ -188,20 +189,20 @@ loan\_app:app:create
 | mtCollCatCd | String | 是 | 20 | 担保品种 |  |
 | mtCollCd | String | 是 | 20 | 担保小类 |  |
 | collValue | Number | 是 | 20(18,2) | 担保品价值 |  |
-| isDeposit | String | 是 | 1 | 是否保证金 | Y |
-| collOwner | String | 否 | 50 | 担保品所有人 |    ||
-##信用担保品示例
+| isDeposit | String | 是 | 1 | 是否保证金 | Y/N |
+| collOwner | String | 否 | 50 | 担保品所有者名称 |    |
+- 信用担保品示例
 ```javascript
 {
     "col": [
         {
-            "collOwner": "所有者",
-            "collValue": "30000000",
-            "isDeposit": "N",
-            "mtCollCatCd": "OA01",
-            "mtCollCd": "XY0101001",
-            "mtCollStyleCd": "XY",
-            "mtCollTypCd": "OA"
+            "collOwner": "张三",//一般为借款人姓名
+            "collValue": "30000000", //与申请额度相等
+            "isDeposit": "N",//固定值
+            "mtCollCatCd": "OA01",//信用担保品时，固定值
+            "mtCollCd": "XY0101001",//信用担保品时，固定值
+            "mtCollStyleCd": "XY",//信用担保品时，固定值
+            "mtCollTypCd": "OA"//信用担保品时，固定值
         }
     ]
 }
@@ -218,7 +219,7 @@ loan\_app:app:create
 | 描述 | HTTP状态码 | 语义 |
 | --- | --- | --- | 
 | app_id未找到 | 400 | 请输入正确的app_id,或检查申请类型与申请ID是否匹配 |
-| 存在在途申请 | 405 | 客户的前一笔融资请求尚未批准或取消，无法发起新融资申请 |
+| 存在在途申请 | 405 | 客户的前一笔融资请求尚未批准或取消，无法再次发起新融资申请 |
 ## 示例
 ### 请求示例（企业）
 ```javascript
@@ -294,7 +295,7 @@ loan\_app:app:create
         "intRate": 123, 
         "isRevolvingAllowed": "Y", 
         "lmtAppr": 123, 
-        "mtFacCd": "P101", 
+        "mtFacCd": "P1011", 
         "mtFacPurCds": [
             "1001", 
             "1002"
@@ -359,7 +360,7 @@ loan\_app:app:create
         "intRate": 123, 
         "isRevolvingAllowed": "Y", 
         "lmtAppr": 123, 
-        "mtFacCd": "P101", 
+        "mtFacCd": "P1011", 
         "mtFacPurCds": [
             "1001", 
             "1002"
@@ -431,7 +432,7 @@ loan\_app:app:create
         "intRate": 123, 
         "isRevolvingAllowed": "Y", 
         "lmtAppr": 123, 
-        "mtFacCd": "P101", 
+        "mtFacCd": "P1011", 
         "mtFacPurCds": [
             "1001", 
             "1002"

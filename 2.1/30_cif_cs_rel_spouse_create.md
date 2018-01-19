@@ -44,7 +44,7 @@ loan\_app:cif\_cs\_rel_spouse:create
 | bankCard | Number | 是 |  14 (12,2)| 	银行卡流水总额（单位/元） |  |
 | creditCardLines | Number | 否 |  14 (12,2)| 信用卡额度 |  |
 | loanFixedYear | Number | 否 |  2 | 贷款记录年限 |  |
-| yearIncAmt | String | 否 | 14 (12,2)| 近1年税后收入(单位/元)(单位/元) |  |
+| yearIncAmt | String | 否 | 14 (12,2) | 近1年税后收入(单位/元)(单位/元) |  |
 
 
 #### 关联人职业信息
