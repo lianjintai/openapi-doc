@@ -22,7 +22,7 @@ loan\_app:cif\_cs\_rel_family:create
 | appId | String | 是 | 50 |申请ID（融资申请创建API返回的结果） | 0092728480d24f |
 | mtCifRelCd | String | 是 | 20 |与借款方的关联关系 | II002-父母；II003-子女；II004-兄弟姐妹；II006-朋友；II007：同事 |
 | nm | String | 是 | 80 | 关联人姓名（与身份证上相同） | 张三 |
-| mtGenderCd | String | 是 | 20 | 性别 | F：男；M：女 |
+| mtGenderCd | String | 是 | 20 | 性别 | F：女；M：男 |
 | idNo | String | 否 | 18 | 身份证号码 |  |
 | mtMaritalStsCd | String | 否 | 20 | 婚姻情况 |  |
 | dtRegistered | Date | 否 |  | 出生日期 |  |
