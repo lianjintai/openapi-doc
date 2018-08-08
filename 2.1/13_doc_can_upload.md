@@ -21,7 +21,8 @@ loan\_app:doc:can_upload
 | 名称 | 类型 | 描述 |示例值 |
 | --- | --- | --- | --- |
 | mtDocTypeCd | String | 申请材料大类 | CIF-客户，COLL-担保，FAC-业务 |
-| mtDocCd | String | 申请材料小类 |  |
+| mtDocCd | String | 申请材料代码|  |
+| mtDocCatCd | String | 申请材料小类 | CS:借款人申请材料,CS_BIZ:个体工商户/私营主申请材料,CS_SPOUSE:借款人配偶申请材料,CP:借款企业申请材料,CP_LEGAL_PERSON:借款企业法人申请材料 |
 | refId | String | 关联资源ID（根据mtDocTypeCd决定具体关联的资源是什么） |  |
 | refName | String | 关联资源名称（根据mtDocTypeCd决定具体关联的资源是什么） |  |
 | isNecessary | String | 是否必须上传 | Y，N |
@@ -65,6 +66,7 @@ loan\_app:doc:can_upload
         {
             "mtDocTypeCd":"CIF",
             "mtDocCd":"PCIF305",
+             "mtDocCatCd":"CS_BIZ",
             "refId":"bf63639b5cfe1c",
             "refName":"北京海恩炼鑫台信息技术有限责任公司",
             "isNecessary":"N"
@@ -72,10 +74,19 @@ loan\_app:doc:can_upload
         {
             "mtDocTypeCd":"CIF",
             "mtDocCd":"PCIF311",
+            "mtDocCatCd":"CS",
             "refId":"bf63639b5cfe1c",
             "refName":"北京海恩炼鑫台信息技术有限责任公司",
             "isNecessary":"N"
-        }
+        },
+       {
+           "mtDocTypeCd":"CIF",
+           "mtDocCd":"PCIF311",
+           "mtDocCatCd":"CS_SPOUSE",
+           "refId":"bf63639b5cfe1c",
+           "refName":"北京海恩炼鑫台信息技术有限责任公司",
+           "isNecessary":"N"
+       }
     ]
    
 }
