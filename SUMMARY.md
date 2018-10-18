@@ -35,5 +35,6 @@
         * [贷款结清接口](2.3/25_pay_off.md)
         * [贷款信息查询](2.3/30_account_query.md)
         * [贷款信息修改](2.3/35_account_update.md)
+    * [授信申请](2.4/00_credit_app.md)
 * [附件](3_附件.md)
 
