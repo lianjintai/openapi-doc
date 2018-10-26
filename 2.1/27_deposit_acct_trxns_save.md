@@ -17,7 +17,7 @@ loan\_app:deposit\_acct\_trxns:save
 | --- | --- | --- | --- | --- | --- |
 | acctNo | String | 是 | 25 | 存款账号 | 6217002710000684874 |
 | acctNm | String | 是 | 80 | 存款账户名称 | 北京海恩炼鑫台信息技术有限责任公司 |
-| dtTrxn | datetime | 是 | 0 | 交易日期 | 2017\-03\-18 13:00:00 |
+| dtTrxn | Datetime | 是 | 0 | 交易日期 | 2017\-03\-18 13:00:00 |
 | debitAmount | Number | 是 | (16,4) | 借方发生额 | 3000 |
 | creditAmount | Number | 是 | (16,4) | 贷方发生额 | 0 |
 | balance | Number | 是 | (16,4) | 余额 | 780579.09 |
