@@ -23,7 +23,7 @@ loan\_app:deposit\_acct\_trxns:save
 | balance | Number | 是 | (16,4) | 余额 | 780579.09 |
 | mtCurCd | String | 是 | 20 | 币种 | 人民币 |
 | toAcctNo | String | \- | 50 | 对方账号 | 622200020011111111 |
-| toAcctNo | String | \- | 80 | 对方户名 | 董强 |
+| toAcctNm | String | \- | 80 | 对方户名 | 董强 |
 | toBankNm | String | \- | 80 | 对方开户机构 | 中国工商银行股份有限公司北京西客站支行 |
 | dtAccounting | Date | 是 | 0 | 记账日期 | 2017\-03\-18 |
 | summary | String | \- | 300 | 摘要 | 自定义 |
