@@ -9,7 +9,7 @@ loan\_app:deposit\_acct\_trxns:save
 | 名称 | 类型 | 是否必须 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- |
 | appId | String | 是 | 申请ID（[融资申请创建API](20_app_push.md)返回的结果） | 1ba41a90dedc4878b930b30fc3ba149d |
-| mtFinInsttnCd | String | 是 | 所属银行代码，具体详见[附件](3_附件.md) | 01 |
+| mtFinInsttnCd | String | 是 | 所属银行代码，具体详见[附件](../3_附件.md) | 01 |
 | items | JSON(List) | 是 | 交易流水明细，具体详见[交易流水明细](#交易流水明细) |
 
 ### 交易流水明细
