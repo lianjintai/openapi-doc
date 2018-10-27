@@ -58,16 +58,10 @@ loan\_app:earnings:save
 	"mtFinRptTypCd":"1",
 	"mtFinStsCd":"001",
 	"dtFin":"2017-05-03",
-	"finItems":[
-      {
-          "cd":"ANNEX01",
-          "value":"30000000"
-      },
-      {
-          "cd":"ANNEX02",
-          "value":"30520.13"
-      }
-  ]
+	"finItems":{
+       "ANNEX01": "30000000",
+       "ANNEX02": "30520.13"
+    }
 }
 ```
 ### 返回示例
