@@ -2,7 +2,7 @@
 ## 描述
 仅支持个人贷款，包括个贷字段配置、需要上传申请材料列表、OSS令牌
 ## API代码
-loan_app:cs_app:field_config
+loan_app:cs_fac:config
 
 ## 请求参数
 | 名称 | 类型 | 是否必须 | 描述 | 示例值 |

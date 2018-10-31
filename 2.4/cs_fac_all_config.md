@@ -202,6 +202,7 @@
 | lmtAppr | Number | 是 | 30 (26,4)| 申请额度 |  |
 | mtTimeCd | String | 是 | 1| 业务期限类型 | D-天、M-月、Y-年 |
 | tenureAppr | Number | 是 | 6 | 业务期限 |  |
+| mtIntRateTypCd | String | 是 | 20 | 利率类型，Y:年利率，M:月利率，D:日利率 |  |
 | mtRepymtTypCd | String | 是 | 20 | 偿还方式 |  |
 | intRate | Number | 是 | 9 (5,4)| 年化利率 |  |
 | isRevolvingAllowed | String | 是 | 1 | 授信额度是否可循环，默认为否 | Y/N |
@@ -230,9 +231,9 @@
 #### 业务上传申请材料列表 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| mtDocTypeCd | String | 是 | 20 | 申请材料门类Cd |  |
+| mtDocTypeCd | String | 是 | 20 | 申请材料门类Cd, CIF:客户申请材料，FAC：业务申请材料|  |
 | mtDocCd | String | 是 | 20 |   申请材料Cd，在上传申请材料的时候需要使用 ||
 | mtDocCdDscp | String | 是 | 20 | 申请材料描述 |  |
 | mtDocCatCd | String | 是 | 20 | 申请材料大类Cd |  |
-| refId | String | 是 | 20 | 申请材料关联ID，在上传申请材料的时候需要使用, | |
+| refId | String | 是 | 20 | 申请材料关联ID，在上传申请材料组织文件的时候，不同的申请材料门类，使用的refId不同。在授信申请的时候需要将申请材料门类为“CIF”的refId放入"doc.cifDocRefId"值中,门类为"FAC"的refId放入"doc.facDocRefId"值中 | |
 | required | String | 是 | 20 |  是否必须，Y是，N不是 |  |
