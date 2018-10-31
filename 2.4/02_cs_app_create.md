@@ -34,7 +34,7 @@ loan_app:cs_app:create
 | family | JSON(List) | 否 | 关联图谱-亲朋，见[关系图谱-亲朋](#关系图谱-亲朋) |
 | fac | JSON | 是 | 业务信息 见[业务信息](#业务信息) |
 | doc | JSON | 否 | 申请材料 见[申请材料](#申请材料) |
-| callbackURL | String | 否 | 授信状态变更后通知回调URL( 如:http://api.xxxx.com/ljt/callback )，见[授信状态变更通知回调](#授信状态变更通知回调) |
+| callbackURL | String | 否 | 授信状态变更后通知回调URL( 如:http://api.xxxx.com/ljt/callback )，见[授信状态变更通知回调](/2.1/07_app_sts_call_back.md) |
 
 ### 个人借款人信息
 个人借款人信息由三部分组成：
