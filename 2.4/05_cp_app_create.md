@@ -27,6 +27,8 @@ loan_app:cp_app:create
 | fac | JSON | 是 | 业务信息 见[业务信息](#企业业务信息) |
 | doc | JSON | 是 | 申请材料信息 见[申请材料](#企业申请材料) |
 | ccms | JSON | 是 | 定性打分 见[定性打分](#定性打分信息) |
+| callbackURL | String | 否 | 授信状态变更后通知回调URL( 如:http://api.xxxx.com/ljt/callback )，见[授信状态变更通知回调](/2.1/07_app_sts_call_back.md) |
+
 ### 企业信息
 企业借款人信息由四部分组成
 
