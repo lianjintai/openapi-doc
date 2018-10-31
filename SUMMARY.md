@@ -36,5 +36,9 @@
         * [贷款信息查询](2.3/30_account_query.md)
         * [贷款信息修改](2.3/35_account_update.md)
     * [授信申请](2.4/00_credit_app.md)
+      * [获取个贷产品配置](2.4/01_cs_fac_config.md)
+      * [个贷申请创建](2.4/02_cs_app_create.md)
+      * [获取企贷产品配置](2.4/04_cp_fac_config.md)
+      * [企贷申请创建](2.4/05_cp_app_create.md)
 * [附件](3_附件.md)
 
