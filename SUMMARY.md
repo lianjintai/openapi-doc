@@ -40,5 +40,6 @@
       * [个贷申请创建](2.4/02_cs_app_create.md)
       * [获取企贷产品配置](2.4/04_cp_fac_config.md)
       * [企贷申请创建](2.4/05_cp_app_create.md)
+      * [企业获取定性评分](2.4/06_cp_credit_model.md)
 * [附件](3_附件.md)
 
