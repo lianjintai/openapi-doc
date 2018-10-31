@@ -52,22 +52,16 @@ loan\_app:earnings:save
 ### 请求示例
 ```javascript
 {
-  "appId":"0092728480d24f5d87bf63639b5cfe1c",
-	"mtFinFmtCd":"004",
-	"mtFinRptCatCd":"1",
-	"mtFinRptTypCd":"1",
-	"mtFinStsCd":"001",
-	"dtFin":"2017-05-03",
-	"finItems":[
-      {
-          "cd":"ANNEX01",
-          "value":"30000000"
-      },
-      {
-          "cd":"ANNEX02",
-          "value":"30520.13"
-      }
-  ]
+    "appId": "0092728480d24f5d87bf63639b5cfe1c", 
+    "mtFinFmtCd": "004", 
+    "mtFinRptCatCd": "1", 
+    "mtFinRptTypCd": "1", 
+    "mtFinStsCd": "001", 
+    "dtFin": "2017-05-03", 
+    "finItems": {
+        "ANNEX01": "30000000", 
+        "ANNEX02": "30520.13"
+    }
 }
 ```
 ### 返回示例
