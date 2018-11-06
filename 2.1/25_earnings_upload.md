@@ -5,8 +5,8 @@
 1.如果同一个申请上传多次相同的财报（财报范围、类型、状态、年份、月份相同）时，最后上传的财报会覆盖之前的。
 2.申请状态为已推送、已批准时允许上传新的财报，但不会推送给资金方，也不会影响本次的评分结果，只会在下次申请时推送给资金方并更新评分结果。
 ## 财报模版
-<a href="https://dcms.lianjintai.com/downloads/finance/%E7%B3%BB%E7%BB%9F07%E7%89%88%E4%BC%81%E4%B8%9A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8.xlsx" target="_blank">07版财报模版</a>,
-<a href="https://dcms.lianjintai.com/downloads/finance/%E7%B3%BB%E7%BB%9F05%E7%89%88%E4%BC%81%E4%B8%9A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8.xlsx" target="_blank">05版财报模版</a>
+<a href="https://dcms.lianjintai.com/static/downloads/finance/%E7%B3%BB%E7%BB%9F07%E7%89%88%E4%BC%81%E4%B8%9A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8.xlsx" target="_blank">07版财报模版</a>,
+<a href="https://dcms.lianjintai.com/static/downloads/finance/%E7%B3%BB%E7%BB%9F05%E7%89%88%E4%BC%81%E4%B8%9A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8.xlsx" target="_blank">05版财报模版</a>
 
 ## API代码
 loan\_app:earnings:upload 
