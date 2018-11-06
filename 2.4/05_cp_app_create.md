@@ -8,25 +8,33 @@ loan_app:cp_app:create
 ## 请求参数
 借款人为企业时，需要提供：
     1. 企业信息 
+       - 客户信息
+       - 工商税务信息
+       - 经营许可证信息
+       - 特色信息（自定义字段）
     2. 经营信息 
-    3. 企业财报信息(非必选)
-    4. 关联人信息(有且只有一个)
-    5. 联系人信息（可录入多个，但至少有一个）
+    3. 企业财报
+    4. 主要成员
+       - 关联信息
+       - 身份信息
+       - 财务信息
+       - 经营/职业信息
+    5. 联系人信息
     6. 业务信息
     7. 定性打分信息
     8. 申请材料信息
+    
 具体定义如下：
-
 | 名称 | 类型 | 是否必须 | 描述 | 
 | --- | --- | --- | --- | 
 | cif | JSON | 是 | 企业信息 见[企业信息](#企业信息) |
-| biz | JSON | 是 | 经营信息 见[经营信息](#企业经营信息) |
-| fin | JSON | 是 | 企业财报 见[企业财报](#企业财报信息) |
-| rels | JSON | 是 | 主要成员 见[主要成员](#企业主要成员) |
-| contact | JSON(List) | 是 | 联系人信息，见[联系人信息](#企业联系人信息) |
+| biz | JSON | 否 | 经营信息 见[经营信息](#企业经营信息) |
+| fin | JSON | 否 | 企业财报 见[企业财报](#企业财报信息) |
+| rels | JSON | 否 | 主要成员 有且只有一个 见[主要成员](#企业主要成员) |
+| contact | JSON(List) | 否 | 联系人信息，可录入多个，但至少有一个 见[联系人信息](#企业联系人信息) |
 | fac | JSON | 是 | 业务信息 见[业务信息](#企业业务信息) |
-| doc | JSON | 是 | 申请材料信息 见[申请材料](#企业申请材料) |
-| ccms | JSON | 是 | 定性打分 见[定性打分](#定性打分信息) |
+| doc | JSON | 否 | 申请材料信息 见[申请材料](#企业申请材料) |
+| ccms | JSON | 否 | 定性打分 见[定性打分](#定性打分信息) |
 | callbackURL | String | 否 | 授信状态变更后通知回调URL( 如:http://api.xxxx.com/ljt/callback )，见[授信状态变更通知回调](/2.1/07_app_sts_call_back.md) |
 
 ### 企业信息
@@ -111,289 +119,493 @@ loan_app:cp_app:create
 | 存在在途申请 | 405 | 客户的前一笔融资请求尚未批准或取消，无法再次发起新融资申请 |
 
 
-### 请求示例
+### 请求示例  私营业主
+```javascript
 
-{
-	"cif": {
-		"corporate": {
-			"mtCifCatCd": "111",
-			"mtCorpSalutationCd": "1",
-			"mtFinInsttnCd": "01",
-			"nationalityMtCtryCd": "CN",
-			"mtIndCd": "c305",
-			"isComb": "N",
-			"mtListedCd": "N",
-			"isFreeTradeArea": "Y",
-			"mtIndDetailCdDscp": "玻璃包装容器制造",
-			"nationalityMtCtryCdDscp": "中国",
-			"cancelledNum": 0,
-			"approvedNum": 0,
-			"toTenantId": null,
-			"toTenantIdDscp": null,
-			"fromTenantId": null,
-			"fromTenantIdDscp": null,
-			"nm": "测试借款企业",
-			"idNo": "370973044645697719",
-			"mtCifIdTypCd": "C2",
-			"mtCifIdTypCdDscp": "营业执照注册号",
-			"mtCifIdTypCdOld": "C2",
-			"mtCorpSalutationCdDscp": "企业法人",
-			"coreBiz": "测试",
-			"principalNo": "136677889",
-			"mtCtryCd": "CN",
-			"mtCtryCdDscp": "中国",
-			"mtStateCd": "110000",
-			"mtStateCdDscp": "北京市",
-			"mtCityCd": "110100",
-			"mtCityCdDscp": "市辖区(北京市)",
-			"mtCifCatCdDscp": "国有绝对控股",
-			"brandNm": "12",
-			"grpNm": "12121212121",
-			"website": "www.baidu.com",
-			"mtIndCatCd": "c30",
-			"mtIndCatCdDscp": "非金属矿物制品业",
-			"mtIndDetailCd": "c3055",
-			"mtIndCdDscp": "玻璃制品制造",
-			"mtIndTypCd": "c",
-			"mtIndTypCdDscp": "制造业",
-			"mtFinInsttnCdDscp": "中国工商银行",
-			"updatedBy": "044e4e60e38448ad91c83fcc51af168a",
-			"dtUpdated": "2018-10-27 00:00:00",
-			"riskTipsNum": null,
-			"legalPerson": null,
-			"stockCode": null,
-			"mtListedCdDscp": null,
-			"locateAddr": null,
-			"loanStyleChangeFlag": null
-		},
-		"taxInfo": {
-			"dtRegistered": "2018-10-26 00:00:00",
-			"isLongEffec": true,
-			"bizRegDtExpiry": "",
-			"bizRegNo": "132312312312978790",
-			"authCapital": "12",
-			"registeredAddr": "12",
-			"isBussLongEffec": "Y",
-			"incomeTaxNo": "00000000",
-			"nationalTaxNo": "88888888",
-			"corpIdNo": "3212313215468798",
-			"bizCertificates": null,
-			"uniformSocialCreditCode": null,
-			"businessLicenseRegistrationNumber": "132312312312978790",
-			"loanStyleChangeFlag": null
-		},
-		"bizCertificates": [{
-				"mtBizCertificateTypCd": "00",
-				"no": "123213213213",
-				"dtExpiry": "2020-07-14 00:00:00"
-			},
-			{
-				"mtBizCertificateTypCd": "00",
-				"no": "888888888888888",
-				"dtExpiry": "2020-07-14 00:00:00"
-			}
-		]
-	},
-	"biz": {
-		"cdtFileId": null,
-		"employeeCnt": "1",
-		"assetAmt": "1",
-		"noOfBizSite": 1,
-		"mtCorpTypeCd": "04",
-		"mtCorpTypeCdDscp": "微",
-		"dtCommenceTrading": "2018-10-30 00:00:00",
-		"bizAddr": "1",
-		"mtBizLandOwnerCd": "1",
-		"mtBizLandOwnerCdDscp": "自有",
-		"bizLandArea": 1,
-		"saleAmt": "1",
-		"ratal": "1",
-		"waterDosage": "1",
-		"electricityDosage": "1",
-		"salaryTotal": "1",
-		"mtSalaryTypCd": "1",
-		"mtSalaryTypCdDscp": "打卡",
-		"socialSecurity": "1",
-		"equityLine": "1",
-		"loanStyleChangeFlag": null
-	},
-	"rel": {
-		"mtCifRelCd": "CI003",
-		"legalRelInfo": {
-			"isActualCtrl": "Y",
-			"isInvolvedMgmt": "Y",
-			"dtInCompSince": "2016-06-07 00:00:00",
-			"dtInBizLineSince": "2016-06-01 00:00:00",
-			"mgmtExperience": "测试经理",
-			"mtPosHeldCd": "001"
-		},
-		"identity": {
-			"mtCifIdTypCd": "I2",
-			"idNo": "5465641235661157",
-			"isLongEffec": "N",
-			"dtExpiry": "",
-			"nationalityMtCtryCd": "CN",
-			"nationalityMtCtryCdDscp": "中国",
-			"nm": "测试关联人",
-			"mtGenderCd": "M",
-			"mtMaritalStsCd": "03",
-			"dtRegistered": "2018-10-29 00:00:00",
-			"mtCityCd": "110100",
-			"mtCtryCd": "CN",
-			"mtCityCdDscp": "市辖区(北京)",
-			"mtStateCd": "110000",
-			"mtResidenceStsCd": "01",
-			"mobileNo": "15811266999",
-			"mtIndvMobileUsageStsCd": "01",
-			"mtEduLvlCd": "01",
-			"email": "sadsad@qq.com",
-			"weChat": "15811266999",
-			"qq": "707768412"
-		},
-		"finance": {
-			"hasCar": "Y",
-			"hasCreditCard": "Y",
-			"isFamily": "Y",
-			"yearIncAmt": "12",
-			"plateNo": "CF3964821",
-			"creditCardLines": "231123213"
-		},
-		"emplymt": {
-			"isBizEntity": "Y",
-			"isComb": "Y",
-			"bizRegNo": "999555666888777111",
-			"bizAddr": "比较吵杨",
-			"bizRegDtExpiry": "2023-06-28 00:00:00",
-			"isLegalRep": "Y",
-			"currentTotal": "12000",
-			"yearSaleMarginsRate": "22",
-			"ratal": "32000",
-			"waterDosage": "22222",
-			"electricityDosage": "22222",
-			"workPhone": "22",
-			"equityLine": "22222",
-			"employees": "22",
-			"salaryTotal": "22",
-			"mtIndDetailCd": "c3062",
-			"mtIndDetailCdDscp": "玻璃纤维增强塑料制品制造",
-			"socialSecurity": "22222",
-			"bizArea": "22222",
-			"isBussLongEffec": "N",
-			"employerNm": "北京",
-			"employerPhone": "010-60394259",
-			"mtJobSectorCd": "30200",
-			"mtJobSectorCdDscp": "安全和消防人员",
-			"prevServiceYr": null,
-			"prevServiceMth": null,
-			"mtPosHeldCd": null,
-			"mtPosHeldCdDscp": null,
-			"dtWorkInCurrIndustry": "2013-06-24 00:00:00",
-			"isRelatedPerson": null,
-			"mtIndCatCd": "c30",
-			"mtIndCd": "c306",
-			"mtIndTypCd": "c"
-		}
-	},
-	"contact": [{
-			"nm": "测试的联系人",
-			"mobileNo": "15811269699",
-			"mtPosHeldCd": "005",
-			"email": "89asdsa@qq.com"
-		},
-		{
-			"nm": "测试的联系人2",
-			"mobileNo": "15811269888",
-			"mtPosHeldCd": "005",
-			"email": "biany@lianjintai.com"
-		}
-	],
-	"fac": {
-		"lt": "CP",
-		"mtOrgCd": "1000",
-		"no": "578",
-		"mtFacCd": "103192",
-		"mtFacPurCd": null,
-		"lmtAppr": "12",
-		"isRevolvingAllowed": "Y",
-		"dtMaturity": null,
-		"mtTimeCd": "M",
-		"tenureAppr": "12",
-		"mtTenantId": "1000",
-		"mtFacCdDscp": "新建一个产品以测试",
-		"mtFacTypCd": "1",
-		"mtFacTypCdDscp": "贷款",
-		"mtTimeCdDscp": null,
-		"intRate": "12",
-		"intRateInSuspense": "12",
-		"mtRepymtTypCd": "005",
-		"mtRepymtTypCdDscp": "005",
-		"mtFacPurCds": null,
-		"mtFacPurCdList": [{
-			"mtFacPurCd": "1001"
-		}],
-		"mtFacPurCdDscp": null,
-		"updateBy": null,
-		"dtUpdated": null,
-		"loanRemark": "{\"mtFacCd\":\"103192\",\"mtFacCdToFinDscp\":\"新建一个产品以测试\"}",
-		"type": null,
-		"deductAcctNo": "6039425988",
-		"mtFacCatCd": "103",
-		"mtFacCatCdDscp": "保理",
-		"finalLmtAppr": null,
-		"totalRepymtAmt": null,
-		"totalDisbAmt": null,
-		"mtFacCdToFinDscp": null,
-		"mtIntRateTypCd": "Y",
-		"mtIntRateTypCdDscp": "年利率",
-		"isDelFac": "N",
-		"loanType": "CP"
-	},
-	"doc": {
-		"cifDocRefId": "bee503b47798415bb19382ab68aba1f1",
-		"facDocRefId": "d317f08e5eb442738ebc9f82efd3c121"
-	},
-	"ccms": {
-		"mtCpCreditModelCd": "N1",
-		"options": [{
-			"selected": ["A"],
-			"cd": "chhfw"
-		}, {
-			"selected": ["A"],
-			"cd": "cwgl"
-		}, {
-			"selected": ["A"],
-			"cd": "gdzcld"
-		}, {
-			"selected": ["A"],
-			"cd": "gjzc"
-		}, {
-			"selected": ["A"],
-			"cd": "dfzc"
-		}, {
-			"selected": ["A"],
-			"cd": "hytzhj"
-		}, {
-			"selected": ["A"],
-			"cd": "qybj"
-		}, {
-			"selected": ["A"],
-			"cd": "ssxfsc"
-		}, {
-			"selected": ["A"],
-			"cd": "yjnl"
-		}, {
-			"selected": ["A"],
-			"cd": "ywgc"
-		}, {
-			"selected": ["A"],
-			"cd": "yysr"
-		}, {
-			"selected": ["A"],
-			"cd": "zczj"
-		}]
-	}
+  {
+    "cif": {
+      "corporate": {
+        "mtCifCatCd": "111",
+        "mtCorpSalutationCd": "1",
+        "mtFinInsttnCd": "01",
+        "nationalityMtCtryCd": "CN",
+        "mtIndCd": "c305",
+        "isComb": "N",
+        "mtListedCd": "Y",
+        "isFreeTradeArea": "Y",
+        "cancelledNum": 0,
+        "approvedNum": 0,
+        "nm": "测试借款企业7",
+        "idNo": "450273020039113424",
+        "mtCifIdTypCd": "C2",
+        "coreBiz": "测试",
+        "principalNo": "136677889",
+        "mtCtryCd": "CN",
+        "mtStateCd": "110000",
+        "mtCityCd": "110100",
+        "brandNm": "12",
+        "grpNm": "12121212121",
+        "website": "www.baidu.com",
+        "mtIndCatCd": "c30",
+        "mtIndDetailCd": "c3055",
+        "mtIndTypCd": "c",
+        "stockCode": "123456"
+      },
+      "taxInfo": {
+        "dtRegistered": "2018-10-26 00:00:00",
+        "isLongEffec": true,
+        "bizRegDtExpiry": "",
+        "bizRegNo": "132312312312978790",
+        "authCapital": "12",
+        "registeredAddr": "12",
+        "isBussLongEffec": "Y",
+        "incomeTaxNo": "00000000",
+        "nationalTaxNo": "88888888",
+        "corpIdNo": "3212313215468798"
+      },
+      "bizCertificates": [
+        {
+          "mtBizCertificateTypCd": "00",
+          "no": "123213213213",
+          "dtExpiry": "2020-07-14 00:00:00"
+        },
+        {
+          "mtBizCertificateTypCd": "00",
+          "no": "888888888888888",
+          "dtExpiry": "2020-07-14 00:00:00"
+        }
+      ]
+    },
+    "biz": {
+      "employeeCnt": "1",
+      "assetAmt": "1",
+      "noOfBizSite": 1,
+      "mtCorpTypeCd": "04",
+      "dtCommenceTrading": "2018-10-30 00:00:00",
+      "bizAddr": "1",
+      "mtBizLandOwnerCd": "1",
+      "bizLandArea": 1,
+      "saleAmt": "1",
+      "ratal": "1",
+      "waterDosage": "1",
+      "electricityDosage": "1",
+      "salaryTotal": "1",
+      "mtSalaryTypCd": "1",
+      "socialSecurity": "1",
+      "equityLine": "1"
+    },
+    "rel": {
+      "legalRelInfo": {
+        "isActualCtrl": "Y",
+        "isInvolvedMgmt": "Y",
+        "dtInCompSince": "2016-06-27 00:00:00",
+        "dtInBizLineSince": "2016-06-27 00:00:00",
+        "mgmtExperience": "dddd",
+        "mtPosHeldCd": "001"
+      },
+      "identity": {
+        "mtCifIdTypCd": "I2",
+        "idNo": "ddfdsfds",
+        "isLongEffec": "N",
+        "dtExpiry": "",
+        "nationalityMtCtryCd": "CN",
+        "nm": "dddd",
+        "mtGenderCd": "M",
+        "mtMaritalStsCd": "02",
+        "dtRegistered": "2018-11-01 00:00:00",
+        "mtCityCd": "110100",
+        "mtCtryCd": "CN",
+        "mtStateCd": "110000",
+        "mtResidenceStsCd": "01",
+        "mobileNo": "13887597721",
+        "mtIndvMobileUsageStsCd": "03",
+        "mtEduLvlCd": "02",
+        "email": "912933515@qq.com",
+        "weChat": "13887597721",
+        "qq": "912933515"
+      },
+      "finance": {
+        "hasCar": "Y",
+        "hasCreditCard": "Y",
+        "isFamily": "Y",
+        "yearIncAmt": "12321",
+        "plateNo": "1",
+        "creditCardLines": "1"
+      },
+      "emplymt": {
+        "isComb": "Y",
+        "bizRegDtExpiry": "",
+        "isLeglaRep": "",
+        "isBussLongEffec": "Y",
+        "bizRegNo": "817004118277404585",
+        "bizAddr": "经营地址",
+        "isLegalRep": "Y",
+        "currentTotal": "12",
+        "yearSaleMarginsRate": "12",
+        "ratal": "13",
+        "electricityDosage": "14",
+        "waterDosage": "15",
+        "socialSecurity": "16",
+        "equityLine": "17",
+        "employees": "18",
+        "salaryTotal": "29",
+        "workPhone": "联系电话",
+        "mtIndDetailCd": "c2412",
+        "mtIndCatCd": "c24",
+        "mtIndCd": "c241",
+        "mtIndTypCd": "c",
+        "bizArea": "经营范围",
+        "isBizEntity": "Y"
+      }
+    },
+    "contact": [
+      {
+        "nm": "测试的联系人",
+        "mobileNo": "15811269699",
+        "mtPosHeldCd": "005",
+        "email": "89asdsa@qq.com"
+      },
+      {
+        "nm": "测试的联系人2",
+        "mobileNo": "15811269888",
+        "mtPosHeldCd": "005",
+        "email": "biany@lianjintai.com"
+      }
+    ],
+    "fac": {
+      "mtFacCd": "1026",
+      "lmtAppr": "12",
+      "isRevolvingAllowed": "Y",
+      "mtTimeCd": "M",
+      "tenureAppr": "12",
+      "mtFacTypCd": "1",
+      "intRate": "12",
+      "intRateInSuspense": "12",
+      "mtRepymtTypCd": "005",
+      "mtFacPurCdList": [
+        {
+          "mtFacPurCd": "1001"
+        }
+      ],
+      "deductAcctNo": "6039425988",
+      "mtIntRateTypCd": "Y"
+    },
+    "ccms": {
+      "mtCpCreditModelCd": "N1",
+      "options": [
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "chhfw"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "cwgl"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "gdzcld"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "gjzc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "dfzc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "hytzhj"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "qybj"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "ssxfsc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "yjnl"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "ywgc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "yysr"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "zczj"
+        }
+      ]
+    }
+  }
 
-}
+```
+### 请求示例 非私营业主
+```javascript
+  {
+    "cif": {
+      "corporate": {
+        "mtCifCatCd": "111",
+        "mtCorpSalutationCd": "1",
+        "mtFinInsttnCd": "01",
+        "nationalityMtCtryCd": "CN",
+        "mtIndCd": "c305",
+        "isComb": "N",
+        "mtListedCd": "Y",
+        "isFreeTradeArea": "Y",
+        "cancelledNum": 0,
+        "approvedNum": 0,
+        "nm": "测试借款企业7",
+        "idNo": "450273020039113424",
+        "mtCifIdTypCd": "C2",
+        "coreBiz": "测试",
+        "principalNo": "136677889",
+        "mtCtryCd": "CN",
+        "mtStateCd": "110000",
+        "mtCityCd": "110100",
+        "brandNm": "12",
+        "grpNm": "12121212121",
+        "website": "www.baidu.com",
+        "mtIndCatCd": "c30",
+        "mtIndDetailCd": "c3055",
+        "mtIndTypCd": "c",
+        "stockCode": "123456"
+      },
+      "taxInfo": {
+        "dtRegistered": "2018-10-26 00:00:00",
+        "isLongEffec": true,
+        "bizRegDtExpiry": "",
+        "bizRegNo": "132312312312978790",
+        "authCapital": "12",
+        "registeredAddr": "12",
+        "isBussLongEffec": "Y",
+        "incomeTaxNo": "00000000",
+        "nationalTaxNo": "88888888",
+        "corpIdNo": "3212313215468798"
+      },
+      "bizCertificates": [
+        {
+          "mtBizCertificateTypCd": "00",
+          "no": "123213213213",
+          "dtExpiry": "2020-07-14 00:00:00"
+        },
+        {
+          "mtBizCertificateTypCd": "00",
+          "no": "888888888888888",
+          "dtExpiry": "2020-07-14 00:00:00"
+        }
+      ]
+    },
+    "biz": {
+      "employeeCnt": "1",
+      "assetAmt": "1",
+      "noOfBizSite": 1,
+      "mtCorpTypeCd": "04",
+      "dtCommenceTrading": "2018-10-30 00:00:00",
+      "bizAddr": "1",
+      "mtBizLandOwnerCd": "1",
+      "bizLandArea": 1,
+      "saleAmt": "1",
+      "ratal": "1",
+      "waterDosage": "1",
+      "electricityDosage": "1",
+      "salaryTotal": "1",
+      "mtSalaryTypCd": "1",
+      "socialSecurity": "1",
+      "equityLine": "1"
+    },
+    "rel": {
+      "legalRelInfo": {
+        "isActualCtrl": "Y",
+        "isInvolvedMgmt": "Y",
+        "dtInCompSince": "2016-06-27 00:00:00",
+        "dtInBizLineSince": "2016-06-27 00:00:00",
+        "mgmtExperience": "dddd",
+        "mtPosHeldCd": "001"
+      },
+      "identity": {
+        "mtCifIdTypCd": "I2",
+        "idNo": "ddfdsfds",
+        "isLongEffec": "N",
+        "dtExpiry": "",
+        "nationalityMtCtryCd": "CN",
+        "nm": "dddd",
+        "mtGenderCd": "M",
+        "mtMaritalStsCd": "02",
+        "dtRegistered": "2018-11-01 00:00:00",
+        "mtCityCd": "110100",
+        "mtCtryCd": "CN",
+        "mtStateCd": "110000",
+        "mtResidenceStsCd": "01",
+        "mobileNo": "13887597721",
+        "mtIndvMobileUsageStsCd": "03",
+        "mtEduLvlCd": "02",
+        "email": "912933515@qq.com",
+        "weChat": "13887597721",
+        "qq": "912933515"
+      },
+      "finance": {
+        "hasCar": "Y",
+        "hasCreditCard": "Y",
+        "isFamily": "Y",
+        "yearIncAmt": "12321",
+        "plateNo": "1",
+        "creditCardLines": "1"
+      },
+      "emplymt": {
+        "mtJobSectorCd": "30200",
+        "dtWorkInCurrIndustry": "2013-06-24 00:00:00",
+        "mtPosHeldCd": "005",
+        "employerNm": "1111",
+        "prevServiceYr": "1",
+        "prevServiceMth": "1",
+        "employerPhone": "11",
+        "isBizEntity": "N"
+      }
+    },
+    "contact": [
+      {
+        "nm": "测试的联系人",
+        "mobileNo": "15811269699",
+        "mtPosHeldCd": "005",
+        "email": "89asdsa@qq.com"
+      },
+      {
+        "nm": "测试的联系人2",
+        "mobileNo": "15811269888",
+        "mtPosHeldCd": "005",
+        "email": "biany@lianjintai.com"
+      }
+    ],
+    "fac": {
+      "mtFacCd": "1026",
+      "lmtAppr": "12",
+      "isRevolvingAllowed": "Y",
+      "mtTimeCd": "M",
+      "tenureAppr": "12",
+      "mtFacTypCd": "1",
+      "intRate": "12",
+      "intRateInSuspense": "12",
+      "mtRepymtTypCd": "005",
+      "mtFacPurCdList": [
+        {
+          "mtFacPurCd": "1001"
+        }
+      ],
+      "deductAcctNo": "6039425988",
+      "mtIntRateTypCd": "Y"
+    },
+    "ccms": {
+      "mtCpCreditModelCd": "N1",
+      "options": [
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "chhfw"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "cwgl"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "gdzcld"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "gjzc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "dfzc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "hytzhj"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "qybj"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "ssxfsc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "yjnl"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "ywgc"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "yysr"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "cd": "zczj"
+        }
+      ]
+    }
+  }
+```
+
+
 
 ### 返回示例（正常）
 ```javascript
