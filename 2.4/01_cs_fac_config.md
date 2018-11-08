@@ -16,7 +16,7 @@ loan_app:cs_fac:config
 | spouse | json | 授信时，关系图谱-配偶需要数据字段及格式 [模块](#模块)| |  
 | family | json | 授信时，关系图谱-亲朋需要数据字段及格式 [模块](#模块)| |  
 | fac | json | 授信时，贷款产品需要数据字段及格式 [模块](#模块)| |  
-| doc | json | 授信时，需要上传的申请材料和上传OSS时需要的密钥 [模块](#模块)| |  
+| doc | json | 授信时，需要上传的申请材料和上传OSS时需要的密钥 [申请材料](#申请材料) | |  
 
 
 ## 模块
@@ -51,7 +51,32 @@ loan_app:cs_fac:config
 | errMsg | String | 校验错误信息 |  |
 | regExp | String | 校验正则表达式 |  |
 
+### 申请材料
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| url | Json | 是 |  | oss上传密钥 [oss上传密钥](#oss上传密钥) |  |
+| docs | Json(list) | 是 |  | 申请材料列表 [业务上传申请材料列表](#业务上传申请材料列表) |  |
 
+
+#### oss上传签名密钥
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| accessid | String | 是 | 20 |  |  |
+| policy | String | 是 | 20 |  |  |
+| signature | String | 是 | 20 |  |  |
+| dir | String | 是 | 20 |  |  |
+| host | String | 是 | 20 |  |  |
+| callback | String | 是 | 20 |  |  |
+
+#### 业务上传申请材料列表 
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
+| --- | --- | --- | --- | --- | --- |
+| mtDocTypeCd | String | 是 | 20 | 申请材料门类Cd, CIF:客户申请材料，FAC：业务申请材料|  |
+| mtDocCd | String | 是 | 20 |   申请材料Cd，在上传申请材料的时候需要使用 ||
+| mtDocCdDscp | String | 是 | 20 | 申请材料描述 |  |
+| mtDocCatCd | String | 是 | 20 | 申请材料大类Cd |  |
+| refId | String | 是 | 20 | 申请材料关联ID，在上传申请材料组织文件的时候，不同的申请材料门类，使用的refId不同。在授信申请的时候需要将申请材料门类为“CIF”的refId放入"doc.cifDocRefId"值中,门类为"FAC"的refId放入"doc.facDocRefId"值中 | |
+| required | String | 是 | 20 |  是否必须，Y是，N不是 |  |
 
 
 
