@@ -7,8 +7,16 @@
 ## API代码
 loan_app:cs_app:create
 
+##接口调用顺序：<br>
+| 顺序 | 名称 | 是否必须 | 描述 | 
+| --- | --- | --- | --- | 
+| 1 | [个贷产品配置](01_cs_fac_config.md) | 是 | 获取“个贷申请创建”授信需要传入的字段、上传的申请材料和上传申请材料密钥数据 |
+| 3 | [上传申请材料](doc_upload.md)| 否 | 当申请有需要上传申请材料时需要调用，需要上传申请材料的配置在：[个贷产品配置](01_cs_fac_config.md)返回信息doc中 |
+| 4 | 个贷申请创建（本接口）| 是|  创建申请必须的接口 |
+
 ## 请求参数
 借款人为个人时，需要提供：
+
     1.个人借款人信息
         - 基本信息
         - 财务信息
@@ -84,7 +92,22 @@ loan_app:cs_app:create
 
 ## 示例
 
-### 请求示例（个人）
+### 请求示例 最少参数
+```javascript
+{
+  "cif": {
+    "identity": {
+      "nm": "姓名",
+      "mtCifIdTypCd": "I",
+      "idNo": "110113199506217906"
+    }
+  },
+  "fac": {
+    "mtFacCd": "P1011"
+  }
+}
+```
+
 #### 个人非私营业主-完整参数
 ```javascript
 {
@@ -237,7 +260,8 @@ loan_app:cs_app:create
   "doc": {
     "cifDocRefId": "bee503b47798415bb19382ab68aba1f1",
     "facDocRefId": "d317f08e5eb442738ebc9f82efd3c121"
-  }
+  },
+  "callbackURL": "http://www.xxx.com/xxx/xxx"
 }
 ```
 
@@ -402,7 +426,8 @@ loan_app:cs_app:create
   "doc": {
     "cifDocRefId": "bee503b47798415bb19382ab68aba1f1",
     "facDocRefId": "d317f08e5eb442738ebc9f82efd3c121"
-  }
+  },
+  "callbackURL": "http://www.xxx.com/xxx/xxx"
 }
 
 ```

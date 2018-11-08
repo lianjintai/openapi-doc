@@ -1,6 +1,8 @@
 #获取企业定性评分模型接口
 ## 描述
 授信申请前获取企业定性评分
+具体方法详见<a href="https://codeload.github.com/lianjintai/openapi-demo-java/zip/master" target="_blank">接口demo下载</a>获取企贷定性打分demo,包路径[com.ljt.openapi.demo.demos.CpCreditModelDemo.java]。
+
 
 ## API代码
 loan\_app:cp\_app:credit\_model
