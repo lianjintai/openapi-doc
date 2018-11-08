@@ -41,8 +41,9 @@
       * [获取企贷产品配置](2.4/04_cp_fac_config.md)
       * [企贷申请创建](2.4/05_cp_app_create.md)
       * [企业获取定性评分](2.4/06_cp_credit_model.md)
+      * [授信自动审批](2.4/07_auto_act.md)
 * [附件](3_附件.md)
   * [授信申请—企贷所有自定义字段配置](2.4/cp_fafc_field_all_config.md)
   * [授信申请—个贷所有自定义字段配置](2.4/cs_fac_all_config.md)
-  * [授信申请—授信申请](2.4/doc_upload.md)
+  * [授信申请—上传申请材料](2.4/doc_upload.md)
 
