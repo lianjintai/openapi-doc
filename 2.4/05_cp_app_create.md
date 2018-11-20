@@ -2,20 +2,13 @@
 ## 描述
 支持企业申请创建。申请创建成功后，需要保存响应参数中的“申请ID”，作为后续交易的请求参数。
 
-##接口调用顺序：<br>
-| 顺序 | 名称 | 是否必须 | 描述 | 
-| --- | --- | --- | --- | 
-| 1 | [企贷产品配置](04_cp_fac_config.md) | 是 | 获取“企贷申请创建”授信需要传入的字段、上传的申请材料和上传申请材料密钥数据 |
-| 2 | [企业获取定性评分](06_cp_credit_model.md) | 否| ：获取“**企贷申请创建**”授信需要的定性打分项数据 |
-| 3 | [上传申请材料](doc_upload.md) | 否 | 当申请有需要上传申请材料时需要调用，需要上传申请材料的配置在：[企贷产品配置](04_cp_fac_config.md)返回信息doc中 |
-| 4 | 企贷申请创建（本接口）| 是|  创建申请必须的接口 |
-
 ## API代码
 loan_app:cp_app:create
 
+## 示例代码
+具体方法详见<a href="https://codeload.github.com/lianjintai/openapi-demo-java/zip/master" target="_blank">接口demo下载</a>,包路径[com.ljt.openapi.demo.demos.loanAppCpAppCreateDemo]
+
 ## 请求参数
-1、接口参数，根据“[企贷产品配置](04_cp_fac_config.md)”接口返回字段配置判断是否需要必传。
-2、“[企贷产品配置](04_cp_fac_config.md)”中的必传只是授信必须传入的所有数据。也可以传入部分字段创建申请，然后登陆“[https://dcms.lianjintai.com](https://dcms.lianjintai.com)”补入数据
 
 全部需求提供的数据结构：
 
@@ -38,27 +31,27 @@ loan_app:cp_app:create
     
 具体定义如下：<br>
 
-| 名称 | 类型 | 是否必须 | 描述 | 企贷产品配置 |
-| --- | --- | --- | --- | --- |
-| cif | JSON | 是 | 企业信息 见[企业信息](#企业信息) | 是 |
-| biz | JSON | 否 | 经营信息 | 是 |
-| fin | JSON | 否 | 企业财报 见[企业财报](#企业财报信息) | 是 |
-| rel | JSON | 否 | 主要成员 有且只有一个 见[主要成员](#企业主要成员) | 是 |
-| contact | JSON(List) | 否 | 联系人信息，可录入多个，但至少有一个 | 是 |
-| fac | JSON | 是 | 业务信息  | 是 |
-| doc | JSON | 否 | 申请材料信息 见[申请材料](#企业申请材料) | 是 |
-| ccms | JSON | 否 | 定性打分 见[定性打分](#定性打分信息) | 否 |
-| callbackURL | String | 否 | 授信状态变更后通知回调URL( 如:http://api.xxxx.com/ljt/callback )，见[授信状态变更通知回调](/2.1/07_app_sts_call_back.md) | 否 |
+| 名称 | 类型 | 是否必须 | 描述 | 
+| --- | --- | --- | --- |
+| cif | JSON | 是 | 企业信息 见[企业信息](#企业信息) | 
+| biz | JSON | 否 | 经营信息 | 
+| fin | JSON | 否 | 企业财报 见[企业财报信息](#企业财报信息) | 
+| rel | JSON | 否 | 主要成员 有且只有一个 见[主要成员](#企业主要成员) | 
+| contact | JSON(List) | 否 | 联系人信息，可录入多个，但至少有一个 | 
+| fac | JSON | 是 | 业务信息  | 
+| doc | JSON | 否 | 申请材料信息 见[申请材料](#企业申请材料) | 
+| ccms | JSON | 否 | 定性打分 见[定性打分](#定性打分信息) | 
+| callbackURL | String | 否 | 授信状态变更后通知回调URL( 如:http://api.xxxx.com/ljt/callback )，见[授信状态变更通知回调](/2.1/07_app_sts_call_back.md) | |
 
 ### 企业信息
 企业借款人信息由四部分组成
 
-| 名称 | 类型 | 是否必须 | 描述 | 企贷产品配置 |
-| --- | --- | --- | --- |  --- | 
-| corporate | JSON | 是 | 客户信息。根据“[取企贷产品配置](04_cp_fac_config.md)”接口返回字段配置传入 | 是 |
-| taxInfo | JSON | 否 | 工商税务信息。根据“[取企贷产品配置](04_cp_fac_config.md)”接口返回字段配置传入| 是 |
-| bizCertificates | JSON（list） | 否 | 经营许可证信息。根据“[取企贷产品配置](04_cp_fac_config.md)”接口返回字段配置传入 | 是 |
-| feature | JSON | 否 | 特色信息。根据“[取企贷产品配置](04_cp_fac_config.md)”接口返回字段配置传入 | 是 |
+| 名称 | 类型 | 是否必须 | 描述 | 
+| --- | --- | --- | --- | 
+| corporate | JSON | 是 | 客户信息 |
+| taxInfo | JSON | 否 | 工商税务信息|
+| bizCertificates | JSON（list） | 否 | 经营许可证信息 | 
+| feature | JSON | 否 | 特色信息 ||
 
 
 ### 企业财报信息
@@ -69,46 +62,56 @@ loan_app:cp_app:create
 
 注：明细代码“BS88”值需要根据《<a href="https://dcms.lianjintai.com/static/downloads/finance/%E7%B3%BB%E7%BB%9F07%E7%89%88%E4%BC%81%E4%B8%9A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8.xlsx" target="_blank">07版财报模版</a>》或者《<a href="https://dcms.lianjintai.com/static/downloads/finance/%E7%B3%BB%E7%BB%9F05%E7%89%88%E4%BC%81%E4%B8%9A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8.xlsx" target="_blank">05版财报模版</a>》中的公式计算得出，此值影响是否生成企业评分
 
-## 请求参数
-| 名称 | 类型 | 是否必须 | 描述 | 示例值 | 企贷产品配置 |
-| --- | --- | --- | --- | --- |--- |
-| mtFinFmtCd | String | 是 | 财务报表格式代码（000-05版财报、004-07版财报） | 004 | 否 |
-| mtFinRptCatCd | String | 是 | 财务报表范围代码（1-本部报表、2-合并报表） | 1 | 否 |
-| mtFinRptTypCd | String | 是 | 财务报表类型代码（1-年报、2-季报、3-月报、4-半年报） | 1 | 否 |
-| mtFinStsCd | String | 是 | 财务报表状态代码（001-已审计、002-未审计） | 001 | 否 |
-| dtFin | Date | 是 | 财务报表截止日期（财务报表类型对应范围内的任意日期） | 2017-05-03 | 否 |
-| finItems | JSON(Map) | 是 | 财务报表明细， 具体详见[财务报表明细](#财务报表明细) | 否 |
+#### 企业财报请求参数
+| 名称 | 类型 | 是否必须 | 描述 | 示例值 | 
+| --- | --- | --- | --- | --- |
+| mtFinFmtCd | String | 是 | 财务报表格式代码（000-05版财报、004-07版财报） | 004 | 
+| mtFinRptCatCd | String | 是 | 财务报表范围代码（1-本部报表、2-合并报表） | 1 | 
+| mtFinRptTypCd | String | 是 | 财务报表类型代码（1-年报、2-季报、3-月报、4-半年报） | 1 | 
+| mtFinStsCd | String | 是 | 财务报表状态代码（001-已审计、002-未审计） | 001 | 
+| dtFin | Date | 是 | 财务报表截止日期（财务报表类型对应范围内的任意日期） | 2017-05-03 | 
+| finItems | JSON(Map) | 是 | 财务报表明细， 具体详见[财务报表明细](#财务报表明细) | | |
 
-### 财务报表明细
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 | 企贷产品配置 |
-| --- | --- | --- | --- | --- | --- |--- |
-| key | String | 是 | 20 | 财务报表明细代码（根据财务报表格式代码从不同的财报模版中获取，公式列为空且非标题行的代码值） | ANNEX02 | 否 |
-| value | Number | 是 | 30(26,4) | 财务报表明细金额（获取代码cd所对应的金额） | 30520.13 | 否 |
+#### 财务报表明细
+
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 | 
+| --- | --- | --- | --- | --- | --- |
+| key | String | 是 | 20 | 财务报表明细代码（根据财务报表格式代码从不同的财报模版中获取，公式列为空且非标题行的代码值） | ANNEX02 | 
+| value | Number | 是 | 30(26,4) | 财务报表明细金额（获取代码cd所对应的金额） | 30520.13 | |
 
 ### 企业主要成员
 企业主要成员信息由以下信息组成
 
-| 名称 | 类型 | 是否必须 | 描述 |  企贷产品配置 |
-| --- | --- | --- | --- | --- | 
-| legalRelInfo | JSON | 是 | 关联信息| 是 | 
-| identity | JSON | 是 | 身份信息| 是 | 
-| finance | JSON | 是 | 财务信息| 是 | 
-| emplymt | JSON | 是 | 经营/职业信息| 是 | 
+| 名称 | 类型 | 是否必须 | 描述 |  
+| --- | --- | --- | --- | 
+| legalRelInfo | JSON | 是 | 关联信息| 
+| identity | JSON | 是 | 身份信息| 
+| finance | JSON | 是 | 财务信息| 
+| emplymt | JSON | 是 | 经营/职业信息| |
 
 
 ### 申请材料
-| 名称 | 类型 | 是否必须  | 描述 | 企贷产品配置 |
-| --- | --- | --- | ---  | --- | 
-| cifDocRefId | string | 否 | 上传的申请材料的关联CIF的Id,此Id从获取产品配置接口中返回的refId | 否 |
-| facDocRefId | string | 否 | 上传的申请材料的关联FAC的Id,此Id从获取产品配置接口中返回的refId  |  否 |
+| 名称 | 类型 | 是否必须  | 描述 | 
+| --- | --- | --- | ---  |
+| cifDocRefId | string | 否 | 从获取产品配置API中返回的"doc.docs[].refId"值,但要求"mtDocTypeCd=CIF" | 
+| facDocRefId | string | 否 | 从获取产品配置API中返回的"doc.docs[].refId"值,但要求“mtDocTypeCd=FAC”  | |
 
 
 ### 定性打分信息
 参数数据从[企业获取定性评分](06_cp_credit_model.md)中获取
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 企贷产品配置 |
+
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 
+| --- | --- | --- | --- | --- | 
+| mtCpCreditModelCd | String | 是 |  | 企业指标模型cd,[企业获取定性评分](06_cp_credit_model.md)API返回的“mtCpCreditModelCd”值 |
+| options | JSON(list) | 是 |  | 企业指标模型选项 [定性打分项](#定性打分项) | |
+
+#### 定性打分项
+
+| 名称 | 类型 | 是否必须 | 最大长度 | 描述 |  示例 | 
 | --- | --- | --- | --- | --- | --- |
-| mtCpCreditModelCd | String | 是 |  | 企业指标模型cd | 否 |
-| options | JSON(list) | 是 |  | 企业指标模型选项 | 否 |
+| cd | String | 是 |  | 企业指标评分项cd,[企业获取定性评分](06_cp_credit_model.md)API返回的“mtCpCreditModelIndexList[].cd”值 |  zczj |
+| selected | JSON(list) | 是 |  | 企业指标评分项选择cd，,[企业获取定性评分](06_cp_credit_model.md)API返回的“mtCpCreditModelIndexList[].options[].cd”值 | ["A","B"] ||
+
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
@@ -121,25 +124,10 @@ loan_app:cp_app:create
 | app_id未找到 | 400 | 请输入正确的app_id,或检查申请类型与申请ID是否匹配 |
 | 存在在途申请 | 405 | 客户的前一笔融资请求尚未批准或取消，无法再次发起新融资申请 |
 
-### 请求示例 最少参数
-```javascript
-{
-  "cif": {
-    "corporate": {
-      "isComb": "N",
-      "nm": "测试借款企业7",
-      "idNo": "450273020039113424",
-      "mtCifIdTypCd": "C2"
-    }
-  },
-  "fac": {
-    "mtFacCd": "1026"
-  }
-}
 
-```
+## 请求参数示例
 
-### 请求示例  完整参数 关联人为私营业主 
+### 请求示例_完整参数_关联人为私营业主 
 ```javascript
 
   {
@@ -671,14 +659,14 @@ loan_app:cp_app:create
 
 
 
-### 返回示例（正常）
+## 返回示例（正常）
 ```javascript
 {
     "appId":"0092728480d24f5d87bf63639b5cfe1c"
 }
 ```
 
-### 返回示例（异常）
+## 返回示例（异常）
 ```javascript
 {
   "error": "500",
