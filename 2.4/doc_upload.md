@@ -1,7 +1,10 @@
-#上传申请材料
+#个人/企业上传申请材料
 
 ## 描述
-[企贷产品配置](04_cp_fac_config.md)或[个贷产品配置](01_cs_fac_config.md)，需要按照接口的返回“doc”结果，组织申请材料压缩包（见[申请材料压缩包结构](#申请材料压缩包结构)），然后上传申请材料。具体上传方法详见<a href="https://codeload.github.com/lianjintai/openapi-demo-java/zip/master" target="_blank">接口demo下载</a>申请材料上传demo,包路径[com.ljt.openapi.demo.demos.CreditMaterialUploadDemo.java]。
+[企贷产品配置](04_cp_fac_config.md)或[个贷产品配置](01_cs_fac_config.md)，需要按照接口的返回“doc”结果，组织上传申请材料需要的压缩包文件（见[申请材料压缩包结构](#申请材料压缩包结构)），然后上传申请材料。
+
+## 示例代码
+具体上传方法详见<a href="https://codeload.github.com/lianjintai/openapi-demo-java/zip/master" target="_blank">接口demo下载</a>申请材料上传demo,包路径[com.ljt.openapi.demo.demos.CreditMaterialUploadDemo.java]。
 
 ### 申请材料压缩包结构
 文件名：文件名.zip

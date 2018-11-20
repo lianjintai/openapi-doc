@@ -1,18 +1,15 @@
 # 个人授信申请创建
-## 描述
-仅支持个人贷款，包括借款人的信息、借款人配偶信息、借款人亲朋信息,贷款产品信息，接口传入的参数（参数名、字段类型、是否必填、字段长度、字段验证规则）通过“获取个贷产品配置”接口得到。
-授信成功之后，需要保存响应参数中的“申请ID”，作为后续交易的请求参数。
 
-当借款人已存在一笔新建或审批中的申请时，再次创建新申请会不允许创建（以证件号和证件类型作为条件）。
+## 描述
+仅支持个人贷款，包括借款人的信息、借款人配偶信息、借款人亲朋信息,贷款产品信息，接口传入的参数（参数名、字段类型、是否必填、字段长度）通过“[个贷产品配置](01_cs_fac_config.md)”API得到。
+申请创建成功之后，需要保存响应参数中的“申请ID”，作为后续API的请求参数。
+
 ## API代码
 loan_app:cs_app:create
 
-##接口调用顺序：<br>
-| 顺序 | 名称 | 是否必须 | 描述 | 
-| --- | --- | --- | --- | 
-| 1 | [个贷产品配置](01_cs_fac_config.md) | 是 | 获取“个贷申请创建”授信需要传入的字段、上传的申请材料和上传申请材料密钥数据 |
-| 2 | [上传申请材料](doc_upload.md) | 否 | 当申请有需要上传申请材料时需要调用，需要上传申请材料的配置在：[个贷产品配置](01_cs_fac_config.md)返回信息doc中 |
-| 3 | 个贷申请创建（本接口）| 是|  创建申请必须的接口 |
+## 示例代码
+具体方法详见<a href="https://codeload.github.com/lianjintai/openapi-demo-java/zip/master" target="_blank">接口demo下载</a>，包路径[com.ljt.openapi.demo.demos.loanAppCsAppCreateDemo]。
+
 
 ## 请求参数
 借款人为个人时，需要提供：
@@ -38,7 +35,7 @@ loan_app:cs_app:create
 | 名称 | 类型 | 是否必须 | 描述 | 
 | --- | --- | --- | --- | 
 | cif | JSON | 是 | 个人借款人信息，见[个人借款人信息](#个人借款人信息) |
-| spouse | JSON | 否 | 关联图谱-配偶，见[关系图谱-配偶](#关系图谱-配偶)，关系图谱至少一个，如果借款人已婚，配偶信息必传 |
+| spouse | JSON | 否 | 关联图谱-配偶，见[关系图谱-配偶](#关系图谱-配偶)，如果借款人已婚，配偶信息必传 |
 | family | JSON(List) | 否 | 关联图谱-亲朋，见[关系图谱-亲朋](#关系图谱-亲朋) |
 | fac | JSON | 是 | 业务信息 见[业务信息](#业务信息) |
 | doc | JSON | 否 | 申请材料 见[申请材料](#申请材料) |
@@ -52,63 +49,48 @@ loan_app:cs_app:create
 | identity | JSON | 是 | 身份信息 | |
 | finance | JSON | 否 | 财务信息 | |
 | emplymt | JSON | 否 | 职业信息-非私营业主 或 职业信息-私营业主 | | 
-| feature | JSON（List） | 否 | 特色信息 | | 
+| feature | JSON（List） | 否 | 特色信息 | || 
 
 
 ###  关系图谱-配偶
 关联人关系为配偶需要输入的参数
+关联人mtCifRelCd只支持“II001”、“II002”、“II003”、“II004”、“II006”、“II007”
 
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
+| 名称 | 类型 | 是否必须 | 描述 | 示例值 |
+| --- | --- | --- | --- |  --- |
 | identity | JSON | 是 | 关系图谱-身份信息 | |
 | finance | JSON | 否 |关系图谱-财务信息 | |
-| emplymt | JSON | 否 | 关系图谱-职业信息-非私营业主 或 关系图谱-配偶-职业信息-私营业主 | | 
+| emplymt | JSON | 否 | 关系图谱-职业信息-非私营业主 或 关系图谱-配偶-职业信息-私营业主 | || 
 
 ###  关系图谱-亲朋
 关联人关系为配偶需要输入的参数
+关联人mtCifRelCd只支持“II001”、“II002”、“II003”、“II004”、“II006”、“II007”
 
-| 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
-| --- | --- | --- | --- | --- | --- |
+| 名称 | 类型 | 是否必须 |  描述 | 示例值 |
+| --- | --- | --- | --- | --- |
 | identity | JSON | 是 | 关系图谱-身份信息 | |
-| finance | JSON | 否 |关系图谱-财务信息 | |
+| finance | JSON | 否 |关系图谱-财务信息 | ||
 
 ### 申请材料
 | 名称 | 类型 | 是否必须  | 描述 | 示例值 |
 | --- | --- | --- | ---  | --- |
-| cifDocRefId | string |  | 上传的申请材料的关联CIF的Id,此Id从获取产品配置接口中返回的refId |  |
-| facDocRefId | string |  | 上传的申请材料的关联FAC的Id,此Id从获取产品配置接口中返回的refId  |  |
-
+| cifDocRefId | string | 否 | 从获取产品配置API中返回的"doc.docs[].refId"值,但要求"mtDocTypeCd=CIF" | 
+| facDocRefId | string | 否 | 从获取产品配置API中返回的"doc.docs[].refId"值,但要求“mtDocTypeCd=FAC”  ||
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
 | --- | --- | --- | --- |
-| app_id | String | 申请ID | 0092728480d24f5d87bf63639b5cfe1c |
+| app_id | String | 申请ID | 0092728480d24f5d87bf63639b5cfe1c ||
 
 ## 错误码
 | 描述 | HTTP状态码 | 语义 |
 | --- | --- | --- | 
 | app_id未找到 | 400 | 请输入正确的app_id,或检查申请类型与申请ID是否匹配 |
-| 存在在途申请 | 405 | 客户的前一笔融资请求尚未批准或取消，无法再次发起新融资申请 |
+| 存在在途申请 | 405 | 客户的前一笔融资请求尚未批准或取消，无法再次发起新融资申请 ||
 
-## 示例
+## 请求参数示例
 
-### 请求示例 最少参数
-```javascript
-{
-  "cif": {
-    "identity": {
-      "nm": "姓名",
-      "mtCifIdTypCd": "I",
-      "idNo": "110113199506217906"
-    }
-  },
-  "fac": {
-    "mtFacCd": "P1011"
-  }
-}
-```
-
-#### 个人非私营业主-完整参数
+### 个人非私营业主-完整参数
 ```javascript
 {
   "cif": {
@@ -123,7 +105,6 @@ loan_app:cs_app:create
       "nm": "姓名",
       "mtGenderCd": "F",
       "mtCifIdTypCd": "I",
-      "mtCifIdTypCdDscp": "身份证",
       "idNo": "110113199506217906",
       "dtIssue": "2013-07-10 00:00:00",
       "dtExpiry": "2023-07-05 00:00:00",
@@ -134,9 +115,7 @@ loan_app:cs_app:create
       "mtResidenceStsCd": "01",
       "nationalityMtCtryCd": "CN",
       "mtStateCd": "110000",
-      "mtStateCdDscp": null,
       "mtCityCd": "110100",
-      "mtCityCdDscp": "市辖区(北京)",
       "mobileNo": "13839944397",
       "mtIndvMobileUsageStsCd": "01",
       "qq": "912933515",
@@ -155,7 +134,6 @@ loan_app:cs_app:create
     "emplymt": {
       "employerNm": "工作单位",
       "mtJobSectorCd": "30200",
-      "mtJobSectorCdDscp": "安全和消防人员",
       "prevServiceYr": "1",
       "prevServiceMth": "1",
       "mtPosHeldCd": "004",
@@ -194,7 +172,6 @@ loan_app:cs_app:create
       "dtRegistered": "2018-10-24 00:00:00",
       "mtCityCd": "500100",
       "mtCtryCd": "CN",
-      "mtCityCdDscp": "市辖区(重庆)",
       "mtStateCd": "500000",
       "mtResidenceStsCd": "04",
       "mobileNo": "13880785548",
@@ -216,7 +193,6 @@ loan_app:cs_app:create
     "emplymt": {
       "employerNm": "工作单位",
       "mtJobSectorCd": "50300",
-      "mtJobSectorCdDscp": "畜牧业生产人员",
       "prevServiceYr": "1",
       "prevServiceMth": "1",
       "mtPosHeldCd": "006",
@@ -265,7 +241,7 @@ loan_app:cs_app:create
 }
 ```
 
-#### 个人私营业主-完整
+### 个人私营业主-完整
 ```javascript
 {
   "cif": {
@@ -400,7 +376,6 @@ loan_app:cs_app:create
       "mtIndCatCd": "c30",
       "mtIndCd": "c306",
       "mtIndTypCd": "c",
-      "mtIndDetailCdDscp": "玻璃纤维增强塑料制品制造",
       "bizArea": "23",
       "isBizEntity": "Y",
       "isBussLongEffec": "N"
@@ -433,7 +408,7 @@ loan_app:cs_app:create
 ```
 
 
-### 返回示例（正常）
+## 返回示例（正常）
 ```javascript
 {
     "appId":"0092728480d24f5d87bf63639b5cfe1c"
@@ -454,3 +429,9 @@ loan_app:cs_app:create
 
 ## FAQ
 关于此文档暂时还没有FAQ
+
+1、当前借款人有一笔待审批的贷款申请正在处理，无法重复提交，请进行审批或退回处理。
+>同一个申请人只能有一笔审批在外部机构（“担保方”或“资金方”）或机构其他人员审批中 （以证件号和证件类型作为条件）。
+
+2、文档中没有列出下详细的参数字段
+>创建申请的参数可以根据贷款产品进行配置。所有需要传入参数的名称、类型，长度。都可以从[个贷产品配置](01_cs_fac_config.md)API中获取
