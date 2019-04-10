@@ -43,6 +43,8 @@
       * [企贷申请创建](2.4/05_cp_app_create.md)
       * [授信自动审批](2.4/07_auto_act.md)
       * [个人/企业上传申请材料](2.4/doc_upload.md)
+      * [申请状态查询](2.1/10_app_sts.md)
+      * [授信状态变更通知回调](2.1/07_app_sts_call_back.md)
 * [附件](3_附件.md)
     * [授信申请——企贷-产品可配置所有字段](2.4/cp_fac_all_config.md)
     * [授信申请——个贷-产品可配置所有字段](2.4/cs_fac_all_config.md)

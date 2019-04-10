@@ -17,7 +17,7 @@ loan\_app:cp\_app:credit\_model
 | employeeCnt | BigDecimal | 是 | 从业人数(单位：人) | 1000 |
 | saleAmt | BigDecimal | 否 | 营业收入(单位：万元) | 12358.56 |
 | assetAmt | BigDecimal | 是 | 资产总额(单位：万元) | 403029.23 |
-| dtRegistered | Date | 是 | 注册时间 | 2017-05-03 15:12:24 |
+| dtRegistered | Date | 是 | 公司注册时间 | 2017-05-03 15:12:24 |
 
 
 

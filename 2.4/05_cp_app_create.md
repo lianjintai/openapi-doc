@@ -161,9 +161,7 @@ loan_app:cp_app:create
       },
       "taxInfo": {
         "dtRegistered": "2018-10-26 00:00:00",
-        "isLongEffec": true,
         "bizRegDtExpiry": "",
-        "bizRegNo": "132312312312978790",
         "authCapital": "12",
         "registeredAddr": "12",
         "isBussLongEffec": "Y",
@@ -433,9 +431,7 @@ loan_app:cp_app:create
       },
       "taxInfo": {
         "dtRegistered": "2018-10-26 00:00:00",
-        "isLongEffec": true,
         "bizRegDtExpiry": "",
-        "bizRegNo": "132312312312978790",
         "authCapital": "12",
         "registeredAddr": "12",
         "isBussLongEffec": "Y",
