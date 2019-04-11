@@ -8,7 +8,7 @@
 | biz | JSON | 是 | 经营信息 见[经营信息](#企业经营信息) |
 | rels | JSON | 是 | 企业主要成员 见[企业主要成员](#企业主要成员) |
 | contact | JSON(List) | 是 | 联系人信息，见[联系人信息](#企业联系人信息) |
-| fac | JSON | 是 | 业务信息， 见[业务信息](#企业业务信息) |
+| fac | JSON | 是 | 业务信息， 见[企业业务信息](#企业业务信息) |
 | doc | JSON | 是 | 申请材料信息， 见[申请材料](#申请材料) ||
 
 ## 企业信息
@@ -25,6 +25,7 @@
 | --- | --- | --- | --- | --- | --- |
 | nm | String | 是 | 300 | 企业名称(与营业执照上一致) | 北京某某公司 |
 | isComb | String | 是 | 1 | 是否三证合一 |  |
+| mtCifIdTypCd | String | 是 | 1 | 证件类型：见[证件类型](dict_mtOther.md#证件类型)| C2或C5 |
 | idNo | String | 是 | 50 | 统一社会信用代码(是否多证合一为是) |  |
 | idNo | String | 是 | 50 | 营业执照号码(是否多证合一为否) |  |
 | mtCtryCd | String | 是 | 20 | 所在城市(国家)  [国家](dict_nationalityMtCtryCd.md#国家/国籍)|  |
@@ -51,9 +52,12 @@
 | --- | --- | --- | --- | --- | --- |
 | dtRegistered | Date | 是 |  | 注册日期 |  | 
 | authCapital | Number | 是 | 30 (26,4)| 注册资本(单位/万元) |  |
-| registeredAddr | String | 是 | 20 | 注册地址 |  | 
-| bizRegDtExpiry | String | 是 | 20 | 营业执照到期日 |  |
-| bizRegNo | String | 是 | 20 | 中征码 |  ||
+| registeredAddr | String | 否 | 20 | 注册地址 |  | 
+| bizRegDtExpiry | String | 否 | 20 | 营业执照到期日 |  |
+| isBussLongEffec | String | 否 | 20 | 营业执照到期日长期（营业执照到期日）, | Y |
+| incomeTaxNo | String | 否 | 20 | 地税登记号 |  |
+| nationalTaxNo | String | 否 | 20 | 国税等级号 |  |
+| corpIdNo | String | 否 | 20 | 中征码 |  ||
 
 ## 经营许可证信息
 
@@ -203,13 +207,13 @@
 | --- | --- | --- | --- | --- | --- |
 | mtFacCd | String | 是 | 20 | 业务类型 |  |
 | lmtAppr | Number | 是 | 30 (26,4)| 申请额度 |  |
-| dtMaturity | Date | 否 |  | 到期日 |  |
 | tenureAppr | Number | 是 | 6 | 业务期限 |  |
 | mtTimeCd | String | 是 | 1| [业务期限类型](dict_mtFac.md#业务期限类型) |
 | mtRepymtTypCd | String | 是 | 20 | [偿还方式](dict_mtFac.md#偿还方式) |  |
 | isRevolvingAllowed | String | 是 | 1 | 授信额度是否可循环，默认为否 | Y/N |
-| mtFacPurCds | JSON | 是 | 100 | [资金用途](dict_mtFac.md#资金用途)，可输入多个 |  |
+| mtFacPurCdList | JSON | 是 | 100 | [资金用途](dict_mtFac.md#资金用途)，可输入多个 |  |
 | intRate | Number | 是 | 9 (5,4)| 年化利率 |  |
+| deductAcctNo | String | 否 | 20| 还款卡号 |  |
 | intRateInSuspense | Number | 否 | 9 (5,4)| 罚息利率 |  ||
 
 ## 申请材料
