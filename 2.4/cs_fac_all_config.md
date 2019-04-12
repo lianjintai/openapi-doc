@@ -46,7 +46,7 @@
 ### 财务信息
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| yearIncAmt | String | 否 | 30 (26,4)| 近1年税后收入(单位/元) |  |
+| yearIncAmt | String | 否 | 30 (26,4)| 个人年收入 |  |
 | isFamily | String | 否 | 1 | 是否自有房产 |  |
 | hasCar | String | 否 | 1 | 是否有车 |  |
 | plateNo | String | 否 | 1 | 车牌号码 |  |
@@ -200,7 +200,7 @@
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
 | mtIncSourceCd | String | 否 | 300 | [收入来源](dict_mtOther.md#收入来源) |  |
-| yearIncAmt | String | 否 | 20(18.2) | 年收入 |  ||
+| yearIncAmt | String | 否 | 20(18.2) | 个人年收入 |  ||
 
 ## 业务信息
 

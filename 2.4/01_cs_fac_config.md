@@ -276,7 +276,7 @@ loan_app:cs_fac:config
                 "description": null, 
                 "fields": [
                     {
-                        "fieldName": "年收入", 
+                        "fieldName": "个人年收入", 
                         "fieldAttr": "yearIncAmt", 
                         "fieldType": "SYS", 
                         "fieldInfo": {
