@@ -10,7 +10,7 @@ loan\_app:cs_pre_app:create
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
 | custId | String | 是 | 50 | 借款人在平台方的客户ID或编号，能够唯一标识某一客户 | 0092728480d24f5d8 |
-| nm | String | 是 | 300 | 借款人姓名（与身份证上相同） | 张三 |
+| nm | String | 是 | 80 | 借款人姓名（与身份证上相同） | 张三 |
 | idNo | String | 是 | 50 | 身份证号码 |  |
 | mtGenderCd | String | 是 | 20 | 性别 |  |
 | mtMaritalStsCd | String | 是 | 20 | 婚姻情况 |  |
@@ -19,13 +19,13 @@ loan\_app:cs_pre_app:create
 | isFamily | String | 是 | 1 | 是否自有房产 |  |
 | mtJobSectorCd | String | 是 | 20 | 职业 |  |
 | mtCityCd | String | 是 | 20 | 所在城市 |  |
-| mobileNo | String | 是 | 20 | 手机号 |  |
+| mobileNo | String | 是 | 11 | 手机号 |  |
 | creditCardLines | Number | 否 |  14 (12,2)| 信用卡额度 |  |
 | portrait | JSON | 否 | 1000 | 客户画像 | {"芝麻评分":"698"}|
-| lmtAppr | Number | 是 | 30 (26,4)| 申请额度 |  |
+| lmtAppr | Number | 是 | 14 (12,2)| 申请额度 |  |
 | tenureAppr | Number | 是 | 6 | 业务期限 |  |
 | mtTimeCd | String | 是 | 1| 业务期限类型（D-天、M-月、Y-年） |  |
-| intRate | Number | 是 | 9 (5,4)| 年化利率 ||
+| intRate | Number | 是 | 6 (2,4)| 年化利率 ||
 
 ## 响应参数
 | 名称 | 类型 | 描述 |示例值 |
