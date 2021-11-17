@@ -65,7 +65,7 @@ loan\_app:cif\_cs\_rel_spouse:create
 | --- | --- | --- | --- | --- | --- |
 | isLegalRep | String | 否 |  1 | 是否法定代表人  |  |
 | mtIndDetailCd | String | 否 |  50 | 行业类型 |  |
-| bizRegNo | String | 否 |  50 | 营业执照号 |  |
+| bizRegNo | String | 否 |  18 | 营业执照号 |  |
 | bizAddr | String | 否 |  50 | 经营地址 |  |
 | bizArea | String | 否 |  200 | 经营范围 |  |
 | currentTotal | Number | 否 |  20 (12,2) | 近一年流水总额（单位：元） | 大于0，小于999999999999.99的数字,小数点后保留2位小数 |

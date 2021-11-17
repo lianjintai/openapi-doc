@@ -36,8 +36,8 @@ loan\_app:app:create
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
 | custId | String | 是 | 50 | 借款人在平台方的客户ID或编号，能够唯一标识某一客户 | 00927284 |
-| nm | String | 是 | 300 | 企业名称(与营业执照上一致) | 北京某某公司 |
-| bizRegNo | String | 是 | 50 | 营业执照号码 |  |
+| nm | String | 是 | 80 | 企业名称(与营业执照上一致) | 北京某某公司 |
+| bizRegNo | String | 是 | 18 | 营业执照号码 |  |
 | idNo | String | 是 | 50 | 中征码／贷款卡 |  |
 | isComb | String | 是 | 1 | 是否三证合一 |  |
 | brandNm | String | 是 | 200 |  核心产品及品牌 |  |
@@ -56,15 +56,15 @@ loan\_app:app:create
 | dtStart | Date | 是 |  | 开始营业日期 |  | 
 | noOfBizSite | Number | 是 | 3 | 营业网点数量(单位/个) |  | 
 | employeeCnt | Number | 是 | 30 (26,4)| 从业人数(单位/人) |  | 
-| mtListedCd | String | 否 | 20 | 是否上市 |  | 
+| mtListedCd | String | 否 | 1 | 是否上市 |  | 
 | paidUpCapital | Number | 是 | 30 (26,4) | 实收资本(单位/万元) |  | 
-| authCapital | Number | 是 | 30 (26,4)| 注册资本(单位/万元) |  | 
+| authCapital | Number | 是 | 14 (12,2)| 注册资本(单位/万元) |  | 
 | bizLandArea | Number | 否 | 8  | 经营场地面积(单位/平方米) |  | 
 | mtBizLandOwnerCd | String | 是 | 20 | 经营场地所有权 |  | 
-| saleAmt | Number | 是 | 30 (26,4)| 近一年销售额(单位/元) |  | 
-| assetAmt | Number | 是 | 30 (26,4)| 资产价值(单位/元) |  | 
+| saleAmt | Number | 是 | 14 (12,2)| 近一年销售额(单位/元) |  | 
+| assetAmt | Number | 是 | 14 (12,2)| 资产价值(单位/元) |  | 
 | ratal | Number | 是 | 14 (12,2)| 近一年纳税额(单位/元) |  | 
-| socialSecurity | Number (12,2)| 否 | 14 | 近一年社保缴存额(单位/元) |  | 
+| socialSecurity | Number| 否 | 14 (12,2) | 近一年社保缴存额(单位/元) |  | 
 | equityLine | Number | 否 | 14 (12,2)| 近一年公积金缴存额(单位/元) |  | 
 | waterDosage | Number | 是 | 14 (12,2)| 近一年用水量(单位/吨) |  | 
 | electricityDosage | Number | 是 | 14 (12,2)| 近一年用电量(单位/度) |  | 
@@ -81,7 +81,7 @@ loan\_app:app:create
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| no | String | 是 | 50 | 经营许可证编号 |  |
+| no | String | 是 | 16 | 经营许可证编号 |  |
 | mtBizCertificateTypCd | String | 是 | 2 | 经营许可证类型 |  |
 | dtExpiry | Date | 是 |  | 经营许可证到期日 |  |
 
@@ -98,7 +98,7 @@ loan\_app:app:create
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
 | custId | String | 是 | 50 | 借款人在平台方的客户ID或编号，能够唯一标识某一客户 | 0092728480d24f5d8 |
-| nm | String | 是 | 300 | 借款人姓名（与身份证上相同） | 张三 |
+| nm | String | 是 | 80 | 借款人姓名（与身份证上相同） | 张三 |
 | idNo | String | 是 | 50 | 身份证号码 |  |
 | dtIssued | Date | 否 |  | 身份证签发日期 |  |
 | dtExpiry | Date | 否 |  | 身份证到期日（长期身份证可以为空） |  |
@@ -108,10 +108,10 @@ loan\_app:app:create
 | mtResidenceStsCd | String | 是 | 20 | 本地居住情况 |  |
 | isFamily | String | 是 | 1 | 是否自有房产 |  |
 | mtJobSectorCd | String | 是 | 20 | 职业 |  |
-| yearIncAmt | String | 否 | 30 (26,4)| 近1年税后收入(单位/元) |  |
+| yearIncAmt | String | 否 | 14 (12,2)| 近1年税后收入(单位/元) |  |
 | email | String | 否 | 30 |电子邮箱 |  |
 | mtCityCd | String | 是 | 20 | 所在城市 |  |
-| mobileNo | String | 是 | 20 | 手机号 |  |
+| mobileNo | String | 是 | 11 | 手机号 |  |
 | mtIndvMobileUsageStsCd | String | 否 | 20 |  手机使用年限 |  |
 | qq | Number | 否 |  15 | QQ号 |  |
 | weChat | String | 否 |  50 | 微信号 |  |
@@ -127,7 +127,7 @@ loan\_app:app:create
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| employerNm | String | 是 |  100 | 工作单位 |  |
+| employerNm | String | 是 |  80 | 工作单位 |  |
 | mtPosHeldCd | String | 是 |  20 | 职位|  |
 | prevServiceYr | Number | 否 |  60 | 工作年限(年)|  |
 | prevServiceMth | Number | 否 |  12 | 工作年限(月)|  |
@@ -140,16 +140,16 @@ loan\_app:app:create
 | --- | --- | --- | --- | --- | --- |
 | isLegalRep | String | 是 |  1 | 是否法定代表人  |  |
 | mtIndDetailCd | String | 是 |  50 | 行业类型 |  |
-| bizRegNo | String | 是 |  50 | 营业执照号 |  |
+| bizRegNo | String | 是 |  18 | 营业执照号 |  |
 | bizAddr | String | 是 |  50 | 经营地址 |  |
 | bizArea | String | 是 |  255 | 经营范围 |  |
-| currentTotal | Number | 是 |  20 (18,2) | 近一年流水总额（单位：元） |  |
+| currentTotal | Number | 是 |  14 (12,2) | 近一年流水总额（单位：元） |  |
 | waterDosage | Number | 是 |  14 (12,2)| 近一年用水量（单位：吨） |  |
 | electricityDosage | Number | 是 |  14 (12,2)| 近一年用电量（单位：度） |  |
 | ratal | Number | 是 |  14 (12,2)| 近一年纳税额（单位：元） |  |
 | socialSecurity | Number | 否 |  14 (12,2)| 近一年社保缴存额 （单位：元） |  |
 | equityLine | Number | 否 |  14 (12,2)| 近一年公积金缴存额 （单位：元） |  |
-| employees | Number | 否 |  14 (12,2)| 员工人数 |  |
+| employees | Number | 否 |  12 | 员工人数 |  |
 | salaryTotal | Number | 否 |  14 (12,2)| 近一年发放工资 （单位：元） |  ||
 
 
@@ -157,8 +157,8 @@ loan\_app:app:create
 
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
-| nm | String | 是 | 100 | 联系人姓名 | |
-| mobileNo | String | 是 | 20 | 联系人手机号 | |
+| nm | String | 是 | 80 | 联系人姓名 | |
+| mobileNo | String | 是 | 11 | 联系人手机号 | |
 | mtCifContactCd | String | 是 | 20 | 与客户关系，借款人为个人时必需 | |
 | mtPosHeldCd | String | 是 | 20 | 职位，借款人为企业时必需 | |
 | email | String | 否 | 50 | 联系人邮箱 | ||
@@ -169,15 +169,15 @@ loan\_app:app:create
 | 名称 | 类型 | 是否必须 | 最大长度 | 描述 | 示例值 |
 | --- | --- | --- | --- | --- | --- |
 | mtFacCd | String | 是 | 20 | 业务类型 |  |
-| lmtAppr | Number | 是 | 30 (26,4)| 申请额度 |  |
+| lmtAppr | Number | 是 | 14 (12,2)| 申请额度 |  |
 | dtMaturity | Date | 否 |  | 到期日 |  |
 | tenureAppr | Number | 是 | 6 | 业务期限 |  |
 | mtTimeCd | String | 是 | 1| 业务期限类型 | D-天、M-月、Y-年 |
 | mtRepymtTypCd | String | 是 | 20 | 偿还方式 |  |
 | isRevolvingAllowed | String | 是 | 1 | 授信额度是否可循环，默认为否 | Y/N |
 | mtFacPurCds | JSON | 是 | 100 | 资金用途，可输入多个 |  |
-| intRate | Number | 是 | 9 (5,4)| 年化利率 |  |
-| intRateInSuspense | Number | 否 | 9 (5,4)| 罚息利率 |  ||
+| intRate | Number | 是 | 6 (2,4)| 年化利率 |  |
+| intRateInSuspense | Number | 否 | 6 (2,4)| 罚息利率 |  ||
 
 ### 担保信息
 
