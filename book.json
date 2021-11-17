@@ -1,7 +1,12 @@
 {
     "title": "开放平台API文档",
     "language" : "zh-hans",
-    "plugins": ["prism", "-highlight","-sharing","expandable-chapters","codetabs","navigator"],
+    "plugins": ["prism", "-highlight","-sharing","expandable-chapters","codetabs","navigator","icp"],
     "pluginsConfig": {
+        "icp": {
+            "label": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright®2020<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北京海恩炼鑫台信息技术有限责任公司</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公安备案号:11010502034056</p>",
+            "number": "京ICP备14056262号",
+            "link": "http://beian.miit.gov.cn"
+        }
     }
 }
